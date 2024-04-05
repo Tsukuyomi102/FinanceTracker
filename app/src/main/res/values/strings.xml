@@ -10,4 +10,9 @@
     <string name="alreadyUser">"Уже являетесь пользователем?"</string>
     <string name="signin">"Войти"</string>
     <string name="eightSymbols">"Не менее 8 символов"</string>
+    <string name="forgotPassword">Забыли пароль?</string>
+    <string name="wrongPassword">Неверный пароль</string>
+    <string name="orRegistr">Или зарегистрируйтесь с помощью</string>
+    <string name="haventAccount">У вас еще нет учётной записи?</string>
+    <string name="Registrate">Зарегистрироваться</string>
 </resources>
