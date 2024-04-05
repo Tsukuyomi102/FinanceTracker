@@ -1,6 +1,5 @@
 <resources>
     <string name="app_name">FinanceTracker</string>
-    <!-- TODO: Remove or change this placeholder text -->
     <string name="registration">Регистрация</string>
     <string name="email">"Почта"</string>
     <string name="name">"Имя"</string>
