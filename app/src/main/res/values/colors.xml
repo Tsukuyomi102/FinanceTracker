@@ -4,4 +4,7 @@
     <color name="white">#FFFFFFFF</color>
     <color name="startColor">#CFE4D9</color>
     <color name="endColor">#FFFFFF</color>
+    <color name="hintColor">#707974</color>
+    <color name="buttonColor">#1CA380</color>
+    <color name="error">#FF897D</color>
 </resources>
