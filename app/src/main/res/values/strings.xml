@@ -14,4 +14,9 @@
     <string name="orRegistr">Или зарегистрируйтесь с помощью</string>
     <string name="haventAccount">У вас еще нет учётной записи?</string>
     <string name="Registrate">Зарегистрироваться</string>
+    <string name="dashboard">Управление</string>
+    <string name="budget">Бюджет</string>
+    <string name="add">Добавить</string>
+    <string name="advices">Советы</string>
+    <string name="more">Ещё</string>
 </resources>
