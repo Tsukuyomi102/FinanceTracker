@@ -6,7 +6,15 @@
     <color name="endColor">#FFFFFF</color>
     <color name="hintColor">#707974</color>
     <color name="hintColor2">#BFC9C3</color>
+    <color name="hintColor3">#008768</color>
+    <color name="hintColor4">#006C52</color>
+    <color name="hintColor5">#747875</color>
     <color name="buttonColor">#1CA380</color>
     <color name="error">#FF897D</color>
+    <color name="top">#D4F4E4</color>
+    <color name="background">#F9FBF8</color>
+    <color name="cript">#006492</color>
+    <color name="rub">#0076E3</color>
+    <color name="calc">#F1F1F1</color>
 
 </resources>

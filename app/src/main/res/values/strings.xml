@@ -18,5 +18,16 @@
     <string name="budget">Бюджет</string>
     <string name="add">Добавить</string>
     <string name="advices">Советы</string>
-    <string name="more">Ещё</string>
+    <string name="more">Ещё</string>->
+    <string name="hello_blank_fragment">Hello blank fragment</string>
+    <string name="newIncome">Новый доход</string>
+    <string name="newExpence">Новые расходы</string>
+    <string name="addOperation">Добавить операцию</string>
+    <string name="Conectare">Подтвердить</string>
+    <string name="car">КАР</string>
+    <string name="cript">КРИП</string>
+    <string name="nal">НАЛ</string>
+    <string name="fromScore">Со счета</string>
+    <string name="fromCategory">Из категории</string>
+    <string name="rub">RUB</string>
 </resources>
