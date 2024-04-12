@@ -36,4 +36,6 @@
     <string name="income">Доход</string>
     <string name="help">Помощь</string>
     <string name="settings">Настройки</string>
+    <string name="transactionName">Имя транзакции</string>
+    <string name="amount">Сумма</string>
 </resources>
