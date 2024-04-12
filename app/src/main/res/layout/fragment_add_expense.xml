@@ -168,7 +168,7 @@
         <TableLayout
             android:id="@+id/constraintLayout4"
             android:layout_width="289dp"
-            android:layout_height="119dp"
+            android:layout_height="130dp"
             android:layout_marginTop="35dp"
             app:layout_constraintEnd_toEndOf="parent"
             app:layout_constraintHorizontal_bias="0.5"
