@@ -45,7 +45,7 @@ class AddExpenseFragment : Fragment() {
          *
          * @param param1 Parameter 1.
          * @param param2 Parameter 2.
-         * @return A new instance of fragment AddExpenseFragment.
+         * @return A new instance of fragment AddIncomeFragment.
          */
         // TODO: Rename and change types and number of parameters
         @JvmStatic

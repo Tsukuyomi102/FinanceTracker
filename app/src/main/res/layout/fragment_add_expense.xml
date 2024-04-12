@@ -5,7 +5,7 @@
     android:layout_width="match_parent"
     android:layout_height="match_parent"
     android:background="@color/top"
-    tools:context=".fragments.AddExpenseFragment">
+    tools:context=".fragments.AddIncomeFragment">
 
 
     <androidx.constraintlayout.widget.ConstraintLayout
@@ -41,7 +41,7 @@
                 android:layout_height="wrap_content"
                 android:layout_weight="1"
                 android:fontFamily="@font/roboto_bold"
-                android:text="+"
+                android:text="-"
                 android:textColor="@color/hintColor"
                 android:textSize="40dp"
                 app:layout_constraintBottom_toBottomOf="parent"
@@ -57,6 +57,8 @@
                 android:layout_height="44dp"
                 android:layout_weight="1"
                 android:ems="10"
+                android:fontFamily="@font/roboto_medium"
+                android:textSize="23dp"
                 android:inputType="number"
                 app:layout_constraintBottom_toBottomOf="parent"
                 app:layout_constraintEnd_toStartOf="@+id/textViewRub"
@@ -122,7 +124,7 @@
 
         <TableLayout
             android:id="@+id/constraintLayout4"
-            android:layout_width="331dp"
+            android:layout_width="289dp"
             android:layout_height="119dp"
             android:layout_marginTop="35dp"
             app:layout_constraintEnd_toEndOf="parent"
@@ -130,6 +132,67 @@
             app:layout_constraintStart_toStartOf="parent"
             app:layout_constraintTop_toBottomOf="@+id/linearLayout">
 
+            <TableRow>
+
+                <ImageButton
+                    android:id="@+id/imageCar"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:src="@drawable/icon_car_circle"
+                    android:backgroundTint="@color/background"/>
+
+                <ImageButton
+                    android:id="@+id/imageFood"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:src="@drawable/icon_food_circle"
+                    android:backgroundTint="@color/background"/>
+
+                <ImageButton
+                    android:id="@+id/imageGift"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:src="@drawable/icon_gift_circle"
+                    android:backgroundTint="@color/background"/>
+
+                <ImageButton
+                    android:id="@+id/imageHealth"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:src="@drawable/icon_health_circle"
+                    android:backgroundTint="@color/background"/>
+            </TableRow>
+
+            <TableRow>
+
+                <ImageButton
+                    android:id="@+id/imageClothes"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:src="@drawable/icon_clothes_circle"
+                    android:backgroundTint="@color/background"/>
+
+                <ImageButton
+                    android:id="@+id/imageDonation"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:src="@drawable/icon_donation_circle"
+                    android:backgroundTint="@color/background"/>
+
+                <ImageButton
+                    android:id="@+id/imageBeauty"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:src="@drawable/icon_beauty_cicle"
+                    android:backgroundTint="@color/background"/>
+
+                <ImageButton
+                    android:id="@+id/imageHome"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:src="@drawable/icon_home_circle"
+                    android:backgroundTint="@color/background"/>
+            </TableRow>
         </TableLayout>
 
         <Button
@@ -169,192 +232,6 @@
             app:layout_constraintBottom_toTopOf="@+id/constraintLayout4"
             app:layout_constraintStart_toStartOf="@+id/constraintLayout4" />
 
-        <GridLayout
-            android:id="@+id/gridLayout"
-            android:layout_width="match_parent"
-            android:layout_height="180dp"
-            android:columnCount="3"
-            android:orientation="horizontal"
-            android:rowCount="4"
-            android:background="@color/calc"
-            app:layout_constraintBottom_toBottomOf="parent"
-            app:layout_constraintEnd_toEndOf="parent"
-            app:layout_constraintStart_toStartOf="parent"
-            app:layout_constraintTop_toBottomOf="@+id/btnAcs"
-            android:layout_marginBottom="73dp">
-
-            <!-- Кнопки с цифрами -->
-            <Button
-                android:layout_width="0dp"
-                android:layout_height="0dp"
-                android:layout_row="0"
-                android:layout_rowWeight="1"
-                android:layout_column="0"
-                android:layout_columnWeight="1"
-                android:text="1"
-                android:backgroundTint="@color/white"
-                android:textColor="@color/black"
-                android:fontFamily="@font/roboto_medium"
-                android:textSize="20dp"
-                android:layout_marginRight="10dp"
-                />
-
-            <Button
-                android:layout_width="0dp"
-                android:layout_height="0dp"
-                android:layout_marginRight="10dp"
-                android:layout_row="0"
-                android:layout_rowWeight="1"
-                android:layout_column="1"
-                android:layout_columnWeight="1"
-                android:text="2"
-                android:backgroundTint="@color/white"
-                android:textColor="@color/black"
-                android:fontFamily="@font/roboto_medium"
-                android:textSize="20dp"/>
-
-            <Button
-                android:layout_width="0dp"
-                android:layout_height="0dp"
-                android:layout_row="0"
-                android:layout_rowWeight="1"
-                android:layout_column="2"
-                android:layout_columnWeight="1"
-                android:text="3"
-                android:backgroundTint="@color/white"
-                android:textColor="@color/black"
-                android:fontFamily="@font/roboto_medium"
-                android:textSize="20dp"/>
-
-            <Button
-                android:layout_width="0dp"
-                android:layout_height="0dp"
-                android:layout_row="1"
-                android:layout_rowWeight="1"
-                android:layout_column="0"
-                android:layout_columnWeight="1"
-                android:text="4"
-                android:backgroundTint="@color/white"
-                android:textColor="@color/black"
-                android:fontFamily="@font/roboto_medium"
-                android:textSize="20dp"
-                android:layout_marginRight="10dp"/>
-
-            <Button
-                android:layout_width="0dp"
-                android:layout_height="0dp"
-                android:layout_row="1"
-                android:layout_rowWeight="1"
-                android:layout_column="1"
-                android:layout_columnWeight="1"
-                android:text="5"
-                android:backgroundTint="@color/white"
-                android:textColor="@color/black"
-                android:fontFamily="@font/roboto_medium"
-                android:textSize="20dp"
-                android:layout_marginRight="10dp"/>
-
-            <Button
-                android:layout_width="0dp"
-                android:layout_height="0dp"
-                android:layout_row="1"
-                android:layout_rowWeight="1"
-                android:layout_column="2"
-                android:layout_columnWeight="1"
-                android:text="6"
-                android:backgroundTint="@color/white"
-                android:textColor="@color/black"
-                android:fontFamily="@font/roboto_medium"
-                android:textSize="20dp"/>
-
-            <Button
-                android:layout_width="0dp"
-                android:layout_height="0dp"
-                android:layout_row="2"
-                android:layout_rowWeight="1"
-                android:layout_column="0"
-                android:layout_columnWeight="1"
-                android:text="7"
-                android:backgroundTint="@color/white"
-                android:textColor="@color/black"
-                android:fontFamily="@font/roboto_medium"
-                android:textSize="20dp"
-                android:layout_marginRight="10dp"/>
-
-            <Button
-                android:layout_width="0dp"
-                android:layout_height="0dp"
-                android:layout_row="2"
-                android:layout_rowWeight="1"
-                android:layout_column="1"
-                android:layout_columnWeight="1"
-                android:text="8"
-                android:backgroundTint="@color/white"
-                android:textColor="@color/black"
-                android:fontFamily="@font/roboto_medium"
-                android:textSize="20dp"
-                android:layout_marginRight="10dp"/>
-
-            <Button
-                android:layout_width="0dp"
-                android:layout_height="0dp"
-                android:layout_row="2"
-                android:layout_rowWeight="1"
-                android:layout_column="2"
-                android:layout_columnWeight="1"
-                android:text="9"
-                android:backgroundTint="@color/white"
-                android:textColor="@color/black"
-                android:fontFamily="@font/roboto_medium"
-                android:textSize="20dp"/>
-
-            <!-- Кнопка "Очистить" -->
-            <Button
-                android:layout_width="0dp"
-                android:layout_height="0dp"
-                android:layout_row="3"
-                android:layout_rowWeight="1"
-                android:layout_column="0"
-                android:layout_columnWeight="1"
-                android:text="Очистить"
-                android:backgroundTint="@color/white"
-                android:textColor="@color/black"
-                android:fontFamily="@font/roboto_medium"
-                android:textSize="20dp"
-                android:layout_marginRight="10dp"/>
-
-            <!-- Кнопка "Удалить последнее" -->
-            <Button
-                android:layout_width="0dp"
-                android:layout_height="0dp"
-                android:layout_row="3"
-                android:layout_rowWeight="1"
-                android:layout_column="1"
-                android:layout_columnWeight="1"
-                android:text="Удалить"
-                android:backgroundTint="@color/white"
-                android:textColor="@color/black"
-                android:fontFamily="@font/roboto_medium"
-                android:textSize="20dp"
-                android:layout_marginRight="10dp"/>
-
-            <!-- Пустая ячейка для выравнивания -->
-            <Button
-                android:layout_width="0dp"
-                android:layout_height="0dp"
-                android:layout_row="3"
-                android:layout_rowWeight="1"
-                android:layout_column="2"
-                android:layout_columnWeight="1"
-                android:text="0"
-                android:backgroundTint="@color/white"
-                android:textColor="@color/black"
-                android:fontFamily="@font/roboto_medium"
-                android:textSize="20dp"/>
-
-        </GridLayout>
-
-
     </androidx.constraintlayout.widget.ConstraintLayout>
 
     <TextView
@@ -377,7 +254,7 @@
         android:layout_height="26dp"
         android:layout_marginStart="60dp"
         android:text="@string/newIncome"
-        android:textColor="@color/hintColor3"
+        android:textColor="@color/hintColor4"
         android:fontFamily="@font/roboto_medium"
         app:layout_constraintBottom_toTopOf="@+id/constraintLayoutFirst"
         app:layout_constraintStart_toStartOf="parent" />
@@ -387,7 +264,7 @@
         android:layout_width="120dp"
         android:layout_height="26dp"
         android:text="@string/newExpence"
-        android:textColor="@color/hintColor4"
+        android:textColor="@color/hintColor3"
         android:fontFamily="@font/roboto_medium"
         android:layout_marginEnd="20dp"
         app:layout_constraintBottom_toTopOf="@+id/constraintLayoutFirst"

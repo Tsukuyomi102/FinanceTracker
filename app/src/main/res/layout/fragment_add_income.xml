@@ -1,14 +1,273 @@
 <?xml version="1.0" encoding="utf-8"?>
-<FrameLayout xmlns:android="http://schemas.android.com/apk/res/android"
+<androidx.constraintlayout.widget.ConstraintLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
     xmlns:tools="http://schemas.android.com/tools"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
+    android:background="@color/top"
     tools:context=".fragments.AddIncomeFragment">
 
-    <!-- TODO: Update blank fragment layout -->
-    <TextView
+
+    <androidx.constraintlayout.widget.ConstraintLayout
+        android:id="@+id/constraintLayoutFirst"
         android:layout_width="match_parent"
         android:layout_height="match_parent"
-        android:text="@string/hello_blank_fragment" />
+        android:layout_marginTop="115dp"
+        android:background="@color/background"
+        app:layout_constraintBottom_toBottomOf="parent"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintHorizontal_bias="0.0"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTBottom_toBottomOf="parent"
+        app:layout_constraintTop_toTopOf="parent"
+        app:layout_constraintVertical_bias="0.0">
 
-</FrameLayout>
+
+        <androidx.constraintlayout.widget.ConstraintLayout
+            android:id="@+id/money"
+            android:layout_width="321dp"
+            android:layout_height="100dp"
+            android:layout_marginTop="24dp"
+            android:backgroundTint="@color/white"
+            android:orientation="horizontal"
+            app:layout_constraintEnd_toEndOf="parent"
+            app:layout_constraintHorizontal_bias="0.5"
+            app:layout_constraintStart_toStartOf="parent"
+            app:layout_constraintTop_toTopOf="parent">
+
+            <TextView
+                android:id="@+id/textViewPlus"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_weight="1"
+                android:fontFamily="@font/roboto_bold"
+                android:text="+"
+                android:textColor="@color/hintColor"
+                android:textSize="40dp"
+                app:layout_constraintBottom_toBottomOf="parent"
+                app:layout_constraintEnd_toStartOf="@+id/editTextNumber2"
+                app:layout_constraintHorizontal_bias="0.5"
+                app:layout_constraintStart_toStartOf="parent"
+                app:layout_constraintTop_toTopOf="parent"
+                app:layout_constraintVertical_bias="0.5" />
+
+            <EditText
+                android:id="@+id/editTextNumber2"
+                android:layout_width="139dp"
+                android:layout_height="44dp"
+                android:layout_weight="1"
+                android:ems="10"
+                android:fontFamily="@font/roboto_medium"
+                android:textSize="23dp"
+                android:inputType="number"
+                app:layout_constraintBottom_toBottomOf="parent"
+                app:layout_constraintEnd_toStartOf="@+id/textViewRub"
+                app:layout_constraintHorizontal_bias="0.5"
+                app:layout_constraintStart_toEndOf="@+id/textViewPlus"
+                app:layout_constraintTop_toTopOf="parent" />
+
+            <TextView
+                android:id="@+id/textViewRub"
+                android:layout_width="46dp"
+                android:layout_height="36dp"
+                android:layout_weight="1"
+                android:text="@string/rub"
+                android:textColor="@color/rub"
+                android:textSize="24dp"
+                app:layout_constraintBottom_toBottomOf="parent"
+                app:layout_constraintEnd_toEndOf="parent"
+                app:layout_constraintHorizontal_bias="0.5"
+                app:layout_constraintStart_toEndOf="@+id/editTextNumber2"
+                app:layout_constraintTop_toTopOf="parent" />
+        </androidx.constraintlayout.widget.ConstraintLayout>
+
+
+        <LinearLayout
+            android:id="@+id/linearLayout"
+            android:layout_width="331dp"
+            android:layout_height="40dp"
+            android:layout_marginTop="35dp"
+            android:orientation="horizontal"
+            app:layout_constraintEnd_toEndOf="parent"
+            app:layout_constraintHorizontal_bias="0.5"
+            app:layout_constraintStart_toStartOf="parent"
+            app:layout_constraintTop_toBottomOf="@+id/money">
+
+            <Button
+                android:id="@+id/btnCar"
+                android:layout_width="100dp"
+                android:layout_height="match_parent"
+                android:layout_weight="1"
+                android:backgroundTint="@color/buttonColor"
+                android:text="@string/car" />
+
+            <Button
+                android:id="@+id/btnCript"
+                android:layout_width="100dp"
+                android:layout_height="match_parent"
+                android:layout_marginStart="10dp"
+                android:layout_weight="1"
+                android:backgroundTint="@color/white"
+                android:text="@string/cript"
+                android:textColor="@color/cript" />
+
+            <Button
+                android:id="@+id/btnNal"
+                android:layout_width="100dp"
+                android:layout_height="match_parent"
+                android:layout_marginStart="10dp"
+                android:layout_weight="1"
+                android:backgroundTint="@color/white"
+                android:text="@string/nal"
+                android:textColor="@color/hintColor2" />
+        </LinearLayout>
+
+        <TableLayout
+            android:id="@+id/constraintLayout4"
+            android:layout_width="289dp"
+            android:layout_height="119dp"
+            android:layout_marginTop="35dp"
+            app:layout_constraintEnd_toEndOf="parent"
+            app:layout_constraintHorizontal_bias="0.5"
+            app:layout_constraintStart_toStartOf="parent"
+            app:layout_constraintTop_toBottomOf="@+id/linearLayout">
+
+            <TableRow>
+
+                <ImageButton
+                    android:id="@+id/imageCar"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:src="@drawable/icon_car_circle"
+                    android:backgroundTint="@color/background"/>
+
+                <ImageButton
+                    android:id="@+id/imageFood"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:src="@drawable/icon_food_circle"
+                    android:backgroundTint="@color/background"/>
+
+                <ImageButton
+                    android:id="@+id/imageGift"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:src="@drawable/icon_gift_circle"
+                    android:backgroundTint="@color/background"/>
+
+                <ImageButton
+                    android:id="@+id/imageHealth"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:src="@drawable/icon_health_circle"
+                    android:backgroundTint="@color/background"/>
+            </TableRow>
+
+            <TableRow>
+
+                <ImageButton
+                    android:id="@+id/imageClothes"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:src="@drawable/icon_clothes_circle"
+                    android:backgroundTint="@color/background"/>
+
+                <ImageButton
+                    android:id="@+id/imageDonation"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:src="@drawable/icon_donation_circle"
+                    android:backgroundTint="@color/background"/>
+
+                <ImageButton
+                    android:id="@+id/imageBeauty"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:src="@drawable/icon_beauty_cicle"
+                    android:backgroundTint="@color/background"/>
+
+                <ImageButton
+                    android:id="@+id/imageHome"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:src="@drawable/icon_home_circle"
+                    android:backgroundTint="@color/background"/>
+            </TableRow>
+        </TableLayout>
+
+        <Button
+            android:id="@+id/btnAcs"
+            android:layout_width="320dp"
+            android:layout_height="wrap_content"
+            android:layout_marginTop="10dp"
+            android:backgroundTint="@color/buttonColor"
+            android:fontFamily="@font/roboto_medium"
+            android:text="@string/Conectare"
+            android:textColor="@color/white"
+            android:textSize="16sp"
+            app:layout_constraintEnd_toEndOf="parent"
+            app:layout_constraintHorizontal_bias="0.5"
+            app:layout_constraintStart_toStartOf="parent"
+            app:layout_constraintTop_toBottomOf="@+id/constraintLayout4" />
+
+        <TextView
+            android:id="@+id/textViewScore"
+            android:layout_width="70dp"
+            android:layout_height="24dp"
+            android:fontFamily="@font/roboto_medium"
+            android:text="@string/fromScore"
+            android:textColor="@color/hintColor5"
+            android:textSize="16sp"
+            app:layout_constraintBottom_toTopOf="@+id/linearLayout"
+            app:layout_constraintStart_toStartOf="@+id/linearLayout" />
+
+        <TextView
+            android:id="@+id/textViewCategory"
+            android:layout_width="106dp"
+            android:layout_height="24dp"
+            android:fontFamily="@font/roboto_medium"
+            android:text="@string/fromCategory"
+            android:textColor="@color/hintColor5"
+            android:textSize="16sp"
+            app:layout_constraintBottom_toTopOf="@+id/constraintLayout4"
+            app:layout_constraintStart_toStartOf="@+id/constraintLayout4" />
+
+    </androidx.constraintlayout.widget.ConstraintLayout>
+
+    <TextView
+        android:id="@+id/textViewAddOp"
+        android:layout_width="176dp"
+        android:layout_height="26dp"
+        android:text="@string/addOperation"
+        android:fontFamily="@font/roboto_medium"
+        android:textSize="18sp"
+        android:layout_marginStart="40dp"
+        android:layout_marginTop="40dp"
+        app:layout_constraintBottom_toTopOf="@+id/textViewNewIn"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toTopOf="parent"
+        app:layout_constraintVertical_bias="0.333" />
+
+    <TextView
+        android:id="@+id/textViewNewIn"
+        android:layout_width="100dp"
+        android:layout_height="26dp"
+        android:layout_marginStart="60dp"
+        android:text="@string/newIncome"
+        android:textColor="@color/hintColor3"
+        android:fontFamily="@font/roboto_medium"
+        app:layout_constraintBottom_toTopOf="@+id/constraintLayoutFirst"
+        app:layout_constraintStart_toStartOf="parent" />
+
+    <TextView
+        android:id="@+id/textViewNewOut"
+        android:layout_width="120dp"
+        android:layout_height="26dp"
+        android:text="@string/newExpence"
+        android:textColor="@color/hintColor4"
+        android:fontFamily="@font/roboto_medium"
+        android:layout_marginEnd="20dp"
+        app:layout_constraintBottom_toTopOf="@+id/constraintLayoutFirst"
+        app:layout_constraintEnd_toEndOf="parent" />
+
+</androidx.constraintlayout.widget.ConstraintLayout>

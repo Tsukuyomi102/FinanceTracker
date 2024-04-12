@@ -30,4 +30,10 @@
     <string name="fromScore">Со счета</string>
     <string name="fromCategory">Из категории</string>
     <string name="rub">RUB</string>
+    <string name="nickname">Пример никнейма</string>
+    <string name="testEmail">exampleEmail@gmail.com</string>
+    <string name="cont">Счета</string>
+    <string name="income">Доход</string>
+    <string name="help">Помощь</string>
+    <string name="settings">Настройки</string>
 </resources>
