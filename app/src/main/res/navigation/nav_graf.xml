@@ -13,7 +13,11 @@
         <action
             android:id="@+id/action_singInFragment_to_singUpFragment"
             app:destination="@id/singUpFragment" />
+        <action
+            android:id="@+id/action_singInFragment_to_dashboardFragment"
+            app:destination="@id/dashboardFragment" />
     </fragment>
+
     <fragment
         android:id="@+id/singUpFragment"
         android:name="com.example.financetracker.fragments.SingUpFragment"
@@ -23,4 +27,53 @@
             android:id="@+id/action_singUpFragment_to_singInFragment"
             app:destination="@id/singInFragment" />
     </fragment>
+
+    <fragment
+        android:id="@+id/dashboardFragment"
+        android:name="com.example.financetracker.fragments.DashboardFragment"
+        android:label="fragment_dashboard"
+        tools:layout="@layout/fragment_dashboard">
+    </fragment>
+
+    <fragment
+        android:id="@+id/budgetFragment"
+        android:name="com.example.financetracker.fragments.BudgetFragment"
+        android:label="fragment_budget"
+        tools:layout="@layout/fragment_budget">
+    </fragment>
+
+    <fragment
+        android:id="@+id/addIncomeFragment"
+        android:name="com.example.financetracker.fragments.AddIncomeFragment"
+        android:label="fragment_add_income"
+        tools:layout="@layout/fragment_add_income" >
+        <action
+            android:id="@+id/action_addIncomeFragment_to_addExpenseFragment"
+            app:destination="@id/addExpenseFragment" />
+    </fragment>
+
+    <fragment
+        android:id="@+id/addExpenseFragment"
+        android:name="com.example.financetracker.fragments.AddExpenseFragment"
+        android:label="fragment_add_expense"
+        tools:layout="@layout/fragment_add_expense" >
+        <action
+            android:id="@+id/action_addExpenseFragment_to_addIncomeFragment"
+            app:destination="@id/addIncomeFragment" />
+    </fragment>
+
+    <fragment
+        android:id="@+id/advicesFragment"
+        android:name="com.example.financetracker.fragments.AdvicesFragment"
+        android:label="fragment_advices"
+        tools:layout="@layout/fragment_advices">
+    </fragment>
+
+    <fragment
+        android:id="@+id/profileFragment"
+        android:name="com.example.financetracker.fragments.ProfileFragment"
+        android:label="fragment_profile"
+        tools:layout="@layout/fragment_profile">
+    </fragment>
+
 </navigation>

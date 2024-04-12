@@ -1,24 +1,25 @@
 <?xml version="1.0" encoding="utf-8"?>
-<menu xmlns:android="http://schemas.android.com/apk/res/android">
+<menu xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto">
     <item
-        android:id="@+id/navigation_manage"
+        android:id="@+id/dashboardFragment"
         android:title="@string/dashboard"
         android:icon="@drawable/icon_dashboard" />
     <item
-        android:id="@+id/navigation_budget"
+        android:id="@+id/budgetFragment"
         android:title="@string/budget"
         android:icon="@drawable/icon_buget" />
     <item
-        android:id="@+id/navigation_add"
+        android:id="@+id/addIncomeFragment"
         android:title="@string/add"
         android:icon="@drawable/icon_adauga" />
     <item
-        android:id="@+id/navigation_advice"
+        android:id="@+id/advicesFragment"
         android:title="@string/advices"
         android:icon="@drawable/icon_educatie"
-        android:visible="true"/>
+        android:visible="true" />
     <item
-        android:id="@+id/navigation_more"
+        android:id="@+id/profileFragment"
         android:title="@string/more"
         android:icon="@drawable/icon_more" />
 </menu>
