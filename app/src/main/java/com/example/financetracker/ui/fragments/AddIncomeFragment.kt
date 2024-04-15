@@ -69,11 +69,12 @@ class AddIncomeFragment : Fragment() {
             var transaction = Transaction(
                 isIncome = true,
                 isCreditCard = flag,
-                transactionName = binding.editTransaction.toString(),
+                transactionName = binding.editTransaction.text.toString(),
                 category = category,
-                amount = binding.editTextNumber2.toString().toInt()
+                amount = binding.editTextNumber2.text.toString().toInt()
             )
             viewModel.addTransaction(transaction)
+            Toast.makeText(context, "Ваша транзакция успешно добавлена!", Toast.LENGTH_SHORT).show()
         }
         return binding.root
     }

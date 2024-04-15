@@ -13,7 +13,7 @@ class TransactionViewModel : ViewModel() {
     }
 
     fun addTransaction(transaction: Transaction) {
-        val currentList = transactionsLiveData.value.orEmpty().toMutableList()
+        val currentList = transactionsLiveData.value?.toMutableList() ?: mutableListOf()
         currentList.add(transaction)
         transactionsLiveData.value = currentList
     }
