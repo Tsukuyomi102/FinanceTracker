@@ -5,7 +5,7 @@
     android:layout_width="match_parent"
     android:layout_height="match_parent"
     android:background="@color/top"
-    tools:context=".fragments.AddIncomeFragment">
+    tools:context=".ui.fragments.AddIncomeFragment">
 
 
     <androidx.constraintlayout.widget.ConstraintLayout
@@ -44,6 +44,7 @@
                 app:layout_constraintTop_toTopOf="parent" />
 
             <EditText
+                android:id="@+id/editTransaction"
                 android:layout_width="140dp"
                 android:layout_height="45dp"
                 android:textSize="23dp"
