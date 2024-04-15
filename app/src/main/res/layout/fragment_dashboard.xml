@@ -42,29 +42,91 @@
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
             android:orientation="vertical"
+            android:background="@color/white"
             app:layout_constraintEnd_toEndOf="parent"
             app:layout_constraintStart_toStartOf="parent"
             app:layout_constraintTop_toBottomOf="parent">
 
             <TextView
-                android:layout_width="55dp"
-                android:layout_height="16dp"
-                android:text="Баланс"
+                android:id="@+id/textViewBalance"
+                android:layout_width="73dp"
+                android:layout_height="35dp"
+                android:layout_marginStart="20dp"
+                android:layout_marginTop="20dp"
                 android:fontFamily="@font/roboto_medium"
+                android:text="1001"
                 android:textColor="@color/black"
-                android:textSize="16sp"
+                android:textSize="30sp"
                 app:layout_constraintStart_toStartOf="parent"
                 app:layout_constraintTop_toTopOf="parent" />
 
             <ImageView
                 android:layout_width="154dp"
                 android:layout_height="154dp"
+                android:id="@+id/entirebalancediagram"
                 app:layout_constraintBottom_toBottomOf="parent"
                 app:layout_constraintEnd_toEndOf="parent"
                 app:layout_constraintTop_toTopOf="parent"
-                android:layout_marginRight="20dp"
+                android:layout_marginEnd="20dp"
                 android:layout_marginTop="20dp"
                 android:layout_marginBottom="20dp"/>
+
+            <TextView
+                android:id="@+id/textViewentBalance"
+                android:layout_width="114dp"
+                android:layout_height="16dp"
+                android:text="@string/entBalance"
+                android:fontFamily="@font/roboto_medium"
+                android:textColor="@color/hintColor2"
+                android:textSize="14sp"
+                app:layout_constraintStart_toStartOf="@+id/textViewBalance"
+                app:layout_constraintTop_toBottomOf="@+id/textViewBalance" />
+
+            <TextView
+                android:id="@+id/textViewBC"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_marginTop="20dp"
+                android:fontFamily="@font/roboto_medium"
+                android:textColor="@color/rub"
+                android:textSize="12sp"
+                android:text="карта: "
+                app:layout_constraintStart_toStartOf="@+id/textViewentBalance"
+                app:layout_constraintTop_toBottomOf="@+id/textViewentBalance" />
+
+            <TextView
+                android:id="@+id/textViewBN"
+                android:layout_width="60dp"
+                android:layout_height="wrap_content"
+                android:layout_marginTop="10dp"
+                android:fontFamily="@font/roboto_medium"
+                android:textColor="@color/black"
+                android:textSize="12sp"
+                android:text="наличные: "
+                app:layout_constraintStart_toStartOf="@+id/textViewBC"
+                app:layout_constraintTop_toBottomOf="@+id/textViewBC" />
+
+            <TextView
+                android:id="@+id/textViewForCard"
+                android:layout_width="60dp"
+                android:layout_height="16dp"
+                android:fontFamily="@font/roboto_medium"
+                android:textColor="@color/hintColor"
+                android:textSize="12sp"
+                android:text="TextView"
+                app:layout_constraintStart_toEndOf="@+id/textViewBC"
+                app:layout_constraintTop_toTopOf="@+id/textViewBC" />
+
+            <TextView
+                android:id="@+id/textViewForNal"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:fontFamily="@font/roboto_medium"
+                android:textColor="@color/hintColor"
+                android:textSize="12sp"
+                android:text="TextView"
+                app:layout_constraintStart_toEndOf="@+id/textViewBN"
+                app:layout_constraintTop_toTopOf="@+id/textViewBN" />
 
 
         </androidx.constraintlayout.widget.ConstraintLayout>

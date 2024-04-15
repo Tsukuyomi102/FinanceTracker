@@ -39,4 +39,5 @@
     <string name="transactionName">Имя транзакции</string>
     <string name="amount">Сумма</string>
     <string name="dash">Панель управления</string>
+    <string name="entBalance">Общий баланс</string>
 </resources>
