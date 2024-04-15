@@ -1,4 +1,4 @@
-package com.example.financetracker.fragments
+package com.example.financetracker.ui.fragments
 
 import android.content.res.ColorStateList
 import android.os.Bundle
@@ -11,15 +11,20 @@ import android.widget.ImageButton
 import android.widget.TableRow
 import android.widget.Toast
 import androidx.core.content.ContextCompat
+import androidx.lifecycle.ViewModel
+import androidx.lifecycle.ViewModelProvider
 import androidx.navigation.fragment.findNavController
 import com.example.financetracker.R
+import com.example.financetracker.data.Transaction
 import com.example.financetracker.databinding.FragmentAddIncomeBinding
+import com.example.financetracker.viewmodel.TransactionViewModel
+import java.util.Date
 
 class AddIncomeFragment : Fragment() {
     private lateinit var binding: FragmentAddIncomeBinding
+    private lateinit var viewModel: TransactionViewModel
     private var flag: Boolean = false
     private var category: String = ""
-    private var ButtonId: Int = 0
     private var buttonsList: MutableList<ImageButton> = mutableListOf()
 
     override fun onCreate(savedInstanceState: Bundle?) {
@@ -31,18 +36,23 @@ class AddIncomeFragment : Fragment() {
         savedInstanceState: Bundle?
     ): View? {
         binding = FragmentAddIncomeBinding.inflate(layoutInflater, container, false)
+
+        viewModel = ViewModelProvider(this).get(TransactionViewModel::class.java)
+
         binding.textExpense.setOnClickListener() {
             findNavController().navigate(R.id.action_addIncomeFragment_to_addExpenseFragment)
-        }
-        binding.btnNal.setOnClickListener() {
-            changeColor(binding.btnNal, binding.btnCar)
-            flag = true
         }
 
         binding.btnCar.setOnClickListener() {
             changeColor(binding.btnCar, binding.btnNal)
+            flag = true
+        }
+
+        binding.btnNal.setOnClickListener() {
+            changeColor(binding.btnNal, binding.btnCar)
             flag = false
         }
+
 
         for (i in 0 until binding.constraintLayout4.childCount){
             val tableRow: TableRow = binding.constraintLayout4.getChildAt(i) as TableRow
@@ -53,6 +63,17 @@ class AddIncomeFragment : Fragment() {
                     changeButtonBackground(ImageButton, buttonsList)
                 }
             }
+        }
+
+        binding.btnAcs.setOnClickListener(){
+            var transaction = Transaction(
+                isIncome = true,
+                isCreditCard = flag,
+                transactionName = binding.editTransaction.toString(),
+                category = category,
+                amount = binding.editTextNumber2.toString().toInt()
+            )
+            viewModel.addTransaction(transaction)
         }
         return binding.root
     }
@@ -74,7 +95,6 @@ class AddIncomeFragment : Fragment() {
                 button.backgroundTintList = ColorStateList.valueOf(ContextCompat.getColor(requireContext(),
                     R.color.hintColor2))
                 category = resources.getResourceEntryName(button.id)
-                Toast.makeText(context, category, Toast.LENGTH_LONG).show()
             }else{
                 button.backgroundTintList = ColorStateList.valueOf(ContextCompat.getColor(requireContext(),
                     R.color.background))

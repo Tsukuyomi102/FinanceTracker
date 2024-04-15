@@ -7,7 +7,7 @@
 
     <fragment
         android:id="@+id/singInFragment"
-        android:name="com.example.financetracker.fragments.SingInFragment"
+        android:name="com.example.financetracker.ui.fragments.SingInFragment"
         android:label="fragment_sing_in"
         tools:layout="@layout/fragment_sing_in" >
         <action
@@ -20,7 +20,7 @@
 
     <fragment
         android:id="@+id/singUpFragment"
-        android:name="com.example.financetracker.fragments.SingUpFragment"
+        android:name="com.example.financetracker.ui.fragments.SingUpFragment"
         android:label="fragment_sing_up"
         tools:layout="@layout/fragment_sing_up" >
         <action
@@ -30,21 +30,21 @@
 
     <fragment
         android:id="@+id/dashboardFragment"
-        android:name="com.example.financetracker.fragments.DashboardFragment"
+        android:name="com.example.financetracker.ui.fragments.DashboardFragment"
         android:label="fragment_dashboard"
         tools:layout="@layout/fragment_dashboard">
     </fragment>
 
     <fragment
         android:id="@+id/budgetFragment"
-        android:name="com.example.financetracker.fragments.BudgetFragment"
+        android:name="com.example.financetracker.ui.fragments.BudgetFragment"
         android:label="fragment_budget"
         tools:layout="@layout/fragment_budget">
     </fragment>
 
     <fragment
         android:id="@+id/addIncomeFragment"
-        android:name="com.example.financetracker.fragments.AddIncomeFragment"
+        android:name="com.example.financetracker.ui.fragments.AddIncomeFragment"
         android:label="fragment_add_income"
         tools:layout="@layout/fragment_add_income" >
         <action
@@ -54,7 +54,7 @@
 
     <fragment
         android:id="@+id/addExpenseFragment"
-        android:name="com.example.financetracker.fragments.AddExpenseFragment"
+        android:name="com.example.financetracker.ui.fragments.AddExpenseFragment"
         android:label="fragment_add_expense"
         tools:layout="@layout/fragment_add_expense" >
         <action
@@ -64,14 +64,14 @@
 
     <fragment
         android:id="@+id/advicesFragment"
-        android:name="com.example.financetracker.fragments.AdvicesFragment"
+        android:name="com.example.financetracker.ui.fragments.AdvicesFragment"
         android:label="fragment_advices"
         tools:layout="@layout/fragment_advices">
     </fragment>
 
     <fragment
         android:id="@+id/profileFragment"
-        android:name="com.example.financetracker.fragments.ProfileFragment"
+        android:name="com.example.financetracker.ui.fragments.ProfileFragment"
         android:label="fragment_profile"
         tools:layout="@layout/fragment_profile">
     </fragment>
