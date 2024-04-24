@@ -47,4 +47,7 @@
     <string name="cash">Наличные:</string>
     <string name="operations">Операции</string>
     <string name="aims">Цели</string>
+    <string name="showAll">Посмотреть все</string>
+    <string name="cashWithoutDot">Наличные</string>
+    <string name="cardWithoutDot">Картой</string>
 </resources>

@@ -77,6 +77,7 @@ class AddIncomeFragment : Fragment() {
             viewModel.addTransaction(transaction)
             Toast.makeText(context, "Ваша транзакция успешно добавлена!", Toast.LENGTH_SHORT).show()
         }
+
         viewModel.transactionsLiveData.observe(viewLifecycleOwner) { transactions ->
             transactions.forEach {
                 Log.d(
