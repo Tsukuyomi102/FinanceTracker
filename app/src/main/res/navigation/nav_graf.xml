@@ -40,6 +40,9 @@
         android:name="com.example.financetracker.ui.fragments.BudgetFragment"
         android:label="fragment_budget"
         tools:layout="@layout/fragment_budget">
+        <action
+            android:id="@+id/action_budgetFragment_to_transactionListFragment"
+            app:destination="@id/transactionListFragment" />
     </fragment>
 
     <fragment
@@ -74,6 +77,13 @@
         android:name="com.example.financetracker.ui.fragments.ProfileFragment"
         android:label="fragment_profile"
         tools:layout="@layout/fragment_profile">
+    </fragment>
+
+    <fragment
+        android:id="@+id/transactionListFragment"
+        android:name="com.example.financetracker.ui.fragments.TransactionListFragment"
+        android:label="fragment_transaction_list"
+        tools:layout="@layout/fragment_transaction_list">
     </fragment>
 
 </navigation>

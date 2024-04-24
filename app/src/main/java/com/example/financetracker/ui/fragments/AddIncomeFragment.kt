@@ -2,6 +2,7 @@ package com.example.financetracker.ui.fragments
 
 import android.content.res.ColorStateList
 import android.os.Bundle
+import android.util.Log
 import androidx.fragment.app.Fragment
 import android.view.LayoutInflater
 import android.view.View
@@ -23,7 +24,7 @@ import java.util.Date
 class AddIncomeFragment : Fragment() {
     private lateinit var binding: FragmentAddIncomeBinding
     private lateinit var viewModel: TransactionViewModel
-    private var flag: Boolean = false
+    var flag: Boolean = true
     private var category: String = ""
     private var buttonsList: MutableList<ImageButton> = mutableListOf()
 
@@ -37,7 +38,7 @@ class AddIncomeFragment : Fragment() {
     ): View? {
         binding = FragmentAddIncomeBinding.inflate(layoutInflater, container, false)
 
-        viewModel = ViewModelProvider(this).get(TransactionViewModel::class.java)
+        viewModel = ViewModelProvider(requireActivity()).get(TransactionViewModel::class.java)
 
         binding.textExpense.setOnClickListener() {
             findNavController().navigate(R.id.action_addIncomeFragment_to_addExpenseFragment)
@@ -75,6 +76,14 @@ class AddIncomeFragment : Fragment() {
             )
             viewModel.addTransaction(transaction)
             Toast.makeText(context, "Ваша транзакция успешно добавлена!", Toast.LENGTH_SHORT).show()
+        }
+        viewModel.transactionsLiveData.observe(viewLifecycleOwner) { transactions ->
+            transactions.forEach {
+                Log.d(
+                    "Transaction Data",
+                    "Transaction Name: ${it.transactionName}, Amount: ${it.amount}, Category: ${it.category}, isIncome: ${it.isIncome}, isCreditCard: ${it.isCreditCard}"
+                )
+            }
         }
         return binding.root
     }

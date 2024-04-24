@@ -6,15 +6,17 @@ import androidx.lifecycle.ViewModel
 import com.example.financetracker.data.Transaction
 
 class TransactionViewModel : ViewModel() {
-    private val transactionsLiveData = MutableLiveData<List<Transaction>>()
+    public val transactionsLiveData = MutableLiveData<List<Transaction>>()
 
-    fun getTransactionLiveData(): LiveData<List<Transaction>> {
-        return transactionsLiveData
-    }
+    var transactionsList: List<Transaction>
+        get() = transactionsLiveData.value ?: emptyList()
+        set(value) {
+            transactionsLiveData.value = value
+        }
 
     fun addTransaction(transaction: Transaction) {
         val currentList = transactionsLiveData.value?.toMutableList() ?: mutableListOf()
         currentList.add(transaction)
-        transactionsLiveData.value = currentList
+        transactionsLiveData.postValue(currentList)
     }
 }

@@ -18,5 +18,7 @@
     <color name="rub">#0076E3</color>
     <color name="calc">#F1F1F1</color>
     <color name="backgroundToolbar">#D4F4E4</color>
+    <color name="cardTextColor">#3799D2</color>
+    <color name="cashTextColor">#1CA380</color>
 
 </resources>
