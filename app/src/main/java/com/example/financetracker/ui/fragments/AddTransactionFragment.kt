@@ -15,17 +15,16 @@ import android.widget.TextView
 import android.widget.Toast
 import androidx.core.content.ContextCompat
 import androidx.lifecycle.ViewModelProvider
-import androidx.navigation.fragment.findNavController
 import com.example.financetracker.R
 import com.example.financetracker.data.Transaction
-import com.example.financetracker.databinding.FragmentAddIncomeBinding
+import com.example.financetracker.databinding.FragmentAddTransactionBinding
 import com.example.financetracker.viewmodel.TransactionViewModel
 import java.text.SimpleDateFormat
 import java.util.Calendar
 import java.util.Locale
 
 class AddTransactionFragment : Fragment() {
-    private lateinit var binding: FragmentAddIncomeBinding
+    private lateinit var binding: FragmentAddTransactionBinding
     private lateinit var viewModel: TransactionViewModel
     var flag: Boolean = true
     var isIncome: Boolean = true
@@ -40,7 +39,7 @@ class AddTransactionFragment : Fragment() {
         inflater: LayoutInflater, container: ViewGroup?,
         savedInstanceState: Bundle?
     ): View? {
-        binding = FragmentAddIncomeBinding.inflate(layoutInflater, container, false)
+        binding = FragmentAddTransactionBinding.inflate(layoutInflater, container, false)
 
         viewModel = ViewModelProvider(requireActivity()).get(TransactionViewModel::class.java)
 
@@ -91,15 +90,6 @@ class AddTransactionFragment : Fragment() {
             )
             viewModel.addTransaction(transaction)
             Toast.makeText(context, "Ваша транзакция успешно добавлена!", Toast.LENGTH_SHORT).show()
-        }
-
-        viewModel.transactionsLiveData.observe(viewLifecycleOwner) { transactions ->
-            transactions.forEach {
-                Log.d(
-                    "Transaction Data",
-                    "Transaction Name: ${it.transactionName}, Amount: ${it.amount}, Category: ${it.category}, isIncome: ${it.isIncome}, isCreditCard: ${it.isCreditCard}"
-                )
-            }
         }
         return binding.root
     }

@@ -49,7 +49,7 @@
         android:id="@+id/addIncomeFragment"
         android:name="com.example.financetracker.ui.fragments.AddTransactionFragment"
         android:label="fragment_add_income"
-        tools:layout="@layout/fragment_add_income" />
+        tools:layout="@layout/fragment_add_transaction" />
 
     <fragment
         android:id="@+id/advicesFragment"
