@@ -4,6 +4,7 @@
     xmlns:app="http://schemas.android.com/apk/res-auto"
     xmlns:tools="http://schemas.android.com/tools"
     android:background="@color/white"
+    android:layout_marginBottom="15dp"
     android:layout_width="match_parent"
     android:layout_height="60dp">
 
@@ -42,6 +43,7 @@
         app:layout_constraintTop_toBottomOf="@+id/textDate" />
 
     <TextView
+        android:id="@+id/textAmount"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
         android:text="500 RUB"

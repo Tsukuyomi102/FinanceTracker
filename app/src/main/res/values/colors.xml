@@ -20,5 +20,6 @@
     <color name="backgroundToolbar">#D4F4E4</color>
     <color name="cardTextColor">#3799D2</color>
     <color name="cashTextColor">#1CA380</color>
-
+    <color name="income">#00FF00</color>
+    <color name="outcome">#FF0000</color>
 </resources>
