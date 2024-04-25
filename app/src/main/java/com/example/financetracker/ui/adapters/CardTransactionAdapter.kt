@@ -52,6 +52,7 @@ class CardTransactionAdapter(private val transactions: List<Transaction>, privat
         val transaction = cardTransactions[reversedPosition]
         holder.textName.text = transaction.transactionName
         holder.textAmount.text = "${transaction.amount} RUB"
+        holder.textDate.text = transaction.date
         if (transaction.isIncome) {
             holder.textAmount.setTextColor(ContextCompat.getColor(context, R.color.income))
         } else {

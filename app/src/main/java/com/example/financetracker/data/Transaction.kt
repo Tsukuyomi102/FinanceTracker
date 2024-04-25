@@ -7,5 +7,6 @@ data class Transaction(
     val isCreditCard: Boolean,
     val transactionName: String,
     val category: String,
-    val amount: Int
+    val amount: Int,
+    val date: String
 )

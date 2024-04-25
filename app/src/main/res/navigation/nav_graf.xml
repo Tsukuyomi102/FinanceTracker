@@ -47,23 +47,9 @@
 
     <fragment
         android:id="@+id/addIncomeFragment"
-        android:name="com.example.financetracker.ui.fragments.AddIncomeFragment"
+        android:name="com.example.financetracker.ui.fragments.AddTransactionFragment"
         android:label="fragment_add_income"
-        tools:layout="@layout/fragment_add_income" >
-        <action
-            android:id="@+id/action_addIncomeFragment_to_addExpenseFragment"
-            app:destination="@id/addExpenseFragment" />
-    </fragment>
-
-    <fragment
-        android:id="@+id/addExpenseFragment"
-        android:name="com.example.financetracker.ui.fragments.AddExpenseFragment"
-        android:label="fragment_add_expense"
-        tools:layout="@layout/fragment_add_expense" >
-        <action
-            android:id="@+id/action_addExpenseFragment_to_addIncomeFragment"
-            app:destination="@id/addIncomeFragment" />
-    </fragment>
+        tools:layout="@layout/fragment_add_income" />
 
     <fragment
         android:id="@+id/advicesFragment"
