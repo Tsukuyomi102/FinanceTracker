@@ -6,7 +6,7 @@ import androidx.lifecycle.ViewModel
 import com.example.financetracker.data.Transaction
 
 class TransactionViewModel : ViewModel() {
-    public val transactionsLiveData = MutableLiveData<List<Transaction>>()
+    private val transactionsLiveData = MutableLiveData<List<Transaction>>()
 
     var transactionsList: List<Transaction>
         get() = transactionsLiveData.value ?: emptyList()

@@ -165,7 +165,7 @@
         </LinearLayout>
 
         <TableLayout
-            android:id="@+id/constraintLayout4"
+            android:id="@+id/tableLayout"
             android:layout_width="289dp"
             android:layout_height="130dp"
             android:layout_marginTop="35dp"
@@ -249,7 +249,7 @@
             app:layout_constraintEnd_toEndOf="parent"
             app:layout_constraintHorizontal_bias="0.5"
             app:layout_constraintStart_toStartOf="parent"
-            app:layout_constraintTop_toBottomOf="@+id/constraintLayout4" />
+            app:layout_constraintTop_toBottomOf="@+id/tableLayout" />
 
         <TextView
             android:id="@+id/textViewScore"
@@ -270,8 +270,8 @@
             android:text="@string/fromCategory"
             android:textColor="@color/hintColor5"
             android:textSize="16sp"
-            app:layout_constraintBottom_toTopOf="@+id/constraintLayout4"
-            app:layout_constraintStart_toStartOf="@+id/constraintLayout4" />
+            app:layout_constraintBottom_toTopOf="@+id/tableLayout"
+            app:layout_constraintStart_toStartOf="@+id/tableLayout" />
 
     </androidx.constraintlayout.widget.ConstraintLayout>
 

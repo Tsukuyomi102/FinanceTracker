@@ -26,8 +26,8 @@ import java.util.Locale
 class AddTransactionFragment : Fragment() {
     private lateinit var binding: FragmentAddTransactionBinding
     private lateinit var viewModel: TransactionViewModel
-    var flag: Boolean = true
-    var isIncome: Boolean = true
+    private var flag: Boolean = true
+    private var isIncome: Boolean = true
     private var category: String = ""
     private var buttonsList: MutableList<ImageButton> = mutableListOf()
 
@@ -58,15 +58,14 @@ class AddTransactionFragment : Fragment() {
             changeColor(binding.btnCar, binding.btnNal)
             flag = true
         }
-
         binding.btnNal.setOnClickListener() {
             changeColor(binding.btnNal, binding.btnCar)
             flag = false
         }
 
 
-        for (i in 0 until binding.constraintLayout4.childCount){
-            val tableRow: TableRow = binding.constraintLayout4.getChildAt(i) as TableRow
+        for (i in 0 until binding.tableLayout.childCount){
+            val tableRow: TableRow = binding.tableLayout.getChildAt(i) as TableRow
             for(j in 0 until tableRow.childCount) {
                 val ImageButton: ImageButton = tableRow.getChildAt(j) as ImageButton
                 buttonsList.add(ImageButton)
