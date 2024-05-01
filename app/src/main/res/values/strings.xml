@@ -50,4 +50,8 @@
     <string name="showAll">Посмотреть все</string>
     <string name="cashWithoutDot">Наличные</string>
     <string name="cardWithoutDot">Картой</string>
+    <string name="balance">Баланс</string>
+    <string name="monthbalance">Баланс за месяц</string>
+    <string name="tructureofexpencess">Структура расходов</string>
+    <string name="reference">Сравнение между периодами</string>
 </resources>
