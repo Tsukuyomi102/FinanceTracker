@@ -11,7 +11,11 @@ import com.example.financetracker.R
 import com.example.financetracker.data.Card
 import com.example.financetracker.data.Transaction
 
-class CardAdapter(private val cards: List<Card>, private val context: Context) : RecyclerView.Adapter<CardAdapter.CardViewHolder>(){
+class CardAdapter(private val cards: List<Card>, private val context: Context,  private val listener: OnCardClickListener) : RecyclerView.Adapter<CardAdapter.CardViewHolder>(){
+    public interface OnCardClickListener {
+        fun onCardClick(card: Card)
+    }
+
     private val cardList = mutableListOf<Card>()
     init {
         addCard()
@@ -47,5 +51,9 @@ class CardAdapter(private val cards: List<Card>, private val context: Context) :
         holder.textCardName.text = card.cardName
         holder.textCardNumber.text = "****${card.cardNumber.toString().substring(12)}"
         holder.textCardBalance.text = "${card.cardBalance} RUB"
+
+        holder.itemView.setOnClickListener(){
+            listener.onCardClick(card)
+        }
     }
 }

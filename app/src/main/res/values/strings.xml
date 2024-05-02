@@ -41,9 +41,8 @@
     <string name="dash">Панель управления</string>
     <string name="entBalance">Общий баланс</string>
     <string name="generalBalance">Общий баланс:</string>
-    <string name="exampleGeneralBalance">1000 RUB</string>
+    <string name="exampleBalance">0 RUB</string>
     <string name="card">Карта:</string>
-    <string name="exampleCardBalance">500 RUB</string>
     <string name="cash">Наличные:</string>
     <string name="operations">Операции</string>
     <string name="aims">Цели</string>

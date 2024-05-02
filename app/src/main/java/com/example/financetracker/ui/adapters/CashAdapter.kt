@@ -12,7 +12,11 @@ import com.example.financetracker.data.Card
 import com.example.financetracker.data.Cash
 import com.example.financetracker.data.Transaction
 
-class CashAdapter(private val cashes: List<Cash>, private val context: Context) : RecyclerView.Adapter<CashAdapter.CashViewHolder>(){
+class CashAdapter(private val cashes: List<Cash>, private val context: Context, private val listener: OnCashClickListener) : RecyclerView.Adapter<CashAdapter.CashViewHolder>(){
+    public interface OnCashClickListener{
+        fun onCashClick(cash: Cash)
+    }
+
     private val cashList = mutableListOf<Cash>()
     init {
         addCard()
@@ -48,5 +52,9 @@ class CashAdapter(private val cashes: List<Cash>, private val context: Context) 
         holder.textCashName.text = cash.cashName
         holder.textCashDescription.text = cash.cashDescription
         holder.textCashBalance.text = "${cash.cashBalance} RUB"
+
+        holder.itemView.setOnClickListener(){
+            listener.onCashClick(cash)
+        }
     }
 }

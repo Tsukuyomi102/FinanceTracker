@@ -9,6 +9,8 @@ import androidx.lifecycle.ViewModelProvider
 import androidx.navigation.fragment.findNavController
 import androidx.recyclerview.widget.LinearLayoutManager
 import com.example.financetracker.R
+import com.example.financetracker.data.Card
+import com.example.financetracker.data.Cash
 import com.example.financetracker.databinding.FragmentBillBinding
 import com.example.financetracker.ui.adapters.CardAdapter
 import com.example.financetracker.ui.adapters.CashAdapter
@@ -18,7 +20,7 @@ import com.example.financetracker.viewmodel.CashViewModel
 import com.example.financetracker.viewmodel.TransactionViewModel
 
 
-class BillFragment : Fragment() {
+class BillFragment : Fragment(), CardAdapter.OnCardClickListener, CashAdapter.OnCashClickListener {
     private lateinit var binding: FragmentBillBinding
     private lateinit var cardViewModel: CardViewModel
     private lateinit var cashViewModel: CashViewModel
@@ -45,15 +47,22 @@ class BillFragment : Fragment() {
         }
 
         cardViewModel = ViewModelProvider(requireActivity()).get(CardViewModel::class.java)
-        cardAdapter = CardAdapter(cardViewModel.cardsList, requireContext())
+        cardAdapter = CardAdapter(cardViewModel.cardsList, requireContext(), this)
         binding.cardList.layoutManager = LinearLayoutManager(context)
         binding.cardList.adapter = cardAdapter
 
         cashViewModel = ViewModelProvider(requireActivity()).get(CashViewModel::class.java)
-        cashAdapter = CashAdapter(cashViewModel.cashList, requireContext())
+        cashAdapter = CashAdapter(cashViewModel.cashList, requireContext(), this)
         binding.cashList.layoutManager = LinearLayoutManager(context)
         binding.cashList.adapter = cashAdapter
         return binding.root
     }
 
+    override fun onCardClick(card: Card) {
+        TODO("Not yet implemented")
+    }
+
+    override fun onCashClick(cash: Cash) {
+        TODO("Not yet implemented")
+    }
 }

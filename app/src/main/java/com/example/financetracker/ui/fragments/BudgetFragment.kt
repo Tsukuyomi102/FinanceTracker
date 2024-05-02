@@ -8,11 +8,20 @@ import android.view.ViewGroup
 import android.widget.Button
 import android.widget.TextView
 import androidx.core.content.ContextCompat
+import androidx.fragment.app.viewModels
+import androidx.lifecycle.Observer
+import androidx.lifecycle.ViewModelProvider
+import androidx.recyclerview.widget.LinearLayoutManager
 import com.example.financetracker.R
 import com.example.financetracker.databinding.FragmentBudgetBinding
+import com.example.financetracker.ui.adapters.CardAdapter
+import com.example.financetracker.viewmodel.CardViewModel
+import com.example.financetracker.viewmodel.CashViewModel
 
 class BudgetFragment : Fragment() {
     private lateinit var binding: FragmentBudgetBinding
+    private lateinit var cardViewModel: CardViewModel
+    private lateinit var cashViewModel: CashViewModel
 
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
@@ -23,12 +32,24 @@ class BudgetFragment : Fragment() {
         savedInstanceState: Bundle?
     ): View? {
         binding = FragmentBudgetBinding.inflate(layoutInflater, container, false)
+
+        cardViewModel = ViewModelProvider(requireActivity())[com.example.financetracker.viewmodel.CardViewModel::class.java]
+        cashViewModel = ViewModelProvider(requireActivity())[com.example.financetracker.viewmodel.CashViewModel::class.java]
+
         binding.operations.setOnClickListener() {
             changeColor(binding.operations, binding.aims)
         }
         binding.aims.setOnClickListener() {
             changeColor(binding.aims, binding.operations)
         }
+
+
+        changeCardBalance(cardViewModel)
+        changeCashBalance(cashViewModel)
+        changeGeneralBalance()
+
+        cardViewModel = ViewModelProvider(requireActivity()).get(CardViewModel::class.java)
+
         return binding.root
     }
 
@@ -40,5 +61,32 @@ class BudgetFragment : Fragment() {
         secondButton.setBackgroundResource(R.drawable.rounded_border)
         secondButton.setTextColor(ContextCompat.getColor(requireContext(),
             R.color.buttonColor))
+    }
+
+    private fun changeCardBalance(cardViewModel: CardViewModel){
+        cardViewModel.getCardsLiveData().observe(viewLifecycleOwner, Observer { cards ->
+            if (cards.isNotEmpty()) {
+                val totalBalance = cardViewModel.getTotalBalance()
+                binding.cardBalance.text = "$totalBalance RUB"
+            } else {
+                binding.cardBalance.text = "haven't cards"
+            }
+        })
+    }
+
+    private fun changeCashBalance(cashViewModel: CashViewModel){
+        cashViewModel.getCashesLiveData().observe(viewLifecycleOwner, Observer { cashes ->
+            if (cashes.isNotEmpty()) {
+                val totalBalance = cashViewModel.getTotalBalance()
+                binding.cashBalance.text = "$totalBalance RUB"
+            } else {
+                binding.cashBalance.text = "haven't cashes"
+            }
+        })
+    }
+
+    private fun changeGeneralBalance() {
+        val generalBalance = cashViewModel.getTotalBalance() + cardViewModel.getTotalBalance()
+        binding.generalBalance.text = "$generalBalance RUB"
     }
 }
