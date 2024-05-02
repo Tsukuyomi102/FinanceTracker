@@ -11,7 +11,7 @@ import androidx.recyclerview.widget.RecyclerView
 import com.example.financetracker.R
 import com.example.financetracker.data.Transaction
 
-class CardTransactionAdapter(private val transactions: List<Transaction>, private val context: Context) : RecyclerView.Adapter<CashTransactionAdapter.TransactionViewHolder>() {
+class CardTransactionAdapter(private val transactions: List<Transaction>, private val context: Context) : RecyclerView.Adapter<CardTransactionAdapter.TransactionViewHolder>() {
     private val cardTransactions = mutableListOf<Transaction>()
 
     init {
@@ -35,9 +35,9 @@ class CardTransactionAdapter(private val transactions: List<Transaction>, privat
         val textAmount: TextView = itemView.findViewById(R.id.textAmount)
     }
 
-    override fun onCreateViewHolder(parent: ViewGroup, viewType: Int): CashTransactionAdapter.TransactionViewHolder {
+    override fun onCreateViewHolder(parent: ViewGroup, viewType: Int): CardTransactionAdapter.TransactionViewHolder {
         val view = LayoutInflater.from(parent.context).inflate(R.layout.transaction_item, parent, false)
-        return CashTransactionAdapter.TransactionViewHolder(view)
+        return CardTransactionAdapter.TransactionViewHolder(view)
     }
 
     override fun getItemCount(): Int {
@@ -47,7 +47,7 @@ class CardTransactionAdapter(private val transactions: List<Transaction>, privat
             cardTransactions.size
     }
 
-    override fun onBindViewHolder(holder: CashTransactionAdapter.TransactionViewHolder, position: Int) {
+    override fun onBindViewHolder(holder: TransactionViewHolder, position: Int) {
         val reversedPosition = cardTransactions.size - 1 - position
         val transaction = cardTransactions[reversedPosition]
         holder.textName.text = transaction.transactionName

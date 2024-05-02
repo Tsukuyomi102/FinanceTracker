@@ -1,0 +1,58 @@
+<?xml version="1.0" encoding="utf-8"?>
+<androidx.constraintlayout.widget.ConstraintLayout
+    xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:layout_width="match_parent"
+    android:layout_marginBottom="15dp"
+    android:background="@drawable/item_border"
+    android:layout_height="60dp">
+
+    <ImageView
+        android:id="@+id/imageCash"
+        android:layout_width="50dp"
+        android:layout_height="45dp"
+        android:layout_marginLeft="15dp"
+        android:layout_marginTop="10dp"
+        android:backgroundTint="@color/white"
+        android:src="@drawable/icon_money"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toTopOf="parent" />
+
+    <TextView
+        android:id="@+id/textCashName"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_marginLeft="40dp"
+        android:layout_marginTop="10dp"
+        android:text="Наличные 1"
+        android:textSize="16sp"
+        android:fontFamily="@font/roboto_medium"
+        app:layout_constraintStart_toEndOf="@+id/imageCash"
+        app:layout_constraintTop_toTopOf="parent" />
+
+    <TextView
+        android:id="@+id/textCashDescription"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:text="доход от продаж"
+        android:textSize="16sp"
+        android:textColor="@color/hintColor5"
+        android:fontFamily="@font/roboto_medium"
+        android:layout_marginLeft="40dp"
+        app:layout_constraintStart_toEndOf="@+id/imageCash"
+        app:layout_constraintTop_toBottomOf="@+id/textCashName" />
+
+    <TextView
+        android:id="@+id/textCashBalance"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:text="500 RUB"
+        android:textSize="16sp"
+        android:fontFamily="@font/roboto_medium"
+        android:layout_marginTop="20dp"
+        android:layout_marginRight="25dp"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintTop_toTopOf="parent" />
+
+</androidx.constraintlayout.widget.ConstraintLayout>

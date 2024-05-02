@@ -54,4 +54,20 @@
     <string name="monthbalance">Баланс за месяц</string>
     <string name="tructureofexpencess">Структура расходов</string>
     <string name="reference">Сравнение между периодами</string>
+    <string name="bills">Счета</string>
+    <string name="bankBills">Банковские счета</string>
+    <string name="addNewCard">Добавить новую карту</string>
+    <string name="cardNumber">Номер карты</string>
+    <string name="cardName">Название карты</string>
+    <string name="accept">Подтвердить</string>
+    <string name="month">Месяц</string>
+    <string name="year">Год</string>
+    <string name="hintForCardNumber">Введите 16-значный номер карты</string>
+    <string name="hintForCardName">Введите имя карты</string>
+    <string name="hintForCardBalance">Введите баланс карты</string>
+    <string name="addNewCash">Добавить новые наличные</string>
+    <string name="hintCashName">Введите имя наличных</string>
+    <string name="hintCashBalance">Введите баланс наличных</string>
+    <string name="description">Описание</string>
+    <string name="hintCashDescription">Введите описание наличных</string>
 </resources>
