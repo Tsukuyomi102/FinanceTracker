@@ -12,7 +12,7 @@ import com.example.financetracker.R
 import com.example.financetracker.data.Transaction
 
 
-class CashTransactionAdapter(private val transactions: List<Transaction>, private val context: Context) : RecyclerView.Adapter<CashTransactionAdapter.TransactionViewHolder>() {
+class CashTransactionAdapter(private val transactions: List<Transaction>, private val context: Context, private val flagForAll: Boolean) : RecyclerView.Adapter<CashTransactionAdapter.TransactionViewHolder>() {
     private val cashTransactions = mutableListOf<Transaction>()
 
     init {
@@ -42,10 +42,14 @@ class CashTransactionAdapter(private val transactions: List<Transaction>, privat
     }
 
     override fun getItemCount(): Int {
-        return if(cashTransactions.size >= 4)
-            4
-        else
+        return if (!(flagForAll)) {
+            if (cashTransactions.size >= 4)
+                4
+            else
+                cashTransactions.size
+        } else {
             cashTransactions.size
+        }
     }
 
     override fun onBindViewHolder(holder: TransactionViewHolder, position: Int) {

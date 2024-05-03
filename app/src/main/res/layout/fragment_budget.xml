@@ -152,7 +152,7 @@
                 android:textColor="@color/buttonColor" />
         </LinearLayout>
         <androidx.core.widget.NestedScrollView
-            android:layout_width="360dp"
+            android:layout_width="match_parent"
             android:layout_height="wrap_content"
             android:layout_marginTop="25dp"
             app:layout_constraintTop_toBottomOf="@id/linearLayout2"
@@ -161,9 +161,9 @@
         <fragment
             android:id="@+id/transactionListFragment"
             android:name="com.example.financetracker.ui.fragments.TransactionListFragment"
-            android:layout_width="360dp"
+            android:layout_width="match_parent"
             android:layout_height="wrap_content"
-            android:layout_marginTop="25dp"
+            android:layout_margin="25dp"
             app:layout_constraintTop_toBottomOf="@id/linearLayout2"
             app:layout_constraintStart_toStartOf="parent"
             app:layout_constraintEnd_toEndOf="parent" />

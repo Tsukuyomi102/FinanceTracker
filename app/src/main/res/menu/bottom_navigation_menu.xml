@@ -10,7 +10,7 @@
         android:title="@string/budget"
         android:icon="@drawable/icon_buget" />
     <item
-        android:id="@+id/addIncomeFragment"
+        android:id="@+id/addTransactionFragment"
         android:title="@string/add"
         android:icon="@drawable/icon_adauga" />
     <item

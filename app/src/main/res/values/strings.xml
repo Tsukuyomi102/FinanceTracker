@@ -69,4 +69,6 @@
     <string name="hintCashBalance">Введите баланс наличных</string>
     <string name="description">Описание</string>
     <string name="hintCashDescription">Введите описание наличных</string>
+    <string name="cardOperations">Карточные операции</string>
+    <string name="hintForSearch">Напишите имя транзакции</string>
 </resources>

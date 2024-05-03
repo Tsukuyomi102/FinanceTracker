@@ -11,7 +11,7 @@ import androidx.recyclerview.widget.RecyclerView
 import com.example.financetracker.R
 import com.example.financetracker.data.Transaction
 
-class CardTransactionAdapter(private val transactions: List<Transaction>, private val context: Context) : RecyclerView.Adapter<CardTransactionAdapter.TransactionViewHolder>() {
+class CardTransactionAdapter(private val transactions: List<Transaction>, private val context: Context, private val flagForAll: Boolean) : RecyclerView.Adapter<CardTransactionAdapter.TransactionViewHolder>() {
     private val cardTransactions = mutableListOf<Transaction>()
 
     init {
@@ -41,10 +41,14 @@ class CardTransactionAdapter(private val transactions: List<Transaction>, privat
     }
 
     override fun getItemCount(): Int {
-        return if(cardTransactions.size >= 4)
-            4
-        else
+        return if (!(flagForAll)) {
+            if (cardTransactions.size >= 4)
+                4
+            else
+                cardTransactions.size
+        } else{
             cardTransactions.size
+        }
     }
 
     override fun onBindViewHolder(holder: TransactionViewHolder, position: Int) {
