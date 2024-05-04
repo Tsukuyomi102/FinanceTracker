@@ -71,4 +71,7 @@
     <string name="hintCashDescription">Введите описание наличных</string>
     <string name="cardOperations">Карточные операции</string>
     <string name="hintForSearch">Напишите имя транзакции</string>
+    <string name="cardDetail">Счет карты</string>
+    <string name="cardTransactions">Транзакции на этой карте</string>
+    <string name="cashTransactions">Транзакции на этих наличных</string>
 </resources>

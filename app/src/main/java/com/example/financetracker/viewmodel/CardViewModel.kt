@@ -6,6 +6,7 @@ import com.example.financetracker.data.Card
 
 class CardViewModel : ViewModel() {
     private val cardsLiveData = MutableLiveData<List<Card>>()
+    private var selectedCard: Card? = null
 
     fun getCardsLiveData(): MutableLiveData<List<Card>> {
         return cardsLiveData
@@ -25,5 +26,13 @@ class CardViewModel : ViewModel() {
 
     fun getTotalBalance(): Int {
         return cardsList.sumOf { it.cardBalance }
+    }
+
+    fun setSelectedCard(card: Card){
+        selectedCard = card
+    }
+
+    fun getSelectedCard() : Card?{
+        return selectedCard
     }
 }

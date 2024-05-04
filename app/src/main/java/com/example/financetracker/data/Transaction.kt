@@ -8,5 +8,7 @@ data class Transaction(
     val transactionName: String,
     val category: String,
     val amount: Int,
-    val date: String
+    val date: String,
+    val cardNumber: Long,
+    val cashName: String
 )

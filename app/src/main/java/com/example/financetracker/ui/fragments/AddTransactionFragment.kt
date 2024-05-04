@@ -3,7 +3,6 @@ package com.example.financetracker.ui.fragments
 import android.content.res.ColorStateList
 import android.graphics.Paint
 import android.os.Bundle
-import android.util.Log
 import androidx.fragment.app.Fragment
 import android.view.LayoutInflater
 import android.view.View
@@ -201,7 +200,9 @@ class AddTransactionFragment : Fragment(), CardAdapter.OnCardClickListener, Cash
             transactionName = binding.editTransaction.text.toString(),
             category = category,
             amount = binding.editTextNumber2.text.toString().toInt(),
-            date = dateString
+            date = dateString,
+            cardNumber = selectedCardNumber,
+            cashName = selectedCashName
         )
         if (transaction.isCreditCard){
             viewModel.addCardTransaction(transaction, cardViewModel = cardViewModel, selectedCardNumber = selectedCardNumber)

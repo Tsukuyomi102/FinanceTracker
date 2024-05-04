@@ -2,11 +2,11 @@ package com.example.financetracker.viewmodel
 
 import androidx.lifecycle.MutableLiveData
 import androidx.lifecycle.ViewModel
-import com.example.financetracker.data.Card
 import com.example.financetracker.data.Cash
 
 class CashViewModel : ViewModel() {
     private val cashLiveData = MutableLiveData<List<Cash>>()
+    private var selectedCash: Cash? = null
 
     fun getCashesLiveData(): MutableLiveData<List<Cash>> {
         return cashLiveData
@@ -26,5 +26,13 @@ class CashViewModel : ViewModel() {
 
     fun getTotalBalance(): Int {
         return cashList.sumOf { it.cashBalance }
+    }
+
+    fun setSelectedCash(cash: Cash){
+        selectedCash = cash
+    }
+
+    fun getSelectedCash() : Cash?{
+        return selectedCash
     }
 }

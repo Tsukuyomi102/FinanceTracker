@@ -8,9 +8,7 @@ import android.widget.ImageView
 import android.widget.TextView
 import androidx.recyclerview.widget.RecyclerView
 import com.example.financetracker.R
-import com.example.financetracker.data.Card
 import com.example.financetracker.data.Cash
-import com.example.financetracker.data.Transaction
 
 class CashAdapter(private val cashes: List<Cash>, private val context: Context, private val listener: OnCashClickListener) : RecyclerView.Adapter<CashAdapter.CashViewHolder>(){
     public interface OnCashClickListener{

@@ -3,6 +3,8 @@
     import androidx.lifecycle.LiveData
     import androidx.lifecycle.MutableLiveData
     import androidx.lifecycle.ViewModel
+    import com.example.financetracker.data.Card
+    import com.example.financetracker.data.Cash
     import com.example.financetracker.data.Transaction
 
     class TransactionViewModel : ViewModel() {
@@ -44,5 +46,13 @@
                 }
                 cashViewModel.getCashesLiveData().postValue(cashViewModel.cashList)
             }
+        }
+
+        fun getTransactionsForSelectedCard(selectedCard: Card): List<Transaction> {
+            return transactionsList.filter { it.cardNumber == selectedCard.cardNumber }
+        }
+
+        fun getTransactionsForSelectedCash(selectedCash: Cash): List<Transaction> {
+            return transactionsList.filter { it.cashName == selectedCash.cashName }
         }
     }

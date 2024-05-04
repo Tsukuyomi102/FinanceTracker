@@ -9,7 +9,6 @@ import androidx.navigation.fragment.findNavController
 import com.example.financetracker.R
 import com.example.financetracker.databinding.FragmentSingInBinding
 import com.google.android.material.bottomnavigation.BottomNavigationView
-import kotlin.math.log
 
 
 class SingInFragment : Fragment() {

@@ -11,7 +11,6 @@ import androidx.navigation.fragment.findNavController
 import com.example.financetracker.R
 import com.example.financetracker.data.Cash
 import com.example.financetracker.databinding.FragmentAddCashBinding
-import com.example.financetracker.viewmodel.CardViewModel
 import com.example.financetracker.viewmodel.CashViewModel
 
 class AddCashFragment : Fragment() {

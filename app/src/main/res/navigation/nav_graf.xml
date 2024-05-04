@@ -91,6 +91,12 @@
         <action
             android:id="@+id/action_billFragment_to_addCashFragment"
             app:destination="@id/addCashFragment" />
+        <action
+            android:id="@+id/action_billFragment_to_cardDetailsFragment"
+            app:destination="@id/cardDetailsFragment" />
+        <action
+            android:id="@+id/action_billFragment_to_cashDetailsFragment"
+            app:destination="@id/cashDetailsFragment" />
     </fragment>
     <fragment
         android:id="@+id/addCardFragment"
@@ -118,6 +124,24 @@
         <action
             android:id="@+id/action_showAllTransactions_to_budgetFragment"
             app:destination="@id/budgetFragment" />
+    </fragment>
+    <fragment
+        android:id="@+id/cardDetailsFragment"
+        android:name="com.example.financetracker.ui.fragments.CardDetailsFragment"
+        android:label="fragment_card_details"
+        tools:layout="@layout/fragment_card_details" >
+        <action
+            android:id="@+id/action_cardDetailsFragment_to_billFragment"
+            app:destination="@id/billFragment" />
+    </fragment>
+    <fragment
+        android:id="@+id/cashDetailsFragment"
+        android:name="com.example.financetracker.ui.fragments.CashDetailsFragment"
+        android:label="fragment_cash_details"
+        tools:layout="@layout/fragment_cash_details" >
+        <action
+            android:id="@+id/action_cashDetailsFragment_to_billFragment"
+            app:destination="@id/billFragment" />
     </fragment>
 
 </navigation>

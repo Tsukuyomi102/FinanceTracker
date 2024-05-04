@@ -9,7 +9,6 @@ import android.widget.TextView
 import androidx.recyclerview.widget.RecyclerView
 import com.example.financetracker.R
 import com.example.financetracker.data.Card
-import com.example.financetracker.data.Transaction
 
 class CardAdapter(private val cards: List<Card>, private val context: Context,  private val listener: OnCardClickListener) : RecyclerView.Adapter<CardAdapter.CardViewHolder>(){
     public interface OnCardClickListener {

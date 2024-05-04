@@ -14,10 +14,8 @@ import com.example.financetracker.data.Cash
 import com.example.financetracker.databinding.FragmentBillBinding
 import com.example.financetracker.ui.adapters.CardAdapter
 import com.example.financetracker.ui.adapters.CashAdapter
-import com.example.financetracker.ui.adapters.CashTransactionAdapter
 import com.example.financetracker.viewmodel.CardViewModel
 import com.example.financetracker.viewmodel.CashViewModel
-import com.example.financetracker.viewmodel.TransactionViewModel
 
 
 class BillFragment : Fragment(), CardAdapter.OnCardClickListener, CashAdapter.OnCashClickListener {
@@ -59,10 +57,12 @@ class BillFragment : Fragment(), CardAdapter.OnCardClickListener, CashAdapter.On
     }
 
     override fun onCardClick(card: Card) {
-        TODO("Not yet implemented")
+        cardViewModel.setSelectedCard(card)
+        findNavController().navigate(R.id.action_billFragment_to_cardDetailsFragment)
     }
 
     override fun onCashClick(cash: Cash) {
-        TODO("Not yet implemented")
+        cashViewModel.setSelectedCash(cash)
+        findNavController().navigate(R.id.action_billFragment_to_cashDetailsFragment)
     }
 }
