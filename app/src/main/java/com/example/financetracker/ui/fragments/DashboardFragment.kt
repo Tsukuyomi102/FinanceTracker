@@ -21,8 +21,6 @@ class DashboardFragment : Fragment() {
         inflater: LayoutInflater, container: ViewGroup?,
         savedInstanceState: Bundle?
     ): View? {
-        val bottomNavigationView = activity?.findViewById<BottomNavigationView>(R.id.bottom_navigation_view)
-        bottomNavigationView?.visibility = View.VISIBLE
         binding = FragmentDashboardBinding.inflate(layoutInflater, container, false)
         return binding.root
     }
