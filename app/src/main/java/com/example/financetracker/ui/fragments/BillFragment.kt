@@ -49,6 +49,8 @@ class BillFragment : Fragment(), CardAdapter.OnCardClickListener, CashAdapter.On
         binding.cardList.layoutManager = LinearLayoutManager(context)
         binding.cardList.adapter = cardAdapter
 
+        cardViewModel.getCardsByEmail("Egor3Game@mail.ru")
+
         cashViewModel = ViewModelProvider(requireActivity()).get(CashViewModel::class.java)
         cashAdapter = CashAdapter(cashViewModel.cashList, requireContext(), this)
         binding.cashList.layoutManager = LinearLayoutManager(context)

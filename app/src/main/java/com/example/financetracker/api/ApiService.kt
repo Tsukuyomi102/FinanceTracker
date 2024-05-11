@@ -1,12 +1,16 @@
 package com.example.financetracker.api
 
+import com.example.financetracker.data.Card
 import com.example.financetracker.data.User
 import retrofit2.Call
 import retrofit2.http.Field
 import retrofit2.http.FormUrlEncoded
+import retrofit2.http.GET
 import retrofit2.http.POST
+import retrofit2.http.Path
 
 interface ApiService {
+    //Users requests
     @FormUrlEncoded
     @POST("user")
     fun addUser(
@@ -21,4 +25,21 @@ interface ApiService {
         @Field("email") email: String,
         @Field("password") password: String,
     ): Call<User>
+
+    //Card requests
+    @FormUrlEncoded
+    @POST("user/card")
+    fun addCard(
+        @Field("email") email: String,
+        @Field("name") name: String,
+        @Field("balance") balance: Int,
+        @Field("number") number: Long,
+        @Field("month") month: Int,
+        @Field("year") year: Int
+    ): Call<Integer>
+
+    @GET("user/{email}/card")
+    fun getCardsByEmail(
+        @Path("email") email: String
+    ): Call<List<Card>>
 }

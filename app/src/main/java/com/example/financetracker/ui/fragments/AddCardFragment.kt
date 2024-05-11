@@ -1,5 +1,6 @@
 package com.example.financetracker.ui.fragments
 
+import android.content.Context
 import android.os.Bundle
 import androidx.fragment.app.Fragment
 import android.view.LayoutInflater
@@ -40,10 +41,17 @@ class AddCardFragment : Fragment() {
                 month = binding.editCardMonth.text.toString().toInt(),
                 year = binding.editCardYear.text.toString().toInt(),
             )
-            viewModel.addCard(card)
-            Toast.makeText(context, "Ваша карта успешно добавлена!", Toast.LENGTH_SHORT).show()
-        }
 
+            val sharedPreferences = context?.getSharedPreferences("logged_user_data", Context.MODE_PRIVATE)
+            val email = sharedPreferences?.getString("email", "")
+
+            if(!email.isNullOrEmpty()){
+                viewModel.addCardByEmail(email, card)
+                Toast.makeText(context, "Ваша карта успешно добавлена!", Toast.LENGTH_SHORT).show()
+            } else {
+                Toast.makeText(context, "Ошибка при добавлении карты. Электронная почта пользователя не найдена.", Toast.LENGTH_SHORT).show()
+            }
+        }
         return binding.root
     }
 }
