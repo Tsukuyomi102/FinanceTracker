@@ -1,6 +1,8 @@
 package com.example.financetracker.ui.fragments
 
+import android.content.Context
 import android.os.Bundle
+import android.util.Log
 import androidx.fragment.app.Fragment
 import android.view.LayoutInflater
 import android.view.View
@@ -34,6 +36,10 @@ class BillFragment : Fragment(), CardAdapter.OnCardClickListener, CashAdapter.On
         savedInstanceState: Bundle?
     ): View? {
         binding = FragmentBillBinding.inflate(layoutInflater, container, false)
+
+        val sharedPreferences = context?.getSharedPreferences("logged_user_data", Context.MODE_PRIVATE)
+        val email = sharedPreferences?.getString("email", "")
+
         binding.imageBack.setOnClickListener(){
             findNavController().navigate(R.id.action_billFragment_to_profileFragment)
         }
@@ -45,13 +51,32 @@ class BillFragment : Fragment(), CardAdapter.OnCardClickListener, CashAdapter.On
         }
 
         cardViewModel = ViewModelProvider(requireActivity()).get(CardViewModel::class.java)
-        cardAdapter = CardAdapter(cardViewModel.cardsList, requireContext(), this)
-        binding.cardList.layoutManager = LinearLayoutManager(context)
-        binding.cardList.adapter = cardAdapter
 
-        cardViewModel.getCardsByEmail("Egor3Game@mail.ru")
+        if(!email.isNullOrEmpty()){
+            cardViewModel.getCardsByEmail(email)
+        }
+
+        cardViewModel.getCardsLiveData().observe(viewLifecycleOwner) { cards ->
+            cards?.let {
+                cardAdapter = CardAdapter(cards, requireContext(), this)
+                binding.cardList.layoutManager = LinearLayoutManager(context)
+                binding.cardList.adapter = cardAdapter
+            }
+        }
 
         cashViewModel = ViewModelProvider(requireActivity()).get(CashViewModel::class.java)
+
+        if(!email.isNullOrEmpty()){
+            cashViewModel.getCashByEmail(email)
+        }
+
+        cashViewModel.getCashesLiveData().observe(viewLifecycleOwner) {cashes ->
+            cashes?.let {
+                cashAdapter = CashAdapter(cashViewModel.cashList, requireContext(), this)
+                binding.cashList.layoutManager = LinearLayoutManager(context)
+                binding.cashList.adapter = cashAdapter
+            }
+        }
         cashAdapter = CashAdapter(cashViewModel.cashList, requireContext(), this)
         binding.cashList.layoutManager = LinearLayoutManager(context)
         binding.cashList.adapter = cashAdapter

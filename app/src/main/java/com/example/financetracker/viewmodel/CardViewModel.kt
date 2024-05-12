@@ -1,5 +1,6 @@
 package com.example.financetracker.viewmodel
 
+import android.util.Log
 import androidx.lifecycle.MutableLiveData
 import androidx.lifecycle.ViewModel
 import com.example.financetracker.api.ApiService
@@ -37,10 +38,11 @@ class CardViewModel : ViewModel() {
             card.cardBalance,
             card.cardNumber,
             card.month,
-            card.year)
+            card.year
+        )
         call.enqueue(object : Callback<Integer> {
             override fun onResponse(call: Call<Integer>, response: Response<Integer>) {
-                if(response.isSuccessful){
+                if (response.isSuccessful) {
                     println("Card added successfully")
                     addCard(card)
                 } else {
@@ -59,9 +61,12 @@ class CardViewModel : ViewModel() {
         val call = apiService.getCardsByEmail(email)
         call.enqueue(object : Callback<List<Card>> {
             override fun onResponse(call: Call<List<Card>>, response: Response<List<Card>>) {
-                if(response.isSuccessful){
-                    cardsList = response.body() ?: emptyList()
-                    println(response.body())
+                if (response.isSuccessful) {
+                    val cards = response.body()
+                    cards?.let {
+                        cardsList = it
+                    }
+                    Log.d("LOGGED", cardsList.toString())
                 } else {
                     println("Failed to get cards!")
                 }
@@ -77,11 +82,11 @@ class CardViewModel : ViewModel() {
         return cardsList.sumOf { it.cardBalance }
     }
 
-    fun setSelectedCard(card: Card){
+    fun setSelectedCard(card: Card) {
         selectedCard = card
     }
 
-    fun getSelectedCard() : Card?{
+    fun getSelectedCard(): Card? {
         return selectedCard
     }
 }

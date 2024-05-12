@@ -28,6 +28,10 @@ class AddCardFragment : Fragment() {
         savedInstanceState: Bundle?
     ): View? {
         binding = FragmentAddCardBinding.inflate(layoutInflater, container, false)
+
+        val sharedPreferences = context?.getSharedPreferences("logged_user_data", Context.MODE_PRIVATE)
+        val email = sharedPreferences?.getString("email", "")
+
         binding.imageBack.setOnClickListener(){
             findNavController().navigate(R.id.action_addCardFragment_to_billFragment)
         }
@@ -41,9 +45,6 @@ class AddCardFragment : Fragment() {
                 month = binding.editCardMonth.text.toString().toInt(),
                 year = binding.editCardYear.text.toString().toInt(),
             )
-
-            val sharedPreferences = context?.getSharedPreferences("logged_user_data", Context.MODE_PRIVATE)
-            val email = sharedPreferences?.getString("email", "")
 
             if(!email.isNullOrEmpty()){
                 viewModel.addCardByEmail(email, card)

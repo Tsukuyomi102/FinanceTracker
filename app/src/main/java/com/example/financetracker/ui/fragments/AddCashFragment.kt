@@ -1,5 +1,6 @@
 package com.example.financetracker.ui.fragments
 
+import android.content.Context
 import android.os.Bundle
 import androidx.fragment.app.Fragment
 import android.view.LayoutInflater
@@ -26,6 +27,10 @@ class AddCashFragment : Fragment() {
         savedInstanceState: Bundle?
     ): View? {
         binding = FragmentAddCashBinding.inflate(layoutInflater, container, false)
+
+        val sharedPreferences = context?.getSharedPreferences("logged_user_data", Context.MODE_PRIVATE)
+        val email = sharedPreferences?.getString("email", "")
+
         binding.imageBack.setOnClickListener(){
             findNavController().navigate(R.id.action_addCashFragment_to_billFragment)
         }
@@ -37,8 +42,13 @@ class AddCashFragment : Fragment() {
                 cashDescription = binding.editCashDescription.text.toString(),
                 cashBalance = binding.editCashBalance.text.toString().toInt()
             )
-            viewModel.addCash(cash)
-            Toast.makeText(context, "Ваши наличные успешно добавлены!", Toast.LENGTH_SHORT).show()
+
+            if(!email.isNullOrEmpty()){
+                viewModel.addCashByEmail(email, cash)
+                Toast.makeText(context, "Ваши наличные успешно добавлены!", Toast.LENGTH_SHORT).show()
+            } else{
+                Toast.makeText(context, "Ошибка при добавлении карты. Электронная почта пользователя не найдена.", Toast.LENGTH_SHORT).show()
+            }
         }
         return binding.root
     }
