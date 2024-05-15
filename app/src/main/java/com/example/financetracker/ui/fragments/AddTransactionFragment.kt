@@ -16,15 +16,20 @@ import androidx.core.content.ContextCompat
 import androidx.lifecycle.ViewModelProvider
 import androidx.recyclerview.widget.LinearLayoutManager
 import com.example.financetracker.R
+import com.example.financetracker.api.ApiService
 import com.example.financetracker.data.Card
 import com.example.financetracker.data.Cash
 import com.example.financetracker.data.Transaction
 import com.example.financetracker.databinding.FragmentAddTransactionBinding
+import com.example.financetracker.network.RetrofitClient
 import com.example.financetracker.ui.adapters.CardAdapter
 import com.example.financetracker.ui.adapters.CashAdapter
 import com.example.financetracker.viewmodel.CardViewModel
 import com.example.financetracker.viewmodel.CashViewModel
 import com.example.financetracker.viewmodel.TransactionViewModel
+import retrofit2.Call
+import retrofit2.Callback
+import retrofit2.Response
 import java.text.SimpleDateFormat
 import java.util.Calendar
 import java.util.Locale
@@ -204,6 +209,32 @@ class AddTransactionFragment : Fragment(), CardAdapter.OnCardClickListener, Cash
             cardNumber = selectedCardNumber,
             cashName = selectedCashName
         )
+        val apiService = RetrofitClient.retrofit.create(ApiService::class.java)
+        val call = apiService.addTransaction(
+            email = "test@mail.ru",
+            isIncome = transaction.isIncome,
+            isCreditCard = transaction.isCreditCard,
+            name = transaction.transactionName,
+            category = transaction.category,
+            amount = transaction.amount,
+            date = transaction.date,
+            cardNumber = transaction.cardNumber,
+            cashName = transaction.cashName
+        )
+
+        call.enqueue(object : Callback<Integer> {
+            override fun onResponse(call: Call<Integer>, response: Response<Integer>) {
+                if (response.isSuccessful) {
+                    Toast.makeText(context, "Транзакция успешно добавлена", Toast.LENGTH_SHORT).show()
+                } else {
+                    Toast.makeText(context, "Ошибка при добавлении транзакции", Toast.LENGTH_SHORT).show()
+                }
+            }
+
+            override fun onFailure(call: Call<Integer>, t: Throwable) {
+                Toast.makeText(context, "Ошибка при выполнении запроса", Toast.LENGTH_SHORT).show()
+            }
+        })
         if (transaction.isCreditCard){
             viewModel.addCardTransaction(transaction, cardViewModel = cardViewModel, selectedCardNumber = selectedCardNumber)
         } else {

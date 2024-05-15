@@ -1,5 +1,6 @@
 package com.example.financetracker.ui.fragments
 
+import android.content.Context
 import android.os.Bundle
 import android.view.LayoutInflater
 import android.view.View
@@ -30,7 +31,11 @@ class TransactionListFragment : Fragment() {
     ): View? {
         binding = FragmentTransactionListBinding.inflate(layoutInflater, container, false)
 
+        val sharedPreferences = context?.getSharedPreferences("logged_user_data", Context.MODE_PRIVATE)
+        val email = sharedPreferences?.getString("email", "")
+
         viewModel = ViewModelProvider(requireActivity()).get(TransactionViewModel::class.java)
+        viewModel.getTransactionsByEmail(email)
         cashTransactionAdapter = CashTransactionAdapter(viewModel.transactionsList, requireContext(), false)
         binding.recyclerCash.layoutManager = LinearLayoutManager(context)
         binding.recyclerCash.adapter = cashTransactionAdapter

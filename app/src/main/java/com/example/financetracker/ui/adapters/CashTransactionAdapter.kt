@@ -11,7 +11,6 @@ import androidx.recyclerview.widget.RecyclerView
 import com.example.financetracker.R
 import com.example.financetracker.data.Transaction
 
-
 class CashTransactionAdapter(private val transactions: List<Transaction>, private val context: Context, private val flagForAll: Boolean) : RecyclerView.Adapter<CashTransactionAdapter.TransactionViewHolder>() {
     private val cashTransactions = mutableListOf<Transaction>()
 
@@ -73,6 +72,9 @@ class CashTransactionAdapter(private val transactions: List<Transaction>, privat
             "imageDonation" -> R.drawable.icon_donation_circle
             "imageBeauty" -> R.drawable.icon_beauty_cicle
             "imageHome" -> R.drawable.icon_home_circle
+            "imageMoney" -> R.drawable.icon_money_circle
+            "imageBusiness" -> R.drawable.icon_business_circle
+            "imageInvestment" -> R.drawable.icon_investment_circle
             else -> R.drawable.avatar_svgrepo_com
         }
         holder.imageCategory.setImageResource(iconResId)

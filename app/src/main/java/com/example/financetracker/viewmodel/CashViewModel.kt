@@ -55,7 +55,7 @@ class CashViewModel : ViewModel() {
         })
     }
 
-    fun getCashByEmail(email: String) {
+    fun getCashByEmail(email: String?) {
         val apiService = RetrofitClient.retrofit.create(ApiService::class.java)
         val call = apiService.getCashByEmail(email)
         call.enqueue(object : Callback<List<Cash>> {

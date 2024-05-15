@@ -56,7 +56,7 @@ class CardViewModel : ViewModel() {
         })
     }
 
-    fun getCardsByEmail(email: String) {
+    fun getCardsByEmail(email: String?) {
         val apiService = RetrofitClient.retrofit.create(ApiService::class.java)
         val call = apiService.getCardsByEmail(email)
         call.enqueue(object : Callback<List<Card>> {

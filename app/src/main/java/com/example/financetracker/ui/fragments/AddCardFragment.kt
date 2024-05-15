@@ -14,7 +14,6 @@ import com.example.financetracker.data.Card
 import com.example.financetracker.databinding.FragmentAddCardBinding
 import com.example.financetracker.viewmodel.CardViewModel
 
-
 class AddCardFragment : Fragment() {
     private lateinit var binding: FragmentAddCardBinding
     private lateinit var viewModel: CardViewModel

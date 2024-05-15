@@ -28,7 +28,6 @@ class CashAdapter(private val cashes: List<Cash>, private val context: Context, 
         }
     }
 
-
     class CashViewHolder(itemView: View) : RecyclerView.ViewHolder(itemView) {
         val imageCash: ImageView = itemView.findViewById(R.id.imageCash)
         val textCashName: TextView = itemView.findViewById(R.id.textCashName)

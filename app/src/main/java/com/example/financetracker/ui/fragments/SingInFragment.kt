@@ -15,11 +15,9 @@ import com.example.financetracker.data.User
 import com.example.financetracker.databinding.FragmentSingInBinding
 import com.example.financetracker.network.RetrofitClient
 import com.example.financetracker.viewmodel.UserViewModel
-import com.google.android.material.bottomnavigation.BottomNavigationView
 import retrofit2.Call
 import retrofit2.Callback
 import retrofit2.Response
-
 
 class SingInFragment : Fragment() {
     private lateinit var binding: FragmentSingInBinding
@@ -40,7 +38,6 @@ class SingInFragment : Fragment() {
             findNavController().navigate(R.id.action_singInFragment_to_dashboardFragment)
         }
     }
-
 
     override fun onCreateView(
         inflater: LayoutInflater, container: ViewGroup?,
