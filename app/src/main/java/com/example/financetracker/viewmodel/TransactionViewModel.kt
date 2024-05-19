@@ -14,6 +14,7 @@ import retrofit2.Response
 
 class TransactionViewModel : ViewModel() {
     private val transactionsLiveData = MutableLiveData<List<Transaction>>()
+    private var selectedTransaction: Transaction? = null
 
     var transactionsList: List<Transaction>
         get() = transactionsLiveData.value ?: emptyList()
@@ -77,5 +78,13 @@ class TransactionViewModel : ViewModel() {
                 Log.e("TransactionViewModel", "Error getting transactions", t)
             }
         })
+    }
+
+    fun setSelectedTransaction(transaction: Transaction){
+        selectedTransaction = transaction
+    }
+
+    fun getSelectedTransaction() : Transaction?{
+        return selectedTransaction
     }
 }

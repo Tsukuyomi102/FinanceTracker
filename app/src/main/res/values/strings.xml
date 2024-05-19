@@ -74,4 +74,6 @@
     <string name="cardDetail">Счет карты</string>
     <string name="cardTransactions">Транзакции на этой карте</string>
     <string name="cashTransactions">Транзакции на этих наличных</string>
+    <string name="bill">Счет</string>
+    <string name="category">Категория</string>
 </resources>

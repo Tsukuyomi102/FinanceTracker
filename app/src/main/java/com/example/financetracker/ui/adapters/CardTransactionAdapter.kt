@@ -9,11 +9,15 @@ import android.widget.TextView
 import androidx.core.content.ContextCompat
 import androidx.recyclerview.widget.RecyclerView
 import com.example.financetracker.R
+import com.example.financetracker.data.Card
 import com.example.financetracker.data.Transaction
 
-class CardTransactionAdapter(private val transactions: List<Transaction>, private val context: Context, private val flagForAll: Boolean) : RecyclerView.Adapter<CardTransactionAdapter.TransactionViewHolder>() {
+class CardTransactionAdapter(private val transactions: List<Transaction>, private val context: Context, private val flagForAll: Boolean, private val listener: OnCardTransactionClickListener) : RecyclerView.Adapter<CardTransactionAdapter.TransactionViewHolder>() {
     private val cardTransactions = mutableListOf<Transaction>()
 
+    interface OnCardTransactionClickListener{
+        fun onCardTransactionClick(transaction: Transaction)
+    }
     init {
         splitTransactions()
     }
@@ -78,5 +82,10 @@ class CardTransactionAdapter(private val transactions: List<Transaction>, privat
             else -> R.drawable.avatar_svgrepo_com
         }
         holder.imageCategory.setImageResource(iconResId)
+
+        holder.itemView.setOnClickListener(){
+            listener.onCardTransactionClick(transaction)
+        }
     }
+
 }

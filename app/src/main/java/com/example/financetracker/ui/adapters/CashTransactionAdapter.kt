@@ -11,9 +11,12 @@ import androidx.recyclerview.widget.RecyclerView
 import com.example.financetracker.R
 import com.example.financetracker.data.Transaction
 
-class CashTransactionAdapter(private val transactions: List<Transaction>, private val context: Context, private val flagForAll: Boolean) : RecyclerView.Adapter<CashTransactionAdapter.TransactionViewHolder>() {
+class CashTransactionAdapter(private val transactions: List<Transaction>, private val context: Context, private val flagForAll: Boolean, private val listener: CashTransactionAdapter.OnCashTransactionClickListener) : RecyclerView.Adapter<CashTransactionAdapter.TransactionViewHolder>() {
     private val cashTransactions = mutableListOf<Transaction>()
 
+    interface OnCashTransactionClickListener{
+        fun onCashTransactionClick(transaction: Transaction)
+    }
     init {
         splitTransactions()
     }
@@ -78,5 +81,10 @@ class CashTransactionAdapter(private val transactions: List<Transaction>, privat
             else -> R.drawable.avatar_svgrepo_com
         }
         holder.imageCategory.setImageResource(iconResId)
+        holder.itemView.setOnClickListener(){
+            listener.onCashTransactionClick(transaction)
+        }
     }
+
+
 }

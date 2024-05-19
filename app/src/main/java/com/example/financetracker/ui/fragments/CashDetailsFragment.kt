@@ -9,12 +9,14 @@ import androidx.lifecycle.ViewModelProvider
 import androidx.navigation.fragment.findNavController
 import androidx.recyclerview.widget.LinearLayoutManager
 import com.example.financetracker.R
+import com.example.financetracker.data.Transaction
 import com.example.financetracker.databinding.FragmentCashDetailsBinding
+import com.example.financetracker.ui.adapters.CardTransactionAdapter
 import com.example.financetracker.ui.adapters.CashTransactionAdapter
 import com.example.financetracker.viewmodel.CashViewModel
 import com.example.financetracker.viewmodel.TransactionViewModel
 
-class CashDetailsFragment : Fragment() {
+class CashDetailsFragment : Fragment(), CashTransactionAdapter.OnCashTransactionClickListener {
     private lateinit var binding: FragmentCashDetailsBinding
 
     private lateinit var cashViewModel: CashViewModel
@@ -48,9 +50,14 @@ class CashDetailsFragment : Fragment() {
             binding.textCashBalance.text = it.cashBalance.toString()
 
             val transactionsForSelectedCash = transactionViewModel.getTransactionsForSelectedCash(selectedCash)
-            val transactionAdapter = CashTransactionAdapter(transactionsForSelectedCash, requireContext(), true)
+            val transactionAdapter = CashTransactionAdapter(transactionsForSelectedCash, requireContext(), true, this)
             binding.recyclerCashTransactions.layoutManager = LinearLayoutManager(context)
             binding.recyclerCashTransactions.adapter = transactionAdapter
         }
+    }
+
+    override fun onCashTransactionClick(transaction: Transaction) {
+        transactionViewModel.setSelectedTransaction(transaction)
+        findNavController().navigate(R.id.action_cashDetailsFragment_to_transactionDetailsFragment)
     }
 }

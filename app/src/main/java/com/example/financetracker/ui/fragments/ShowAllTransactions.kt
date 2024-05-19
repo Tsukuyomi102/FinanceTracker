@@ -9,12 +9,13 @@ import androidx.lifecycle.ViewModelProvider
 import androidx.navigation.fragment.findNavController
 import androidx.recyclerview.widget.LinearLayoutManager
 import com.example.financetracker.R
+import com.example.financetracker.data.Transaction
 import com.example.financetracker.databinding.FragmentShowAllTransactionsBinding
 import com.example.financetracker.ui.adapters.CardTransactionAdapter
 import com.example.financetracker.ui.adapters.CashTransactionAdapter
 import com.example.financetracker.viewmodel.TransactionViewModel
 
-class ShowAllTransactions : Fragment() {
+class ShowAllTransactions : Fragment(), CardTransactionAdapter.OnCardTransactionClickListener, CashTransactionAdapter.OnCashTransactionClickListener {
     private lateinit var binding: FragmentShowAllTransactionsBinding
 
     private lateinit var viewModel: TransactionViewModel
@@ -34,8 +35,8 @@ class ShowAllTransactions : Fragment() {
 
         viewModel = ViewModelProvider(requireActivity()).get(TransactionViewModel::class.java)
 
-        cardTransactionAdapter = CardTransactionAdapter(viewModel.transactionsList, requireContext(), true)
-        cashTransactionAdapter = CashTransactionAdapter(viewModel.transactionsList, requireContext(), true)
+        cardTransactionAdapter = CardTransactionAdapter(viewModel.transactionsList, requireContext(), true, this)
+        cashTransactionAdapter = CashTransactionAdapter(viewModel.transactionsList, requireContext(), true, this)
 
         binding.imageBack.setOnClickListener(){
             findNavController().navigate(R.id.action_showAllTransactions_to_budgetFragment)
@@ -51,6 +52,16 @@ class ShowAllTransactions : Fragment() {
             binding.recycleList.adapter = cashTransactionAdapter
         }
         return binding.root
+    }
+
+    override fun onCardTransactionClick(transaction: Transaction) {
+        viewModel.setSelectedTransaction(transaction)
+        findNavController().navigate(R.id.action_showAllTransactions_to_transactionDetailsFragment)
+    }
+
+    override fun onCashTransactionClick(transaction: Transaction) {
+        viewModel.setSelectedTransaction(transaction)
+        findNavController().navigate(R.id.action_showAllTransactions_to_transactionDetailsFragment)
     }
 
 }

@@ -10,12 +10,13 @@ import androidx.lifecycle.ViewModelProvider
 import androidx.navigation.fragment.findNavController
 import androidx.recyclerview.widget.LinearLayoutManager
 import com.example.financetracker.R
+import com.example.financetracker.data.Transaction
 import com.example.financetracker.databinding.FragmentTransactionListBinding
 import com.example.financetracker.ui.adapters.CardTransactionAdapter
 import com.example.financetracker.ui.adapters.CashTransactionAdapter
 import com.example.financetracker.viewmodel.TransactionViewModel
 
-class TransactionListFragment : Fragment() {
+class TransactionListFragment : Fragment(), CardTransactionAdapter.OnCardTransactionClickListener,  CashTransactionAdapter.OnCashTransactionClickListener {
     private lateinit var binding: FragmentTransactionListBinding
 
     private lateinit var viewModel: TransactionViewModel
@@ -36,11 +37,11 @@ class TransactionListFragment : Fragment() {
 
         viewModel = ViewModelProvider(requireActivity()).get(TransactionViewModel::class.java)
         viewModel.getTransactionsByEmail(email)
-        cashTransactionAdapter = CashTransactionAdapter(viewModel.transactionsList, requireContext(), false)
+        cashTransactionAdapter = CashTransactionAdapter(viewModel.transactionsList, requireContext(), false, this)
         binding.recyclerCash.layoutManager = LinearLayoutManager(context)
         binding.recyclerCash.adapter = cashTransactionAdapter
-
-        cardTransactionAdapter = CardTransactionAdapter(viewModel.transactionsList, requireContext(), false)
+        //Type mismatch: inferred type is TransactionListFragment but CardTransactionAdapter.onTransactionClickListener was expected
+        cardTransactionAdapter = CardTransactionAdapter(viewModel.transactionsList, requireContext(), false, this)
         binding.recyclerCard.layoutManager = LinearLayoutManager(context)
         binding.recyclerCard.adapter = cardTransactionAdapter
 
@@ -58,5 +59,15 @@ class TransactionListFragment : Fragment() {
             findNavController().navigate(R.id.action_budgetFragment_to_showAllTransactions, bundle)
         }
         return binding.root
+    }
+
+    override fun onCardTransactionClick(transaction: Transaction) {
+        viewModel.setSelectedTransaction(transaction)
+        findNavController().navigate(R.id.action_budgetFragment_to_transactionDetailsFragment)
+    }
+
+    override fun onCashTransactionClick(transaction: Transaction) {
+        viewModel.setSelectedTransaction(transaction)
+        findNavController().navigate(R.id.action_budgetFragment_to_transactionDetailsFragment)
     }
 }

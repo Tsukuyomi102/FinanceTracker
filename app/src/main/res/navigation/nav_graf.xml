@@ -46,6 +46,9 @@
         <action
             android:id="@+id/action_budgetFragment_to_showAllTransactions"
             app:destination="@id/showAllTransactions" />
+        <action
+            android:id="@+id/action_budgetFragment_to_transactionDetailsFragment"
+            app:destination="@id/transactionDetailsFragment" />
     </fragment>
 
     <fragment
@@ -124,6 +127,9 @@
         <action
             android:id="@+id/action_showAllTransactions_to_budgetFragment"
             app:destination="@id/budgetFragment" />
+        <action
+            android:id="@+id/action_showAllTransactions_to_transactionDetailsFragment"
+            app:destination="@id/transactionDetailsFragment" />
     </fragment>
     <fragment
         android:id="@+id/cardDetailsFragment"
@@ -133,6 +139,9 @@
         <action
             android:id="@+id/action_cardDetailsFragment_to_billFragment"
             app:destination="@id/billFragment" />
+        <action
+            android:id="@+id/action_cardDetailsFragment_to_transactionDetailsFragment"
+            app:destination="@id/transactionDetailsFragment" />
     </fragment>
     <fragment
         android:id="@+id/cashDetailsFragment"
@@ -142,6 +151,18 @@
         <action
             android:id="@+id/action_cashDetailsFragment_to_billFragment"
             app:destination="@id/billFragment" />
+        <action
+            android:id="@+id/action_cashDetailsFragment_to_transactionDetailsFragment"
+            app:destination="@id/transactionDetailsFragment" />
+    </fragment>
+    <fragment
+        android:id="@+id/transactionDetailsFragment"
+        android:name="com.example.financetracker.ui.fragments.TransactionDetailsFragment"
+        android:label="fragment_transaction_details"
+        tools:layout="@layout/fragment_transaction_details" >
+        <action
+            android:id="@+id/action_transactionDetailsFragment_to_budgetFragment"
+            app:destination="@id/budgetFragment" />
     </fragment>
 
 </navigation>
