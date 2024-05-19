@@ -5,7 +5,7 @@
     xmlns:tools="http://schemas.android.com/tools"
     android:layout_width="match_parent"
     android:layout_height="wrap_content"
-    android:background="@color/background"
+    style="@style/mainBackground"
     tools:context=".ui.fragments.BillFragment">
     <androidx.constraintlayout.widget.ConstraintLayout
         android:layout_width="match_parent"
@@ -50,7 +50,7 @@
             android:layout_marginTop="45dp"
             android:fontFamily="@font/roboto_medium"
             android:text="@string/bankBills"
-            android:textColor="@color/hintColor"
+            style="@style/hintColor"
             android:textSize="20sp"
             app:layout_constraintStart_toStartOf="parent"
             app:layout_constraintTop_toBottomOf="@+id/toolbar2" />
@@ -68,7 +68,7 @@
             android:id="@+id/imageAddCard"
             android:layout_width="32dp"
             android:layout_height="32dp"
-            android:backgroundTint="@color/background"
+            style="@style/imageButton"
             android:src="@drawable/icon_add"
             android:layout_marginTop="15dp"
             app:layout_constraintEnd_toEndOf="parent"
@@ -92,7 +92,7 @@
             android:layout_marginTop="35dp"
             android:fontFamily="@font/roboto_medium"
             android:text="@string/cashWithoutDot"
-            android:textColor="@color/hintColor"
+            style="@style/hintColor"
             android:textSize="20sp"
             app:layout_constraintStart_toStartOf="parent"
             app:layout_constraintTop_toTopOf="@+id/line" />
@@ -109,7 +109,7 @@
             android:id="@+id/imageAddCash"
             android:layout_width="32dp"
             android:layout_height="32dp"
-            android:backgroundTint="@color/background"
+            style="@style/imageButton"
             android:src="@drawable/icon_add"
             android:layout_marginTop="15dp"
             app:layout_constraintEnd_toEndOf="parent"

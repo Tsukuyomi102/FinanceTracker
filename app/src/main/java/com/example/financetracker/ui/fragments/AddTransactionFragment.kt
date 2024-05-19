@@ -1,6 +1,7 @@
 package com.example.financetracker.ui.fragments
 
 import android.content.res.ColorStateList
+import android.content.res.Configuration
 import android.graphics.Paint
 import android.os.Bundle
 import androidx.fragment.app.Fragment
@@ -109,27 +110,44 @@ class AddTransactionFragment : Fragment(), CardAdapter.OnCardClickListener, Cash
     }
 
     private fun changeColor(firstButton: Button, secondButton: Button) {
-        firstButton.setBackgroundColor(ContextCompat.getColor(requireContext(),
-            R.color.buttonColor))
-        firstButton.setTextColor(ContextCompat.getColor(requireContext(),
-            R.color.white))
-        secondButton.setBackgroundColor(ContextCompat.getColor(requireContext(),
-            R.color.white))
-        secondButton.setTextColor(ContextCompat.getColor(requireContext(),
-            R.color.hintColor2))
+        val buttonColorLight = R.color.buttonColor
+        val buttonTextColorLight = R.color.white
+        val buttonColorDark = R.color.backgroundDark
+        val buttonTextColorDark = R.color.white
+
+        val buttonColor = if (isDarkTheme()) buttonColorDark else buttonColorLight
+        val buttonTextColor = if (isDarkTheme()) buttonTextColorDark else buttonTextColorLight
+
+        firstButton.setBackgroundColor(ContextCompat.getColor(requireContext(), buttonColor))
+        firstButton.setTextColor(ContextCompat.getColor(requireContext(), buttonTextColor))
+
+        val secondButtonColor = if (isDarkTheme()) buttonColorLight else buttonColorDark
+        val secondButtonTextColor = if (isDarkTheme()) buttonTextColorLight else buttonTextColorDark
+
+        secondButton.setBackgroundColor(ContextCompat.getColor(requireContext(), secondButtonColor))
+        secondButton.setTextColor(ContextCompat.getColor(requireContext(), secondButtonTextColor))
     }
 
     private fun changeButtonBackground(clickedButton: ImageButton, buttonsList: List<ImageButton>) {
+        val hintColor2Light = R.color.hintColor2
+        val backgroundLight = R.color.background
+        val backgroundDark = R.color.backgroundDark
+
+        val background = if (isDarkTheme()) backgroundDark else backgroundLight
+
         for (button in buttonsList){
             if (button == clickedButton){
-                button.backgroundTintList = ColorStateList.valueOf(ContextCompat.getColor(requireContext(),
-                    R.color.hintColor2))
+                button.backgroundTintList = ColorStateList.valueOf(ContextCompat.getColor(requireContext(), hintColor2Light))
                 category = resources.getResourceEntryName(button.id)
-            }else{
-                button.backgroundTintList = ColorStateList.valueOf(ContextCompat.getColor(requireContext(),
-                    R.color.background))
+            } else {
+                button.backgroundTintList = ColorStateList.valueOf(ContextCompat.getColor(requireContext(), background))
             }
         }
+    }
+
+    private fun isDarkTheme(): Boolean {
+        val currentNightMode = resources.configuration.uiMode and Configuration.UI_MODE_NIGHT_MASK
+        return currentNightMode == Configuration.UI_MODE_NIGHT_YES
     }
 
     private fun switchTextDesign(textFieldToUpdate: TextView, textFieldToCopy: TextView) {

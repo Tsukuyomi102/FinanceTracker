@@ -6,10 +6,12 @@
     android:layout_width="match_parent"
     android:layout_height="match_parent"
     android:background="@color/background"
+    style="@style/mainBackground"
     tools:context=".ui.fragments.BudgetFragment">
     <androidx.constraintlayout.widget.ConstraintLayout
         android:layout_width="match_parent"
-        android:layout_height="wrap_content">
+        android:layout_height="wrap_content"
+        style="@style/mainBackground">
 
             <Toolbar
                 android:id="@+id/toolbar"
@@ -36,7 +38,7 @@
             android:layout_width="360dp"
             android:layout_height="130dp"
             android:layout_marginTop="35dp"
-            android:background="@color/white"
+            style="@style/secondBackground"
             app:layout_constraintEnd_toEndOf="parent"
             app:layout_constraintStart_toStartOf="parent"
             app:layout_constraintTop_toBottomOf="@+id/toolbar">
@@ -49,8 +51,8 @@
                 android:layout_marginTop="30dp"
                 android:fontFamily="@font/roboto_medium"
                 android:text="@string/generalBalance"
-                android:textColor="@color/hintColor5"
-                android:textSize="14sp"
+                style="@style/hintColor5"
+                android:textSize="@dimen/text_size_14"
                 app:layout_constraintStart_toStartOf="parent"
                 app:layout_constraintTop_toTopOf="parent" />
 
@@ -62,8 +64,8 @@
                 android:layout_marginRight="35dp"
                 android:fontFamily="@font/roboto_medium"
                 android:text="@string/exampleBalance"
-                android:textColor="@color/hintColor5"
-                android:textSize="14sp"
+                style="@style/hintColor5"
+                android:textSize="@dimen/text_size_14"
                 app:layout_constraintEnd_toEndOf="parent"
                 app:layout_constraintTop_toTopOf="parent" />
 
@@ -76,7 +78,7 @@
                 android:fontFamily="@font/roboto_medium"
                 android:text="@string/card"
                 android:textColor="@color/cardTextColor"
-                android:textSize="14sp"
+                android:textSize="@dimen/text_size_14"
                 app:layout_constraintStart_toStartOf="parent"
                 app:layout_constraintTop_toBottomOf="@+id/generalText" />
 
@@ -89,7 +91,7 @@
                 android:fontFamily="@font/roboto_medium"
                 android:text="@string/exampleBalance"
                 android:textColor="@color/cardTextColor"
-                android:textSize="14sp"
+                android:textSize="@dimen/text_size_14"
                 app:layout_constraintEnd_toEndOf="parent"
                 app:layout_constraintTop_toBottomOf="@+id/generalBalance" />
 
@@ -102,7 +104,7 @@
                 android:fontFamily="@font/roboto_medium"
                 android:text="@string/cash"
                 android:textColor="@color/cashTextColor"
-                android:textSize="14sp"
+                android:textSize="@dimen/text_size_14"
                 app:layout_constraintStart_toStartOf="parent"
                 app:layout_constraintTop_toBottomOf="@+id/cardText" />
 
@@ -115,7 +117,7 @@
                 android:fontFamily="@font/roboto_medium"
                 android:text="@string/exampleBalance"
                 android:textColor="@color/cashTextColor"
-                android:textSize="14sp"
+                android:textSize="@dimen/text_size_14"
                 app:layout_constraintEnd_toEndOf="parent"
                 app:layout_constraintTop_toBottomOf="@+id/cardBalance" />
         </androidx.constraintlayout.widget.ConstraintLayout>
@@ -144,7 +146,7 @@
                 android:id="@+id/aims"
                 android:layout_width="130dp"
                 android:layout_height="35dp"
-                android:layout_marginLeft="100dp"
+                android:layout_marginLeft="@dimen/button_width"
                 android:background="@drawable/rounded_border"
                 android:fontFamily="@font/roboto_medium"
                 android:gravity="center"

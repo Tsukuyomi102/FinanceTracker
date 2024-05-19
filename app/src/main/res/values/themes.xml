@@ -2,9 +2,48 @@
     <!-- Base application theme. -->
     <style name="Base.Theme.FinanceTracker" parent="Theme.Material3.DayNight.NoActionBar">
 
+
         <!-- Customize your light theme here. -->
         <!-- <item name="colorPrimary">@color/my_light_primary</item> -->
     </style>
 
     <style name="Theme.FinanceTracker" parent="Base.Theme.FinanceTracker" />
+    <style name="mainBackground">
+        <item name="android:background">@color/background</item>
+    </style>
+    <style name="secondBackground">
+        <item name="android:background">@color/white</item>
+    </style>
+    <style name="hintColor5">
+        <item name="android:textColor">@color/hintColor5</item>
+    </style>
+    <style name="hintColor2">
+        <item name="android:textColor">@color/hintColor2</item>
+    </style>
+    <style name="hintColor">
+        <item name="android:textColor">@color/hintColor</item>
+    </style>
+    <style name="editText">
+        <item name="android:textColorHint">@color/hintColor</item>
+        <item name="android:background">@drawable/rounded_edittext</item>
+        <item name="android:textColor">@color/black</item>
+    </style>
+    <style name="borderLayout">
+        <item name="android:color">@color/white</item>
+    </style>
+    <style name="itemBorder">
+        <item name="android:color">@color/white</item>
+    </style>
+    <style name="blackText">
+        <item name="android:textColor">@color/black</item>
+    </style>
+    <style name="imageButton">
+        <item name="android:backgroundTint">@color/background</item>
+    </style>
+    <style name="imageButton2">
+        <item name="android:backgroundTint">@color/white</item>
+    </style>
+    <style name="borderCircleLayout">
+        <item name="android:textColorHint">@color/hintColor</item>
+    </style>
 </resources>

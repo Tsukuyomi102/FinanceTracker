@@ -9,28 +9,27 @@
     tools:context=".ui.fragments.AddTransactionFragment">
     <androidx.constraintlayout.widget.ConstraintLayout
         android:layout_width="match_parent"
-        android:layout_height="wrap_content">
+        android:layout_height="wrap_content"
+        >
 
         <androidx.constraintlayout.widget.ConstraintLayout
             android:id="@+id/constraintLayoutFirst"
             android:layout_width="match_parent"
             android:layout_height="match_parent"
             android:layout_marginTop="115dp"
-            android:background="@color/background"
+            style="@style/mainBackground"
             app:layout_constraintBottom_toBottomOf="parent"
             app:layout_constraintEnd_toEndOf="parent"
-            app:layout_constraintHorizontal_bias="0.0"
             app:layout_constraintStart_toStartOf="parent"
-            app:layout_constraintTop_toTopOf="parent"
-            app:layout_constraintVertical_bias="0.0">
+            app:layout_constraintTop_toTopOf="parent">
 
             <androidx.constraintlayout.widget.ConstraintLayout
                 android:id="@+id/nameTransaction"
                 android:layout_width="320dp"
                 android:layout_height="100dp"
                 android:layout_marginTop="20dp"
-                android:backgroundTint="@color/white"
                 android:orientation="horizontal"
+                style="@style/secondBackground"
                 app:layout_constraintEnd_toEndOf="parent"
                 app:layout_constraintStart_toStartOf="parent"
                 app:layout_constraintTop_toTopOf="parent">
@@ -39,8 +38,8 @@
                     android:id="@+id/transactionName"
                     android:layout_width="wrap_content"
                     android:layout_height="wrap_content"
-                    android:text="@string/transactionName"
                     android:fontFamily="@font/roboto_medium"
+                    android:text="@string/transactionName"
                     android:textColor="@color/hintColor5"
                     android:textSize="16sp"
                     app:layout_constraintStart_toStartOf="parent"
@@ -50,9 +49,9 @@
                     android:id="@+id/editTransaction"
                     android:layout_width="140dp"
                     android:layout_height="45dp"
-                    android:textSize="23dp"
                     android:inputType="text"
                     android:textColor="@color/black"
+                    android:textSize="23dp"
                     app:layout_constraintBottom_toBottomOf="parent"
                     app:layout_constraintEnd_toEndOf="parent"
                     app:layout_constraintStart_toStartOf="parent"
@@ -75,10 +74,10 @@
                 <TextView
                     android:layout_width="wrap_content"
                     android:layout_height="wrap_content"
-                    android:text="@string/amount"
-                    android:textSize="16sp"
                     android:fontFamily="@font/roboto_medium"
+                    android:text="@string/amount"
                     android:textColor="@color/hintColor5"
+                    android:textSize="16sp"
                     app:layout_constraintStart_toStartOf="parent"
                     app:layout_constraintTop_toTopOf="parent" />
 
@@ -184,59 +183,60 @@
                         android:id="@+id/imageCar"
                         android:layout_width="wrap_content"
                         android:layout_height="wrap_content"
-                        android:src="@drawable/icon_car_circle"
-                        android:backgroundTint="@color/background"/>
+                        android:backgroundTint="@color/background"
+                        android:src="@drawable/icon_car_circle" />
 
                     <ImageButton
                         android:id="@+id/imageMoney"
                         android:layout_width="wrap_content"
                         android:layout_height="wrap_content"
-                        android:src="@drawable/icon_money_circle"
-                        android:backgroundTint="@color/background"/>
+                        android:backgroundTint="@color/background"
+                        android:src="@drawable/icon_money_circle" />
 
                     <ImageButton
                         android:id="@+id/imageGift"
                         android:layout_width="wrap_content"
                         android:layout_height="wrap_content"
-                        android:src="@drawable/icon_gift_circle"
-                        android:backgroundTint="@color/background"/>
+                        android:backgroundTint="@color/background"
+                        android:src="@drawable/icon_gift_circle" />
 
                     <ImageButton
                         android:id="@+id/imageBusiness"
                         android:layout_width="wrap_content"
                         android:layout_height="wrap_content"
-                        android:src="@drawable/icon_business_circle"
-                        android:backgroundTint="@color/background"/>
+                        android:backgroundTint="@color/background"
+                        android:src="@drawable/icon_business_circle" />
                 </TableRow>
 
                 <TableRow>
+
                     <ImageButton
                         android:id="@+id/imageClothes"
                         android:layout_width="wrap_content"
                         android:layout_height="wrap_content"
-                        android:src="@drawable/icon_clothes_circle"
-                        android:backgroundTint="@color/background"/>
+                        android:backgroundTint="@color/background"
+                        android:src="@drawable/icon_clothes_circle" />
 
                     <ImageButton
                         android:id="@+id/imageDonation"
                         android:layout_width="wrap_content"
                         android:layout_height="wrap_content"
-                        android:src="@drawable/icon_donation_circle"
-                        android:backgroundTint="@color/background"/>
+                        android:backgroundTint="@color/background"
+                        android:src="@drawable/icon_donation_circle" />
 
                     <ImageButton
                         android:id="@+id/imageInvestment"
                         android:layout_width="wrap_content"
                         android:layout_height="wrap_content"
-                        android:src="@drawable/icon_investment_circle"
-                        android:backgroundTint="@color/background"/>
+                        android:backgroundTint="@color/background"
+                        android:src="@drawable/icon_investment_circle" />
 
                     <ImageButton
                         android:id="@+id/imageHome"
                         android:layout_width="wrap_content"
                         android:layout_height="wrap_content"
-                        android:src="@drawable/icon_home_circle"
-                        android:backgroundTint="@color/background"/>
+                        android:backgroundTint="@color/background"
+                        android:src="@drawable/icon_home_circle" />
                 </TableRow>
             </TableLayout>
 

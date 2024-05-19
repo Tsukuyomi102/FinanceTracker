@@ -1,11 +1,13 @@
 package com.example.financetracker.ui.fragments
 
 import android.content.Context
+import android.content.res.Configuration
 import android.os.Bundle
 import androidx.fragment.app.Fragment
 import android.view.LayoutInflater
 import android.view.View
 import android.view.ViewGroup
+import androidx.appcompat.app.AppCompatDelegate
 import androidx.lifecycle.ViewModelProvider
 import androidx.navigation.fragment.findNavController
 import com.example.financetracker.R
@@ -32,6 +34,14 @@ class ProfileFragment : Fragment() {
             findNavController().navigate(R.id.action_profileFragment_to_billFragment)
         }
 
+        binding.textSettings.setOnClickListener(){
+            var currentMode: Int = resources.configuration.uiMode and Configuration.UI_MODE_NIGHT_MASK
+            if(currentMode == Configuration.UI_MODE_NIGHT_YES){
+                AppCompatDelegate.setDefaultNightMode(AppCompatDelegate.MODE_NIGHT_NO)
+            }else{
+                AppCompatDelegate.setDefaultNightMode(AppCompatDelegate.MODE_NIGHT_YES)
+            }
+        }
 
         displayLoggedUser()
         userViewModel.userLiveData.observe(viewLifecycleOwner) { user ->

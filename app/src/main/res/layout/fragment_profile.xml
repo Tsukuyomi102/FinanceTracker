@@ -5,7 +5,8 @@
     xmlns:tools="http://schemas.android.com/tools"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
-    tools:context=".ui.fragments.ProfileFragment">
+    tools:context=".ui.fragments.ProfileFragment"
+    style="@style/mainBackground">
 
     <Toolbar
         android:id="@+id/toolbar"
@@ -83,6 +84,7 @@
         android:fontFamily="@font/roboto_medium"
         android:text="@string/cont"
         android:textSize="18dp"
+        style="@style/hintColor"
         android:layout_marginTop="51.5dp"
         android:layout_marginLeft="5dp"
         app:layout_constraintStart_toEndOf="@+id/imageCont"
@@ -107,6 +109,7 @@
         android:fontFamily="@font/roboto_medium"
         android:layout_marginTop="51dp"
         android:layout_marginLeft="5dp"
+        style="@style/hintColor"
         app:layout_constraintStart_toEndOf="@+id/imageIncome"
         app:layout_constraintTop_toBottomOf="@+id/textCont" />
 
@@ -129,6 +132,7 @@
         android:fontFamily="@font/roboto_medium"
         android:layout_marginTop="55dp"
         android:layout_marginLeft="5dp"
+        style="@style/hintColor"
         app:layout_constraintStart_toEndOf="@+id/imageHelp"
         app:layout_constraintTop_toBottomOf="@+id/textIncome" />
 
@@ -151,6 +155,7 @@
         android:fontFamily="@font/roboto_medium"
         android:layout_marginTop="60dp"
         android:layout_marginLeft="5dp"
+        style="@style/hintColor"
         app:layout_constraintStart_toEndOf="@+id/imageSettings"
         app:layout_constraintTop_toBottomOf="@+id/textHelp" />
 

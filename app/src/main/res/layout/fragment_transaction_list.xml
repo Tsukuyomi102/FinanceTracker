@@ -5,7 +5,7 @@
     xmlns:tools="http://schemas.android.com/tools"
     android:layout_width="match_parent"
     android:layout_height="wrap_content"
-    android:background="@color/background"
+    style="@style/mainBackground"
     tools:context=".ui.fragments.TransactionListFragment">
     <androidx.constraintlayout.widget.ConstraintLayout
         android:layout_width="match_parent"
@@ -17,7 +17,7 @@
             android:layout_marginTop="25dp"
             android:fontFamily="@font/roboto_medium"
             android:text="@string/cashWithoutDot"
-            android:textColor="@color/black"
+            style="@style/blackText"
             android:textSize="16sp"
             app:layout_constraintEnd_toEndOf="parent"
             app:layout_constraintStart_toStartOf="parent"
@@ -51,7 +51,7 @@
             android:layout_height="wrap_content"
             android:fontFamily="@font/roboto_medium"
             android:text="@string/cardWithoutDot"
-            android:textColor="@color/black"
+            style="@style/blackText"
             android:textSize="16sp"
             android:layout_marginTop="40dp"
             app:layout_constraintEnd_toEndOf="parent"

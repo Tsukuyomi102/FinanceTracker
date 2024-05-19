@@ -6,7 +6,7 @@
     android:layout_height="match_parent"
     xmlns:app="http://schemas.android.com/apk/res-auto"
     tools:context=".ui.fragments.CardDetailsFragment"
-    android:background="@color/background">
+    style="@style/mainBackground">
 
     <Toolbar
         android:id="@+id/toolbar"
@@ -110,7 +110,7 @@
         android:layout_marginTop="25dp"
         android:fontFamily="@font/roboto_medium"
         android:text="@string/cardTransactions"
-        android:textColor="@color/hintColor"
+        style="@style/hintColor"
         android:textSize="20sp"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintStart_toStartOf="parent"

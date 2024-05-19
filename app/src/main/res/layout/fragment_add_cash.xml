@@ -5,7 +5,7 @@
     android:layout_height="match_parent"
     xmlns:app="http://schemas.android.com/apk/res-auto"
     tools:context=".ui.fragments.AddCashFragment"
-    android:background="@color/background">
+    style="@style/mainBackground">
 
     <Toolbar
         android:id="@+id/toolbar"
@@ -46,7 +46,7 @@
         android:layout_marginTop="70dp"
         android:fontFamily="@font/roboto_medium"
         android:text="Название наличных"
-        android:textColor="@color/hintColor"
+        style="@style/hintColor"
         android:textSize="16sp"
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toBottomOf="@+id/toolbar" />
@@ -55,12 +55,11 @@
         android:id="@+id/editCashName"
         android:layout_width="340dp"
         android:layout_height="50dp"
-        android:background="@drawable/rounded_edittext"
         android:layout_marginTop="5dp"
         android:textSize="16sp"
-        android:textColor="@color/black"
         android:hint="@string/hintCashName"
         android:gravity="center"
+        style="@style/editText"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toBottomOf="@+id/textView5" />
@@ -73,7 +72,7 @@
         android:layout_marginTop="10dp"
         android:fontFamily="@font/roboto_medium"
         android:text="@string/balance"
-        android:textColor="@color/hintColor"
+        style="@style/hintColor"
         android:textSize="16sp"
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toBottomOf="@+id/editCashName" />
@@ -82,10 +81,9 @@
         android:id="@+id/editCashBalance"
         android:layout_width="340dp"
         android:layout_height="50dp"
-        android:background="@drawable/rounded_edittext"
+        style="@style/editText"
         android:layout_marginTop="5dp"
         android:textSize="16sp"
-        android:textColor="@color/black"
         android:hint="@string/hintCashBalance"
         android:inputType="number"
         android:gravity="center"
@@ -101,7 +99,7 @@
         android:layout_marginTop="10dp"
         android:fontFamily="@font/roboto_medium"
         android:text="@string/description"
-        android:textColor="@color/hintColor"
+        style="@style/hintColor"
         android:textSize="16sp"
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toBottomOf="@+id/editCashBalance" />
@@ -110,10 +108,9 @@
         android:id="@+id/editCashDescription"
         android:layout_width="340dp"
         android:layout_height="50dp"
-        android:background="@drawable/rounded_edittext"
+        style="@style/editText"
         android:layout_marginTop="5dp"
         android:textSize="16sp"
-        android:textColor="@color/black"
         android:hint="@string/hintCashDescription"
         android:gravity="center"
         app:layout_constraintEnd_toEndOf="parent"

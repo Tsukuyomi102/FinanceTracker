@@ -5,7 +5,7 @@
     android:layout_height="match_parent"
     xmlns:app="http://schemas.android.com/apk/res-auto"
     tools:context=".ui.fragments.ShowAllTransactions"
-    android:background="@color/background">
+    style="@style/mainBackground">
 
     <Toolbar
         android:id="@+id/toolbar2"
@@ -39,26 +39,26 @@
         app:layout_constraintStart_toEndOf="@+id/imageBack"
         app:layout_constraintTop_toTopOf="parent" />
 
-        <EditText
-            android:id="@+id/editSearch"
-            android:layout_width="match_parent"
-            android:layout_height="wrap_content"
-            android:layout_margin="15dp"
-            android:layout_marginTop="12dp"
-            android:background="@drawable/rounded_circle_edittext"
-            android:hint="@string/hintForSearch"
-            android:textSize="20sp"
-            android:paddingStart="10dp"
-            app:layout_constraintEnd_toEndOf="parent"
-            app:layout_constraintHorizontal_bias="0.0"
-            app:layout_constraintStart_toStartOf="parent"
-            app:layout_constraintTop_toBottomOf="@+id/toolbar2" />
+    <EditText
+        android:id="@+id/editSearch"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:layout_margin="15dp"
+        android:layout_marginTop="20dp"
+        android:background="@drawable/rounded_circle_edittext"
+        android:hint="@string/hintForSearch"
+        style="@style/borderCircleLayout"
+        android:paddingStart="10dp"
+        android:textSize="20sp"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toBottomOf="@+id/toolbar2" />
 
     <ImageButton
         android:id="@+id/imageSearch"
         android:layout_width="15dp"
         android:layout_height="15dp"
-        android:backgroundTint="@color/white"
+        style="@style/imageButton2"
         android:src="@drawable/search_01"
         android:layout_marginRight="15dp"
         app:layout_constraintBottom_toBottomOf="@+id/editSearch"

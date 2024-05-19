@@ -6,7 +6,7 @@
     android:layout_width="match_parent"
     android:layout_height="match_parent"
     tools:context=".ui.fragments.AddCardFragment"
-    android:background="@color/background">
+    style="@style/mainBackground">
 
     <Toolbar
         android:id="@+id/toolbar"
@@ -46,7 +46,7 @@
         android:layout_height="wrap_content"
         android:text="@string/cardName"
         android:textSize="16sp"
-        android:textColor="@color/hintColor"
+        style="@style/hintColor"
         android:fontFamily="@font/roboto_medium"
         android:layout_marginTop="70dp"
         android:layout_marginLeft="35dp"
@@ -55,13 +55,11 @@
 
     <EditText
         android:id="@+id/editCardName"
+        style="@style/editText"
         android:layout_width="300dp"
         android:layout_height="50dp"
-        android:layout_marginLeft="35dp"
+        android:layout_marginStart="32dp"
         android:layout_marginTop="5dp"
-        android:background="@drawable/rounded_edittext"
-        android:textColor="@color/black"
-        android:textSize="16sp"
         android:hint="@string/hintForCardName"
         android:inputType="text"
         android:paddingStart="10dp"
@@ -76,7 +74,7 @@
         android:layout_marginStart="35dp"
         android:fontFamily="@font/roboto_medium"
         android:text="@string/cardNumber"
-        android:textColor="@color/hintColor"
+        style="@style/hintColor"
         android:textSize="16sp"
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toBottomOf="@+id/editCardName" />
@@ -88,9 +86,8 @@
         android:layout_marginTop="5dp"
         android:layout_marginLeft="35dp"
         android:textSize="16sp"
-        android:textColor="@color/black"
         android:inputType="number"
-        android:background="@drawable/rounded_edittext"
+        style="@style/editText"
         android:hint="@string/hintForCardNumber"
         android:paddingStart="10dp"
         app:layout_constraintStart_toStartOf="parent"
@@ -105,7 +102,7 @@
         android:layout_marginTop="10dp"
         android:fontFamily="@font/roboto_medium"
         android:text="@string/balance"
-        android:textColor="@color/hintColor"
+        style="@style/hintColor"
         android:textSize="16sp"
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toBottomOf="@+id/editCardNumber" />
@@ -116,11 +113,10 @@
         android:layout_height="50dp"
         android:layout_marginStart="35dp"
         android:layout_marginTop="5dp"
-        android:background="@drawable/rounded_edittext"
+        style="@style/editText"
         android:paddingStart="10dp"
         android:hint="@string/hintForCardBalance"
         android:inputType="number"
-        android:textColor="@color/black"
         android:textSize="16sp"
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toBottomOf="@+id/textCardBalance" />
@@ -133,7 +129,7 @@
         android:layout_marginStart="35dp"
         android:fontFamily="@font/roboto_medium"
         android:text="Годен до"
-        android:textColor="@color/hintColor"
+        style="@style/hintColor"
         android:textSize="16sp"
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toBottomOf="@+id/editCardBalance" />
@@ -144,11 +140,10 @@
         android:layout_height="50dp"
         android:layout_marginLeft="35dp"
         android:layout_marginTop="5dp"
-        android:background="@drawable/rounded_edittext"
+        style="@style/editText"
         android:paddingStart="10dp"
         android:hint="@string/month"
         android:inputType="number"
-        android:textColor="@color/black"
         android:textSize="16sp"
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toBottomOf="@+id/textCardDate" />
@@ -159,11 +154,10 @@
         android:layout_height="50dp"
         android:layout_marginLeft="20dp"
         android:layout_marginTop="5dp"
-        android:background="@drawable/rounded_edittext"
+        style="@style/editText"
         android:paddingStart="10dp"
         android:hint="@string/year"
         android:inputType="number"
-        android:textColor="@color/black"
         android:textSize="16sp"
         app:layout_constraintStart_toEndOf="@+id/editCardMonth"
         app:layout_constraintTop_toBottomOf="@+id/textCardDate" />

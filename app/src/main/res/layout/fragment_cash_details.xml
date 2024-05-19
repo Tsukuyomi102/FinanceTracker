@@ -5,7 +5,8 @@
     android:layout_width="match_parent"
     android:layout_height="match_parent"
     xmlns:app="http://schemas.android.com/apk/res-auto"
-    tools:context=".ui.fragments.CashDetailsFragment">
+    tools:context=".ui.fragments.CashDetailsFragment"
+    style="@style/mainBackground">
     <Toolbar
         android:id="@+id/toolbar"
         android:layout_width="match_parent"
@@ -80,7 +81,7 @@
         android:layout_marginTop="25dp"
         android:fontFamily="@font/roboto_medium"
         android:text="@string/cashTransactions"
-        android:textColor="@color/hintColor"
+        style="@style/hintColor"
         android:textSize="20sp"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintStart_toStartOf="parent"
