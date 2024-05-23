@@ -58,7 +58,7 @@
                 app:layout_constraintStart_toStartOf="parent"
                 app:layout_constraintTop_toTopOf="parent" />
 
-            <ImageView
+            <com.github.mikephil.charting.charts.PieChart
                 android:layout_width="154dp"
                 android:layout_height="154dp"
                 android:id="@+id/entirebalancediagram"
@@ -154,7 +154,7 @@
                 app:layout_constraintStart_toStartOf="@+id/balancediagramm"
                 app:layout_constraintTop_toTopOf="parent" />
 
-            <ImageView
+            <com.github.mikephil.charting.charts.BarChart
                 android:layout_width="340dp"
                 android:layout_height="200dp"
                 android:id="@+id/balancediagramm"
@@ -225,72 +225,14 @@
                 app:layout_constraintStart_toStartOf="parent"
                 app:layout_constraintTop_toTopOf="parent" />
 
-            <ImageView
+            <com.github.mikephil.charting.charts.PieChart
                 android:layout_width="340dp"
                 android:layout_height="200dp"
                 android:id="@+id/structurediagramm"
+                android:layout_marginBottom="100dp"
                 app:layout_constraintBottom_toBottomOf="parent"
                 app:layout_constraintEnd_toEndOf="parent"
                 app:layout_constraintStart_toStartOf="parent" />
-
-        </androidx.constraintlayout.widget.ConstraintLayout>
-
-        <androidx.constraintlayout.widget.ConstraintLayout
-            android:id="@+id/fifthlayout"
-            android:layout_width="match_parent"
-            android:layout_height="400dp"
-            android:layout_marginLeft="10dp"
-            android:layout_marginTop="20dp"
-            android:layout_marginRight="10dp"
-            android:layout_marginBottom="80dp"
-            style="@style/secondBackground"
-            app:layout_constraintBottom_toBottomOf="parent"
-            app:layout_constraintEnd_toEndOf="parent"
-            app:layout_constraintHorizontal_bias="1.0"
-            app:layout_constraintStart_toStartOf="parent"
-            app:layout_constraintTop_toBottomOf="@+id/fourthlayout"
-            app:layout_constraintVertical_bias="0.0">
-
-            <TextView
-                android:layout_width="wrap_content"
-                android:layout_height="wrap_content"
-                android:layout_marginTop="16dp"
-                android:layout_marginBottom="16dp"
-                android:fontFamily="@font/roboto_medium"
-                android:text="@string/reference"
-                style="@style/hintColor2"
-                android:textSize="14sp"
-                app:layout_constraintBottom_toTopOf="@+id/referencediagramm"
-                app:layout_constraintStart_toStartOf="@+id/referencediagramm"
-                app:layout_constraintTop_toTopOf="parent" />
-
-            <ImageView
-                android:id="@+id/referencediagramm"
-                android:layout_width="340dp"
-                android:layout_height="200dp"
-                app:layout_constraintBottom_toBottomOf="parent"
-                app:layout_constraintEnd_toEndOf="parent"
-                app:layout_constraintStart_toStartOf="parent"
-                app:layout_constraintTop_toTopOf="parent" />
-
-            <Button
-                android:id="@+id/btnByCard"
-                android:layout_width="wrap_content"
-                android:layout_height="wrap_content"
-                android:layout_marginTop="10dp"
-                android:text="Картой"
-                app:layout_constraintStart_toStartOf="@+id/referencediagramm"
-                app:layout_constraintTop_toBottomOf="@+id/referencediagramm" />
-
-            <Button
-                android:id="@+id/btnByCash"
-                android:layout_width="wrap_content"
-                android:layout_height="wrap_content"
-                android:layout_marginTop="10dp"
-                android:text="Наличные"
-                app:layout_constraintEnd_toEndOf="@+id/referencediagramm"
-                app:layout_constraintTop_toBottomOf="@+id/referencediagramm" />
-
 
         </androidx.constraintlayout.widget.ConstraintLayout>
 
