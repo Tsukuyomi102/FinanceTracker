@@ -14,12 +14,16 @@ import com.example.financetracker.data.Transaction
 import com.example.financetracker.databinding.FragmentTransactionListBinding
 import com.example.financetracker.ui.adapters.CardTransactionAdapter
 import com.example.financetracker.ui.adapters.CashTransactionAdapter
+import com.example.financetracker.viewmodel.CardViewModel
+import com.example.financetracker.viewmodel.CashViewModel
 import com.example.financetracker.viewmodel.TransactionViewModel
 
 class TransactionListFragment : Fragment(), CardTransactionAdapter.OnCardTransactionClickListener,  CashTransactionAdapter.OnCashTransactionClickListener {
     private lateinit var binding: FragmentTransactionListBinding
 
-    private lateinit var viewModel: TransactionViewModel
+    private lateinit var transactionViewModel: TransactionViewModel
+    private lateinit var cardViewModel: CardViewModel
+    private lateinit var cashViewModel: CashViewModel
 
     private lateinit var cashTransactionAdapter: CashTransactionAdapter
     private lateinit var cardTransactionAdapter: CardTransactionAdapter
@@ -35,13 +39,19 @@ class TransactionListFragment : Fragment(), CardTransactionAdapter.OnCardTransac
         val sharedPreferences = context?.getSharedPreferences("logged_user_data", Context.MODE_PRIVATE)
         val email = sharedPreferences?.getString("email", "")
 
-        viewModel = ViewModelProvider(requireActivity()).get(TransactionViewModel::class.java)
-        viewModel.getTransactionsByEmail(email)
-        cashTransactionAdapter = CashTransactionAdapter(viewModel.transactionsList, requireContext(), false, this)
+        transactionViewModel = ViewModelProvider(requireActivity()).get(TransactionViewModel::class.java)
+        cardViewModel = ViewModelProvider(requireActivity()).get(CardViewModel::class.java)
+        cashViewModel = ViewModelProvider(requireActivity()).get(CashViewModel::class.java)
+
+        transactionViewModel.getTransactionsByEmail(email)
+        cardViewModel.getCardsByEmail(email)
+        cashViewModel.getCashByEmail(email)
+
+        cashTransactionAdapter = CashTransactionAdapter(transactionViewModel.transactionsList, requireContext(), false, this)
         binding.recyclerCash.layoutManager = LinearLayoutManager(context)
         binding.recyclerCash.adapter = cashTransactionAdapter
-        //Type mismatch: inferred type is TransactionListFragment but CardTransactionAdapter.onTransactionClickListener was expected
-        cardTransactionAdapter = CardTransactionAdapter(viewModel.transactionsList, requireContext(), false, this)
+
+        cardTransactionAdapter = CardTransactionAdapter(transactionViewModel.transactionsList, requireContext(), false, this)
         binding.recyclerCard.layoutManager = LinearLayoutManager(context)
         binding.recyclerCard.adapter = cardTransactionAdapter
 
@@ -62,12 +72,12 @@ class TransactionListFragment : Fragment(), CardTransactionAdapter.OnCardTransac
     }
 
     override fun onCardTransactionClick(transaction: Transaction) {
-        viewModel.setSelectedTransaction(transaction)
+        transactionViewModel.setSelectedTransaction(transaction)
         findNavController().navigate(R.id.action_budgetFragment_to_transactionDetailsFragment)
     }
 
     override fun onCashTransactionClick(transaction: Transaction) {
-        viewModel.setSelectedTransaction(transaction)
+        transactionViewModel.setSelectedTransaction(transaction)
         findNavController().navigate(R.id.action_budgetFragment_to_transactionDetailsFragment)
     }
 }

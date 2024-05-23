@@ -11,7 +11,5 @@ class UserViewModel : ViewModel() {
 
     fun addUser(user: User) {
         _userLiveData.postValue(user)
-        println(_userLiveData.value?.name)
-        println(_userLiveData.value?.email)
     }
 }

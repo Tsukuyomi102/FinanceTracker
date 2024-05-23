@@ -5,6 +5,7 @@ import com.example.financetracker.data.Cash
 import com.example.financetracker.data.Transaction
 import com.example.financetracker.data.User
 import retrofit2.Call
+import retrofit2.http.DELETE
 import retrofit2.http.Field
 import retrofit2.http.FormUrlEncoded
 import retrofit2.http.GET
@@ -79,4 +80,10 @@ interface ApiService {
     fun getTransactionsByEmail(
         @Path("email") email: String?
     ): Call<List<Transaction>>
+    @DELETE("user/{email}/transaction/{name}")
+    fun deleteTransaction(
+        @Path("email") email: String,
+        @Path("name") name: String
+    ): Call<String>
+
 }

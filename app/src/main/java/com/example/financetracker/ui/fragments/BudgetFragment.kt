@@ -13,9 +13,12 @@ import com.example.financetracker.R
 import com.example.financetracker.databinding.FragmentBudgetBinding
 import com.example.financetracker.viewmodel.CardViewModel
 import com.example.financetracker.viewmodel.CashViewModel
+import com.example.financetracker.viewmodel.TransactionViewModel
 
 class BudgetFragment : Fragment() {
     private lateinit var binding: FragmentBudgetBinding
+
+    private lateinit var transactionViewModel: TransactionViewModel
     private lateinit var cardViewModel: CardViewModel
     private lateinit var cashViewModel: CashViewModel
 
@@ -29,8 +32,13 @@ class BudgetFragment : Fragment() {
     ): View? {
         binding = FragmentBudgetBinding.inflate(layoutInflater, container, false)
 
-        cardViewModel = ViewModelProvider(requireActivity())[com.example.financetracker.viewmodel.CardViewModel::class.java]
-        cashViewModel = ViewModelProvider(requireActivity())[com.example.financetracker.viewmodel.CashViewModel::class.java]
+        cardViewModel = ViewModelProvider(requireActivity())[CardViewModel::class.java]
+        cashViewModel = ViewModelProvider(requireActivity())[CashViewModel::class.java]
+        transactionViewModel = ViewModelProvider(requireActivity())[TransactionViewModel::class.java]
+
+        transactionViewModel.getTransactionsByEmail("test@mail.ru")
+        cardViewModel.getCardsByEmail("test@mail.ru")
+        cashViewModel.getCashByEmail("test@mail.ru")
 
         binding.operations.setOnClickListener() {
             changeColor(binding.operations, binding.aims)

@@ -80,6 +80,27 @@ class TransactionViewModel : ViewModel() {
         })
     }
 
+    fun deleteTransaction(email: String, transactionName: String) {
+        val apiService = RetrofitClient.retrofit.create(ApiService::class.java)
+        val call = apiService.deleteTransaction(email, transactionName)
+
+        call.enqueue(object : Callback<String> {
+            override fun onResponse(call: Call<String>, response: Response<String>) {
+                if (response.isSuccessful) {
+                    val updatedList = transactionsList.toMutableList()
+                    updatedList.removeAll { it.transactionName == transactionName }
+                    transactionsLiveData.value = updatedList
+                }
+            }
+
+            override fun onFailure(call: Call<String>, t: Throwable) {
+                Log.e("TransactionViewModel", "Error deleting transaction", t)
+            }
+        })
+    }
+
+
+
     fun setSelectedTransaction(transaction: Transaction){
         selectedTransaction = transaction
     }

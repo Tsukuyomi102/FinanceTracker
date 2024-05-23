@@ -61,8 +61,13 @@ class TransactionDetailsFragment : Fragment() {
                 "imageInvestment" -> R.drawable.icon_investment_circle
                 else -> R.drawable.avatar_svgrepo_com
             }
-
             binding.imageCategory.setImageResource(iconResId)
+        }
+
+        binding.imageDelete.setOnClickListener(){
+            selectedTransaction?.let { transaction ->
+                transactionViewModel.deleteTransaction("test@mail.ru", transaction.transactionName)
+            }
         }
     }
 }
