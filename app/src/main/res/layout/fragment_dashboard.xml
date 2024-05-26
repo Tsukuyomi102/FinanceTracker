@@ -47,7 +47,7 @@
 
             <TextView
                 android:id="@+id/textViewBalance"
-                android:layout_width="73dp"
+                android:layout_width="wrap_content"
                 android:layout_height="35dp"
                 android:layout_marginStart="20dp"
                 android:layout_marginTop="20dp"
@@ -94,11 +94,11 @@
 
             <TextView
                 android:id="@+id/textViewBN"
-                android:layout_width="60dp"
+                android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
                 android:layout_marginTop="10dp"
                 android:fontFamily="@font/roboto_medium"
-                android:textColor="@color/black"
+                android:textColor="@color/buttonColor"
                 android:textSize="12sp"
                 android:text="наличные: "
                 app:layout_constraintStart_toStartOf="@+id/textViewBC"
@@ -106,7 +106,7 @@
 
             <TextView
                 android:id="@+id/textViewForCard"
-                android:layout_width="60dp"
+                android:layout_width="wrap_content"
                 android:layout_height="16dp"
                 android:fontFamily="@font/roboto_medium"
                 style="@style/hintColor"
@@ -164,40 +164,6 @@
 
         </androidx.constraintlayout.widget.ConstraintLayout>
 
-        <androidx.constraintlayout.widget.ConstraintLayout
-            android:layout_width="match_parent"
-            android:layout_height="wrap_content"
-            android:layout_marginRight="10dp"
-            android:layout_marginLeft="10dp"
-            android:layout_marginTop="20dp"
-            style="@style/secondBackground"
-            android:id="@+id/thirdlayout"
-            app:layout_constraintEnd_toEndOf="parent"
-            app:layout_constraintStart_toStartOf="parent"
-            app:layout_constraintTop_toBottomOf="@+id/sacondlayout">
-
-            <TextView
-                android:layout_width="wrap_content"
-                android:layout_height="wrap_content"
-                android:fontFamily="@font/roboto_medium"
-                android:text="@string/monthbalance"
-                android:textSize="14sp"
-                android:layout_marginTop="16dp"
-                android:layout_marginBottom="16dp"
-                style="@style/hintColor2"
-                app:layout_constraintBottom_toTopOf="@+id/monthbalancediagramm"
-                app:layout_constraintStart_toStartOf="@+id/monthbalancediagramm"
-                app:layout_constraintTop_toTopOf="parent" />
-
-            <ImageView
-                android:layout_width="340dp"
-                android:layout_height="200dp"
-                android:id="@+id/monthbalancediagramm"
-                app:layout_constraintBottom_toBottomOf="parent"
-                app:layout_constraintEnd_toEndOf="parent"
-                app:layout_constraintStart_toStartOf="parent" />
-
-        </androidx.constraintlayout.widget.ConstraintLayout>
 
         <androidx.constraintlayout.widget.ConstraintLayout
             android:layout_width="match_parent"
@@ -209,7 +175,7 @@
             android:id="@+id/fourthlayout"
             app:layout_constraintEnd_toEndOf="parent"
             app:layout_constraintStart_toStartOf="parent"
-            app:layout_constraintTop_toBottomOf="@+id/thirdlayout">
+            app:layout_constraintTop_toBottomOf="@+id/sacondlayout">
 
             <TextView
                 android:layout_width="wrap_content"

@@ -1,5 +1,6 @@
 package com.example.financetracker.ui.fragments
 
+import android.content.Context
 import android.os.Bundle
 import androidx.fragment.app.Fragment
 import android.view.LayoutInflater
@@ -36,9 +37,6 @@ class BudgetFragment : Fragment() {
         cashViewModel = ViewModelProvider(requireActivity())[CashViewModel::class.java]
         transactionViewModel = ViewModelProvider(requireActivity())[TransactionViewModel::class.java]
 
-        transactionViewModel.getTransactionsByEmail("test@mail.ru")
-        cardViewModel.getCardsByEmail("test@mail.ru")
-        cashViewModel.getCashByEmail("test@mail.ru")
 
         binding.operations.setOnClickListener() {
             changeColor(binding.operations, binding.aims)

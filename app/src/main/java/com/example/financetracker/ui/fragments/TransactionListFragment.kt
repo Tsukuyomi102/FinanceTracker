@@ -18,7 +18,7 @@ import com.example.financetracker.viewmodel.CardViewModel
 import com.example.financetracker.viewmodel.CashViewModel
 import com.example.financetracker.viewmodel.TransactionViewModel
 
-class TransactionListFragment : Fragment(), CardTransactionAdapter.OnCardTransactionClickListener,  CashTransactionAdapter.OnCashTransactionClickListener {
+class TransactionListFragment : Fragment(), CardTransactionAdapter.OnCardTransactionClickListener, CashTransactionAdapter.OnCashTransactionClickListener {
     private lateinit var binding: FragmentTransactionListBinding
 
     private lateinit var transactionViewModel: TransactionViewModel
@@ -33,42 +33,56 @@ class TransactionListFragment : Fragment(), CardTransactionAdapter.OnCardTransac
     override fun onCreateView(
         inflater: LayoutInflater, container: ViewGroup?,
         savedInstanceState: Bundle?
-    ): View? {
-        binding = FragmentTransactionListBinding.inflate(layoutInflater, container, false)
-
-        val sharedPreferences = context?.getSharedPreferences("logged_user_data", Context.MODE_PRIVATE)
-        val email = sharedPreferences?.getString("email", "")
+    ): View {
+        binding = FragmentTransactionListBinding.inflate(inflater, container, false)
 
         transactionViewModel = ViewModelProvider(requireActivity()).get(TransactionViewModel::class.java)
         cardViewModel = ViewModelProvider(requireActivity()).get(CardViewModel::class.java)
         cashViewModel = ViewModelProvider(requireActivity()).get(CashViewModel::class.java)
 
-        transactionViewModel.getTransactionsByEmail(email)
-        cardViewModel.getCardsByEmail(email)
-        cashViewModel.getCashByEmail(email)
+        setupClickListeners()
+        observeTransactions()
 
-        cashTransactionAdapter = CashTransactionAdapter(transactionViewModel.transactionsList, requireContext(), false, this)
-        binding.recyclerCash.layoutManager = LinearLayoutManager(context)
-        binding.recyclerCash.adapter = cashTransactionAdapter
+        return binding.root
+    }
 
-        cardTransactionAdapter = CardTransactionAdapter(transactionViewModel.transactionsList, requireContext(), false, this)
+    private fun setupClickListeners() {
+        binding.cardShowAll.setOnClickListener {
+            showAllCardTransactions = true
+            navigateToShowAllTransactions()
+        }
+
+        binding.cashShowAll.setOnClickListener {
+            showAllCardTransactions = false
+            navigateToShowAllTransactions()
+        }
+    }
+
+    private fun navigateToShowAllTransactions() {
+        val bundle = Bundle().apply {
+            putBoolean("showAllTransactions", showAllCardTransactions)
+        }
+        findNavController().navigate(R.id.action_budgetFragment_to_showAllTransactions, bundle)
+    }
+
+    private fun observeTransactions() {
+        // Наблюдение за изменениями в списке транзакций
+        transactionViewModel.getTransactionLiveData().observe(viewLifecycleOwner) { transactions ->
+            updateCardTransactions(transactions)
+            updateCashTransactions(transactions)
+        }
+    }
+
+    private fun updateCardTransactions(transactions: List<Transaction>) {
+        cardTransactionAdapter = CardTransactionAdapter(transactions, requireContext(), false, this)
         binding.recyclerCard.layoutManager = LinearLayoutManager(context)
         binding.recyclerCard.adapter = cardTransactionAdapter
+    }
 
-        binding.cardShowAll.setOnClickListener(){
-            showAllCardTransactions = true
-            val bundle = Bundle()
-            bundle.putBoolean("showAllTransactions", showAllCardTransactions)
-            findNavController().navigate(R.id.action_budgetFragment_to_showAllTransactions, bundle)
-        }
-
-        binding.cashShowAll.setOnClickListener(){
-            showAllCardTransactions = false
-            val bundle = Bundle()
-            bundle.putBoolean("showAllTransactions", showAllCardTransactions)
-            findNavController().navigate(R.id.action_budgetFragment_to_showAllTransactions, bundle)
-        }
-        return binding.root
+    private fun updateCashTransactions(transactions: List<Transaction>) {
+        cashTransactionAdapter = CashTransactionAdapter(transactions, requireContext(), false, this)
+        binding.recyclerCash.layoutManager = LinearLayoutManager(context)
+        binding.recyclerCash.adapter = cashTransactionAdapter
     }
 
     override fun onCardTransactionClick(transaction: Transaction) {

@@ -14,7 +14,6 @@ import com.example.financetracker.viewmodel.CashViewModel
 import com.example.financetracker.viewmodel.TransactionViewModel
 import com.github.mikephil.charting.charts.BarChart
 import com.github.mikephil.charting.charts.PieChart
-import com.github.mikephil.charting.components.Description
 import com.github.mikephil.charting.data.BarData
 import com.github.mikephil.charting.data.BarDataSet
 import com.github.mikephil.charting.data.BarEntry
@@ -25,50 +24,67 @@ import com.github.mikephil.charting.formatter.ValueFormatter
 
 class DashboardFragment : Fragment() {
     private lateinit var binding: FragmentDashboardBinding
-
     private lateinit var transactionViewModel: TransactionViewModel
-
     private lateinit var cashViewModel: CashViewModel
     private lateinit var cardViewModel: CardViewModel
-
-    override fun onCreate(savedInstanceState: Bundle?) {
-        super.onCreate(savedInstanceState)
-    }
 
     override fun onCreateView(
         inflater: LayoutInflater, container: ViewGroup?,
         savedInstanceState: Bundle?
     ): View? {
         binding = FragmentDashboardBinding.inflate(layoutInflater, container, false)
+        return binding.root
+    }
 
-        val sharedPreferences = context?.getSharedPreferences("logged_user_data", Context.MODE_PRIVATE)
-        val email = sharedPreferences?.getString("email", "")
+    override fun onViewCreated(view: View, savedInstanceState: Bundle?) {
+        super.onViewCreated(view, savedInstanceState)
+        initViewModels()
+        cardViewModel.getCardsLiveData().observe(viewLifecycleOwner) { cards ->
+            cashViewModel.getCashesLiveData().observe(viewLifecycleOwner){cashes ->
+                changeBalance()
+                setupPieChart1()
+                setupBarChart()
+            }
+        }
 
+        transactionViewModel.getTransactionLiveData().observe(viewLifecycleOwner) { transactions ->
+            setupPieChart2()
+        }
+
+    }
+
+    private fun initViewModels() {
         transactionViewModel = ViewModelProvider(requireActivity()).get(TransactionViewModel::class.java)
         cashViewModel = ViewModelProvider(requireActivity()).get(CashViewModel::class.java)
         cardViewModel = ViewModelProvider(requireActivity()).get(CardViewModel::class.java)
+    }
 
-        transactionViewModel.getTransactionsByEmail(email)
-        cashViewModel.getCashByEmail(email)
-        cardViewModel.getCardsByEmail(email)
+    private fun changeBalance(){
+        binding.textViewBalance.text = (cashViewModel.getTotalBalance() + cardViewModel.getTotalBalance()).toString()
+        binding.textViewForNal.text = cashViewModel.getTotalBalance().toString()
+        binding.textViewForCard.text = cardViewModel.getTotalBalance().toString()
+    }
 
+    private fun setupPieChart1() {
         val pieChart: PieChart = binding.entirebalancediagram
 
         val entries = ArrayList<PieEntry>()
-        entries.add(PieEntry(cardViewModel.getTotalBalance().toFloat(), "Карты"))
-        entries.add(PieEntry(cashViewModel.getTotalBalance().toFloat(), "наличные"))
+        entries.add(PieEntry(cardViewModel.getTotalBalance().toFloat()))
+        entries.add(PieEntry(cashViewModel.getTotalBalance().toFloat()))
 
         val dataSet = PieDataSet(entries, "")
-        dataSet.colors = listOf(Color.HSVToColor(floatArrayOf(160.54f, 15.35f, 94.51f)),
-            Color.HSVToColor(floatArrayOf(208.57f, 16.54f, 99.61f)))
+        dataSet.colors = listOf(
+            Color.rgb(212, 234, 254),
+            Color.rgb(204, 241, 229)
+        )
         dataSet.valueTextSize = 10f
-        dataSet.valueTextColor = Color.WHITE
+        dataSet.valueTextColor = Color.BLACK
 
         val data = PieData(dataSet)
         pieChart.data = data
 
         pieChart.description.isEnabled = false
-
+        pieChart.legend.isEnabled = false
         pieChart.setEntryLabelColor(Color.WHITE)
         pieChart.setEntryLabelTextSize(10f)
         pieChart.setDrawEntryLabels(false)
@@ -76,80 +92,83 @@ class DashboardFragment : Fragment() {
         pieChart.setDrawHoleEnabled(false)
 
         pieChart.invalidate()
+    }
 
-
+    private fun setupPieChart2() {
         val pieChart2: PieChart = binding.structurediagramm
 
-        val entries2 = ArrayList<PieEntry>()
-        entries2.add(PieEntry(33f, "Еда"))
-        entries2.add(PieEntry(39f, "Аренда"))
-        entries2.add(PieEntry(2f, "Кредит"))
-        entries2.add(PieEntry(39f, "Обучение"))
-        entries2.add(PieEntry(40f, "Одежда"))
-        entries2.add(PieEntry(39f, "Здоровье"))
-
-        val dataSet2 = PieDataSet(entries2, "Структура расходов")
+        val entries2 = transactionViewModel.getTransactionEntriesForPieChart()
+        val dataSet2 = PieDataSet(entries2, "")
         dataSet2.colors = listOf(
-            Color.rgb(255, 102, 102), // Еда
-            Color.rgb(102, 153, 255), // Аренда
-            Color.rgb(153, 102, 255), // Кредит
-            Color.rgb(255, 153, 255), // Обучение
-            Color.rgb(255, 204, 102), // Одежда
-            Color.rgb(153, 255, 204)  // Здоровье
+            Color.rgb(204, 241, 229), // Здоровье
+            Color.rgb(255, 208, 208), // Еда
+            Color.rgb(204, 210, 241), // Инвестиции
+            Color.rgb(255, 226, 191), // Машина
+            Color.rgb(212, 234, 254), // Подарок
+            Color.rgb(244, 214, 255),  // Одежда
+            Color.rgb(252,181,252),  // Благотворительность
+            Color.rgb(128,204,179), // Красота
+            Color.rgb(255,147,147), // Дом
+            Color.rgb(126,255,213), // Бизнесс
+            Color.rgb(219,219,221) // Зарплата
         )
-        dataSet2.valueTextSize = 12f
+        dataSet2.valueTextSize = 10f
         dataSet2.valueTextColor = Color.BLACK
         dataSet2.setValueLinePart1OffsetPercentage(80f)
         dataSet2.setValueLinePart1Length(0.3f)
         dataSet2.setValueLinePart2Length(0.4f)
         dataSet2.yValuePosition = PieDataSet.ValuePosition.OUTSIDE_SLICE
         dataSet2.xValuePosition = PieDataSet.ValuePosition.INSIDE_SLICE
+        dataSet2.setDrawIcons(false)
 
         val data2 = PieData(dataSet2)
         pieChart2.data = data2
 
-        // Убираем описание диаграммы
         pieChart2.description.isEnabled = false
 
-        // Настройка легенды
         val legend2 = pieChart2.legend
         legend2.isEnabled = true
-        legend2.textSize = 12f
+        legend2.textSize = 10f
         legend2.form = com.github.mikephil.charting.components.Legend.LegendForm.CIRCLE
+        legend2.verticalAlignment = com.github.mikephil.charting.components.Legend.LegendVerticalAlignment.TOP
+        legend2.horizontalAlignment = com.github.mikephil.charting.components.Legend.LegendHorizontalAlignment.RIGHT
+        legend2.orientation = com.github.mikephil.charting.components.Legend.LegendOrientation.VERTICAL
+        legend2.setDrawInside(false)
+        legend2.xOffset = 0f
+        legend2.xEntrySpace = 20f
 
         pieChart2.setEntryLabelColor(Color.BLACK)
         pieChart2.setEntryLabelTextSize(12f)
-        pieChart2.setUsePercentValues(false)
+        pieChart2.setUsePercentValues(true)
+        pieChart2.setDrawEntryLabels(false)
         pieChart2.setDrawHoleEnabled(false)
 
         pieChart2.invalidate()
+    }
 
-
+    private fun setupBarChart() {
         val barChart: BarChart = binding.balancediagramm
 
-        val entriesBalance = listOf(
-            BarEntry(0f, 40f, "Биткоин"),
-            BarEntry(1f, 88f, "Сбер"),
-            BarEntry(2f, 60f, "Наличные"),
-            BarEntry(3f, 35f, "Догикоин"),
-            BarEntry(4f, 70f, "ВТБ")
-        )
+        val entries = mutableListOf<BarEntry>()
 
-        val dataSetBalance = BarDataSet(entriesBalance, "Баланс")
-        dataSetBalance.colors = listOf(
-            Color.rgb(153, 255, 204), // Биткоин
-            Color.rgb(102, 153, 255), // Сбер
-            Color.rgb(255, 204, 204), // Наличные
-            Color.rgb(153, 255, 204), // Догикоин
-            Color.rgb(102, 153, 255)  // ВТБ
-        )
-        dataSetBalance.valueTextSize = 12f
-        dataSetBalance.valueTextColor = Color.BLACK
+        cardViewModel.cardsList.forEachIndexed { index, card ->
+            entries.add(BarEntry(index.toFloat(), card.cardBalance.toFloat(), card.cardName))
+        }
+        cashViewModel.cashList.forEachIndexed { index, cash ->
+            entries.add(BarEntry((cardViewModel.cardsList.size + index).toFloat(), cash.cashBalance.toFloat(), cash.cashName))
+        }
 
-        val dataBalance = BarData(dataSetBalance)
-        barChart.data = dataBalance
+        val dataSet = BarDataSet(entries, "Баланс")
+        val colors = mutableListOf<Int>()
+        colors.addAll(cardViewModel.cardsList.map { Color.rgb((0..255).random(), (0..255).random(), (0..255).random()) })
+        colors.addAll(cashViewModel.cashList.map { Color.rgb((0..255).random(), (0..255).random(), (0..255).random()) })
+        dataSet.colors = colors
+        dataSet.valueTextSize = 12f
+        dataSet.valueTextColor = Color.BLACK
 
-        // Настройка осей
+        val data = BarData(dataSet)
+        barChart.data = data
+
         barChart.axisRight.isEnabled = false
         val leftAxis = barChart.axisLeft
         leftAxis.axisMinimum = 0f
@@ -160,19 +179,15 @@ class DashboardFragment : Fragment() {
         xAxis.setDrawLabels(true)
         xAxis.valueFormatter = object : ValueFormatter() {
             override fun getFormattedValue(value: Float): String {
-                return entriesBalance[value.toInt()].data.toString()
+                val entryIndex = value.toInt()
+                return entries[entryIndex].data.toString()
             }
         }
-        // Убираем описание диаграммы
         barChart.description.isEnabled = false
 
-        // Настройка легенды
         val legend = barChart.legend
         legend.isEnabled = false
 
         barChart.invalidate()
-
-
-        return binding.root
     }
 }

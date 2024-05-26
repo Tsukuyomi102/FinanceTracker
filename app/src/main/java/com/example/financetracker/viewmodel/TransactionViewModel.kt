@@ -3,11 +3,13 @@ package com.example.financetracker.viewmodel
 import android.util.Log
 import androidx.lifecycle.MutableLiveData
 import androidx.lifecycle.ViewModel
+import com.example.financetracker.R
 import com.example.financetracker.api.ApiService
 import com.example.financetracker.data.Card
 import com.example.financetracker.data.Cash
 import com.example.financetracker.data.Transaction
 import com.example.financetracker.network.RetrofitClient
+import com.github.mikephil.charting.data.PieEntry
 import retrofit2.Call
 import retrofit2.Callback
 import retrofit2.Response
@@ -87,9 +89,11 @@ class TransactionViewModel : ViewModel() {
         call.enqueue(object : Callback<String> {
             override fun onResponse(call: Call<String>, response: Response<String>) {
                 if (response.isSuccessful) {
+                    // Удалить транзакцию из списка
                     val updatedList = transactionsList.toMutableList()
                     updatedList.removeAll { it.transactionName == transactionName }
-                    transactionsLiveData.value = updatedList
+                    // Обновить LiveData с новым списком
+                    transactionsLiveData.postValue(updatedList)
                 }
             }
 
@@ -107,5 +111,34 @@ class TransactionViewModel : ViewModel() {
 
     fun getSelectedTransaction() : Transaction?{
         return selectedTransaction
+    }
+
+    fun getTransactionEntriesForPieChart(): List<PieEntry> {
+        val groupedTransactions = transactionsList.groupBy { it.category }
+        val entries = mutableListOf<PieEntry>()
+        groupedTransactions.forEach { (category, transactions) ->
+            val totalAmount = transactions.sumBy { it.amount }
+            val categoryName = when (category) {
+                "imageHealth" -> "Здоровье"
+                "imageFood" -> "Еда"
+                "imageInvestment" -> "Инвестиции"
+                "imageCar" -> "Машина"
+                "imageGift" -> "Подарок"
+                "imageClothes" -> "Одежда"
+                "imageDonation" -> "Благотворительность"
+                "imageBeauty" -> "Красота"
+                "imageHome" -> "Дом"
+                "imageBusiness" -> "Бизнесс"
+                "imageMoney" -> "Зарплата"
+                else -> "???"
+            }
+            entries.add(PieEntry(totalAmount.toFloat(), categoryName))
+        }
+
+        return entries
+    }
+
+    fun getTransactionLiveData(): MutableLiveData<List<Transaction>> {
+        return transactionsLiveData
     }
 }

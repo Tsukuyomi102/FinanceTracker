@@ -35,9 +35,6 @@ class BillFragment : Fragment(), CardAdapter.OnCardClickListener, CashAdapter.On
     ): View? {
         binding = FragmentBillBinding.inflate(layoutInflater, container, false)
 
-        val sharedPreferences = context?.getSharedPreferences("logged_user_data", Context.MODE_PRIVATE)
-        val email = sharedPreferences?.getString("email", "")
-
         binding.imageBack.setOnClickListener(){
             findNavController().navigate(R.id.action_billFragment_to_profileFragment)
         }
@@ -50,9 +47,6 @@ class BillFragment : Fragment(), CardAdapter.OnCardClickListener, CashAdapter.On
 
         cardViewModel = ViewModelProvider(requireActivity()).get(CardViewModel::class.java)
 
-        if(!email.isNullOrEmpty()){
-            cardViewModel.getCardsByEmail(email)
-        }
 
         cardViewModel.getCardsLiveData().observe(viewLifecycleOwner) { cards ->
             cards?.let {
@@ -63,10 +57,6 @@ class BillFragment : Fragment(), CardAdapter.OnCardClickListener, CashAdapter.On
         }
 
         cashViewModel = ViewModelProvider(requireActivity()).get(CashViewModel::class.java)
-
-        if(!email.isNullOrEmpty()){
-            cashViewModel.getCashByEmail(email)
-        }
 
         cashViewModel.getCashesLiveData().observe(viewLifecycleOwner) {cashes ->
             cashes?.let {
