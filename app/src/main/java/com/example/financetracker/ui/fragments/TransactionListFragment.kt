@@ -66,7 +66,6 @@ class TransactionListFragment : Fragment(), CardTransactionAdapter.OnCardTransac
     }
 
     private fun observeTransactions() {
-        // Наблюдение за изменениями в списке транзакций
         transactionViewModel.getTransactionLiveData().observe(viewLifecycleOwner) { transactions ->
             updateCardTransactions(transactions)
             updateCashTransactions(transactions)

@@ -4,6 +4,12 @@
         <!-- Customize your dark theme here. -->
         <!-- <item name="colorPrimary">@color/my_dark_primary</item> -->
     </style>
+
+    <style name="Base.Theme.FinanceTracker.NoActionBar" parent="Base.Theme.FinanceTracker">
+        <item name="windowActionBar">false</item>
+        <item name="windowNoTitle">true</item>
+    </style>
+
     <style name="mainBackground">
         <!--background -->
         <item name="android:background">#424242</item>

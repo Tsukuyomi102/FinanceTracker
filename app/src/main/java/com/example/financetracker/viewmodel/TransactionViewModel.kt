@@ -103,8 +103,6 @@ class TransactionViewModel : ViewModel() {
         })
     }
 
-
-
     fun setSelectedTransaction(transaction: Transaction){
         selectedTransaction = transaction
     }

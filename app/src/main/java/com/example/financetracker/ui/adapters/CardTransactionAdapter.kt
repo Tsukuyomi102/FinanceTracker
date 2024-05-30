@@ -13,7 +13,7 @@ import com.example.financetracker.data.Card
 import com.example.financetracker.data.Transaction
 
 class CardTransactionAdapter(private val transactions: List<Transaction>, private val context: Context, private val flagForAll: Boolean, private val listener: OnCardTransactionClickListener) : RecyclerView.Adapter<CardTransactionAdapter.TransactionViewHolder>() {
-    private val cardTransactions = mutableListOf<Transaction>()
+    private var cardTransactions = mutableListOf<Transaction>()
 
     interface OnCardTransactionClickListener{
         fun onCardTransactionClick(transaction: Transaction)
@@ -86,6 +86,11 @@ class CardTransactionAdapter(private val transactions: List<Transaction>, privat
         holder.itemView.setOnClickListener(){
             listener.onCardTransactionClick(transaction)
         }
+    }
+
+    fun filterList(filteredTransactions: List<Transaction>) {
+        cardTransactions = filteredTransactions.toMutableList()
+        notifyDataSetChanged()
     }
 
 }
