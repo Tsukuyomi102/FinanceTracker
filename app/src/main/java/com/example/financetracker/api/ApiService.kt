@@ -65,7 +65,7 @@ interface ApiService {
     @FormUrlEncoded
     @POST("user/transaction")
     fun addTransaction(
-        @Field("email") email: String,
+        @Field("email") email: String?,
         @Field("isIncome") isIncome: Boolean,
         @Field("isCreditCard") isCreditCard: Boolean,
         @Field("name") name: String,
@@ -80,10 +80,10 @@ interface ApiService {
     fun getTransactionsByEmail(
         @Path("email") email: String?
     ): Call<List<Transaction>>
+
     @DELETE("user/{email}/transaction/{name}")
     fun deleteTransaction(
-        @Path("email") email: String,
+        @Path("email") email: String?,
         @Path("name") name: String
     ): Call<String>
-
 }

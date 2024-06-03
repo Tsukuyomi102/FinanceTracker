@@ -29,25 +29,28 @@ class AddCashFragment : Fragment() {
         binding = FragmentAddCashBinding.inflate(layoutInflater, container, false)
 
         val sharedPreferences = context?.getSharedPreferences("logged_user_data", Context.MODE_PRIVATE)
-        val email = sharedPreferences?.getString("email", "")
+        val email = sharedPreferences?.getString("email", "").toString()
 
-        binding.imageBack.setOnClickListener(){
-            findNavController().navigate(R.id.action_addCashFragment_to_billFragment)
+        binding.imageBack.setOnClickListener {
+            findNavController().navigate(R.id.action_addCardFragment_to_billFragment)
         }
 
         viewModel = ViewModelProvider(requireActivity()).get(CashViewModel::class.java)
-        binding.buttonAddCash.setOnClickListener(){
-            val cash = Cash(
-                cashName = binding.editCashName.text.toString(),
-                cashDescription = binding.editCashDescription.text.toString(),
-                cashBalance = binding.editCashBalance.text.toString().toInt()
-            )
+        binding.buttonAddCash.setOnClickListener{
+            val cashName = binding.editCashName.text.toString()
+            val cashDescription = binding.editCashDescription.text.toString()
+            val cashBalance = binding.editCashBalance.text.toString().toInt()
 
-            if(!email.isNullOrEmpty()){
+            if (cashName.isNotEmpty() && cashDescription.isNotEmpty() && cashBalance != null){
+                val cash  = Cash(
+                    cashName = cashName,
+                    cashDescription = cashDescription,
+                    cashBalance = cashBalance
+                )
                 viewModel.addCashByEmail(email, cash)
-                Toast.makeText(context, "Ваши наличные успешно добавлены!", Toast.LENGTH_SHORT).show()
-            } else{
-                Toast.makeText(context, "Ошибка при добавлении карты. Электронная почта пользователя не найдена.", Toast.LENGTH_SHORT).show()
+                Toast.makeText(context, getString(R.string.cashAdded), Toast.LENGTH_SHORT).show()
+            } else {
+                Toast.makeText(context, getString(R.string.allInformation), Toast.LENGTH_SHORT).show()
             }
         }
         return binding.root

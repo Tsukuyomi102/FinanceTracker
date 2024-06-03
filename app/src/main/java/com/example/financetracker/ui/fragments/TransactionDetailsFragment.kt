@@ -1,5 +1,6 @@
 package com.example.financetracker.ui.fragments
 
+import android.content.Context
 import android.os.Bundle
 import androidx.fragment.app.Fragment
 import android.view.LayoutInflater
@@ -38,6 +39,9 @@ class TransactionDetailsFragment : Fragment() {
 
         val selectedTransaction = transactionViewModel.getSelectedTransaction()
 
+        val sharedPreferences = context?.getSharedPreferences("logged_user_data", Context.MODE_PRIVATE)
+        val email = sharedPreferences?.getString("email", "")
+
         selectedTransaction?.let {
             binding.transactionBalance.text = "${it.amount} RUB"
             binding.transactionName.text = it.transactionName
@@ -66,7 +70,7 @@ class TransactionDetailsFragment : Fragment() {
 
         binding.imageDelete.setOnClickListener(){
             selectedTransaction?.let { transaction ->
-                transactionViewModel.deleteTransaction("test@mail.ru", transaction.transactionName)
+                transactionViewModel.deleteTransaction(email, transaction.transactionName)
             }
         }
     }

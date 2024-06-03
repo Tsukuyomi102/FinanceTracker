@@ -89,4 +89,8 @@ class CardViewModel : ViewModel() {
     fun getSelectedCard(): Card? {
         return selectedCard
     }
+
+    fun deleteCards(){
+        cardsLiveData.value = emptyList<Card>()
+    }
 }

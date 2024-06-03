@@ -73,6 +73,7 @@ class TransactionViewModel : ViewModel() {
                 response.body()?.let {
                     transactionsList = it
                     transactionsLiveData.postValue(it)
+                    Log.d("DEBUG", transactionsLiveData.toString())
                 }
             }
 
@@ -82,23 +83,24 @@ class TransactionViewModel : ViewModel() {
         })
     }
 
-    fun deleteTransaction(email: String, transactionName: String) {
+    fun deleteTransaction(email: String?, transactionName: String) {
         val apiService = RetrofitClient.retrofit.create(ApiService::class.java)
         val call = apiService.deleteTransaction(email, transactionName)
 
         call.enqueue(object : Callback<String> {
             override fun onResponse(call: Call<String>, response: Response<String>) {
                 if (response.isSuccessful) {
-                    // Удалить транзакцию из списка
                     val updatedList = transactionsList.toMutableList()
                     updatedList.removeAll { it.transactionName == transactionName }
-                    // Обновить LiveData с новым списком
                     transactionsLiveData.postValue(updatedList)
                 }
             }
 
             override fun onFailure(call: Call<String>, t: Throwable) {
                 Log.e("TransactionViewModel", "Error deleting transaction", t)
+                val updatedList = transactionsList.toMutableList()
+                updatedList.removeAll { it.transactionName == transactionName }
+                transactionsLiveData.postValue(updatedList)
             }
         })
     }
@@ -138,5 +140,9 @@ class TransactionViewModel : ViewModel() {
 
     fun getTransactionLiveData(): MutableLiveData<List<Transaction>> {
         return transactionsLiveData
+    }
+
+    fun deleteTransactions(){
+        transactionsLiveData.value = emptyList<Transaction>()
     }
 }

@@ -4,6 +4,7 @@ import android.util.Log
 import androidx.lifecycle.MutableLiveData
 import androidx.lifecycle.ViewModel
 import com.example.financetracker.api.ApiService
+import com.example.financetracker.data.Card
 import com.example.financetracker.data.Cash
 import com.example.financetracker.network.RetrofitClient
 import retrofit2.Call
@@ -87,5 +88,9 @@ class CashViewModel : ViewModel() {
 
     fun getSelectedCash() : Cash?{
         return selectedCash
+    }
+
+    fun deleteCashes(){
+        cashLiveData.value = emptyList<Cash>()
     }
 }

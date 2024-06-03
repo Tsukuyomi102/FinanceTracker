@@ -1,12 +1,11 @@
 package com.example.financetracker.ui.fragments
 
-import android.content.Context
 import android.graphics.Color
 import android.os.Bundle
-import androidx.fragment.app.Fragment
 import android.view.LayoutInflater
 import android.view.View
 import android.view.ViewGroup
+import androidx.fragment.app.Fragment
 import androidx.lifecycle.ViewModelProvider
 import com.example.financetracker.databinding.FragmentDashboardBinding
 import com.example.financetracker.viewmodel.CardViewModel
@@ -31,7 +30,7 @@ class DashboardFragment : Fragment() {
     override fun onCreateView(
         inflater: LayoutInflater, container: ViewGroup?,
         savedInstanceState: Bundle?
-    ): View? {
+    ): View {
         binding = FragmentDashboardBinding.inflate(layoutInflater, container, false)
         return binding.root
     }
@@ -39,8 +38,18 @@ class DashboardFragment : Fragment() {
     override fun onViewCreated(view: View, savedInstanceState: Bundle?) {
         super.onViewCreated(view, savedInstanceState)
         initViewModels()
+        loadData()
+    }
+
+    private fun initViewModels() {
+        transactionViewModel = ViewModelProvider(requireActivity()).get(TransactionViewModel::class.java)
+        cashViewModel = ViewModelProvider(requireActivity()).get(CashViewModel::class.java)
+        cardViewModel = ViewModelProvider(requireActivity()).get(CardViewModel::class.java)
+    }
+
+    private fun loadData() {
         cardViewModel.getCardsLiveData().observe(viewLifecycleOwner) { cards ->
-            cashViewModel.getCashesLiveData().observe(viewLifecycleOwner){cashes ->
+            cashViewModel.getCashesLiveData().observe(viewLifecycleOwner) { cashes ->
                 changeBalance()
                 setupPieChart1()
                 setupBarChart()
@@ -50,16 +59,9 @@ class DashboardFragment : Fragment() {
         transactionViewModel.getTransactionLiveData().observe(viewLifecycleOwner) { transactions ->
             setupPieChart2()
         }
-
     }
 
-    private fun initViewModels() {
-        transactionViewModel = ViewModelProvider(requireActivity()).get(TransactionViewModel::class.java)
-        cashViewModel = ViewModelProvider(requireActivity()).get(CashViewModel::class.java)
-        cardViewModel = ViewModelProvider(requireActivity()).get(CardViewModel::class.java)
-    }
-
-    private fun changeBalance(){
+    private fun changeBalance() {
         binding.textViewBalance.text = (cashViewModel.getTotalBalance() + cardViewModel.getTotalBalance()).toString()
         binding.textViewForNal.text = cashViewModel.getTotalBalance().toString()
         binding.textViewForCard.text = cardViewModel.getTotalBalance().toString()
@@ -68,9 +70,10 @@ class DashboardFragment : Fragment() {
     private fun setupPieChart1() {
         val pieChart: PieChart = binding.entirebalancediagram
 
-        val entries = ArrayList<PieEntry>()
-        entries.add(PieEntry(cardViewModel.getTotalBalance().toFloat()))
-        entries.add(PieEntry(cashViewModel.getTotalBalance().toFloat()))
+        val entries = listOf(
+            PieEntry(cardViewModel.getTotalBalance().toFloat()),
+            PieEntry(cashViewModel.getTotalBalance().toFloat())
+        )
 
         val dataSet = PieDataSet(entries, "")
         dataSet.colors = listOf(
@@ -100,17 +103,17 @@ class DashboardFragment : Fragment() {
         val entries2 = transactionViewModel.getTransactionEntriesForPieChart()
         val dataSet2 = PieDataSet(entries2, "")
         dataSet2.colors = listOf(
-            Color.rgb(204, 241, 229), // Здоровье
-            Color.rgb(255, 208, 208), // Еда
-            Color.rgb(204, 210, 241), // Инвестиции
-            Color.rgb(255, 226, 191), // Машина
-            Color.rgb(212, 234, 254), // Подарок
-            Color.rgb(244, 214, 255),  // Одежда
-            Color.rgb(252,181,252),  // Благотворительность
-            Color.rgb(128,204,179), // Красота
-            Color.rgb(255,147,147), // Дом
-            Color.rgb(126,255,213), // Бизнесс
-            Color.rgb(219,219,221) // Зарплата
+            Color.rgb(204, 241, 229),
+            Color.rgb(255, 208, 208),
+            Color.rgb(204, 210, 241),
+            Color.rgb(255, 226, 191),
+            Color.rgb(212, 234, 254),
+            Color.rgb(244, 214, 255),
+            Color.rgb(252,181,252),
+            Color.rgb(128,204,179),
+            Color.rgb(255,147,147),
+            Color.rgb(126,255,213),
+            Color.rgb(219,219,221)
         )
         dataSet2.valueTextSize = 10f
         dataSet2.valueTextColor = Color.BLACK
@@ -180,7 +183,11 @@ class DashboardFragment : Fragment() {
         xAxis.valueFormatter = object : ValueFormatter() {
             override fun getFormattedValue(value: Float): String {
                 val entryIndex = value.toInt()
-                return entries[entryIndex].data.toString()
+                return if (entryIndex < entries.size) {
+                    entries[entryIndex].data.toString()
+                } else {
+                    ""
+                }
             }
         }
         barChart.description.isEnabled = false

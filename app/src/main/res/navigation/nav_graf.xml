@@ -72,6 +72,9 @@
         <action
             android:id="@+id/action_profileFragment_to_billFragment"
             app:destination="@id/billFragment" />
+        <action
+            android:id="@+id/action_profileFragment_to_settingsFragment"
+            app:destination="@id/settingsFragment" />
     </fragment>
 
     <fragment
@@ -163,6 +166,18 @@
         <action
             android:id="@+id/action_transactionDetailsFragment_to_budgetFragment"
             app:destination="@id/budgetFragment" />
+    </fragment>
+    <fragment
+        android:id="@+id/settingsFragment"
+        android:name="com.example.financetracker.ui.fragments.SettingsFragment"
+        android:label="fragment_settings"
+        tools:layout="@layout/fragment_settings" >
+        <action
+            android:id="@+id/action_settingsFragment_to_profileFragment"
+            app:destination="@id/profileFragment" />
+        <action
+            android:id="@+id/action_settingsFragment_to_singInFragment"
+            app:destination="@id/singInFragment" />
     </fragment>
 
 </navigation>

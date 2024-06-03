@@ -90,28 +90,6 @@
         app:layout_constraintStart_toEndOf="@+id/imageCont"
         app:layout_constraintTop_toBottomOf="@+id/toolbar" />
 
-    <ImageView
-        android:id="@+id/imageIncome"
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
-        android:layout_marginLeft="55dp"
-        android:layout_marginTop="50dp"
-        android:src="@drawable/icon_venituri"
-        app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toBottomOf="@+id/imageCont" />
-
-    <TextView
-        android:id="@+id/textIncome"
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
-        android:text="@string/income"
-        android:textSize="18dp"
-        android:fontFamily="@font/roboto_medium"
-        android:layout_marginTop="51dp"
-        android:layout_marginLeft="5dp"
-        style="@style/hintColor"
-        app:layout_constraintStart_toEndOf="@+id/imageIncome"
-        app:layout_constraintTop_toBottomOf="@+id/textCont" />
 
     <ImageView
         android:id="@+id/imageHelp"
@@ -121,7 +99,7 @@
         android:layout_marginLeft="55dp"
         android:layout_marginTop="50dp"
         app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toBottomOf="@+id/imageIncome" />
+        app:layout_constraintTop_toBottomOf="@+id/imageCont" />
 
     <TextView
         android:id="@+id/textHelp"
@@ -134,7 +112,7 @@
         android:layout_marginLeft="5dp"
         style="@style/hintColor"
         app:layout_constraintStart_toEndOf="@+id/imageHelp"
-        app:layout_constraintTop_toBottomOf="@+id/textIncome" />
+        app:layout_constraintTop_toBottomOf="@+id/textCont" />
 
     <ImageView
         android:id="@+id/imageSettings"
@@ -142,7 +120,7 @@
         android:layout_height="wrap_content"
         android:src="@drawable/icon_setari"
         android:layout_marginLeft="55dp"
-        android:layout_marginTop="50dp"
+        android:layout_marginTop="45dp"
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toBottomOf="@+id/imageHelp" />
 
@@ -153,11 +131,13 @@
         android:text="@string/settings"
         android:textSize="18dp"
         android:fontFamily="@font/roboto_medium"
-        android:layout_marginTop="60dp"
+        android:layout_marginTop="55dp"
         android:layout_marginLeft="5dp"
         style="@style/hintColor"
         app:layout_constraintStart_toEndOf="@+id/imageSettings"
         app:layout_constraintTop_toBottomOf="@+id/textHelp" />
+
+
 
 
 

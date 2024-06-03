@@ -75,6 +75,5 @@ class MainActivity : AppCompatActivity() {
         transactionViewModel.getTransactionsByEmail(userEmail)
         cardViewModel.getCardsByEmail(userEmail)
         cashViewModel.getCashByEmail(userEmail)
-
     }
 }

@@ -30,17 +30,13 @@ class ProfileFragment : Fragment() {
 
         userViewModel = ViewModelProvider(requireActivity()).get(UserViewModel::class.java)
         binding = FragmentProfileBinding.inflate(layoutInflater, container, false)
+
         binding.textCont.setOnClickListener(){
             findNavController().navigate(R.id.action_profileFragment_to_billFragment)
         }
 
         binding.textSettings.setOnClickListener(){
-            var currentMode: Int = resources.configuration.uiMode and Configuration.UI_MODE_NIGHT_MASK
-            if(currentMode == Configuration.UI_MODE_NIGHT_YES){
-                AppCompatDelegate.setDefaultNightMode(AppCompatDelegate.MODE_NIGHT_NO)
-            }else{
-                AppCompatDelegate.setDefaultNightMode(AppCompatDelegate.MODE_NIGHT_YES)
-            }
+            findNavController().navigate(R.id.action_profileFragment_to_settingsFragment)
         }
 
         displayLoggedUser()

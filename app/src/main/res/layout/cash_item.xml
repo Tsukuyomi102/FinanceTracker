@@ -16,7 +16,7 @@
         android:layout_height="45dp"
         android:layout_marginLeft="15dp"
         android:layout_marginTop="10dp"
-        android:background="@color/white"
+        android:backgroundTint="@color/white"
         android:src="@drawable/icon_money"
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toTopOf="parent" />

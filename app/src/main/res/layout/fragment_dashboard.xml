@@ -12,25 +12,25 @@
         android:layout_width="match_parent"
         android:layout_height="wrap_content">
 
-    <Toolbar
-        android:id="@+id/toolbar"
-        android:layout_width="match_parent"
-        android:layout_height="115dp"
-        android:background="@color/top"
-        app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toTopOf="parent" />
+        <Toolbar
+            android:id="@+id/toolbar"
+            android:layout_width="match_parent"
+            android:layout_height="115dp"
+            android:background="@color/top"
+            app:layout_constraintStart_toStartOf="parent"
+            app:layout_constraintTop_toTopOf="parent" />
 
-    <TextView
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
-        android:layout_marginTop="50dp"
-        android:layout_marginLeft="40dp"
-        android:text="@string/dash"
-        android:fontFamily="@font/roboto_medium"
-        android:textColor="@color/name"
-        android:textSize="18sp"
-        app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toTopOf="@+id/toolbar" />
+        <TextView
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_marginTop="50dp"
+            android:layout_marginLeft="40dp"
+            android:text="@string/dash"
+            android:fontFamily="@font/roboto_medium"
+            android:textColor="@color/name"
+            android:textSize="18sp"
+            app:layout_constraintStart_toStartOf="parent"
+            app:layout_constraintTop_toTopOf="@+id/toolbar" />
 
         <androidx.constraintlayout.widget.ConstraintLayout
             android:layout_width="match_parent"

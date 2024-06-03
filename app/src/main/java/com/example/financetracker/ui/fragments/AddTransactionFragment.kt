@@ -1,5 +1,6 @@
 package com.example.financetracker.ui.fragments
 
+import android.content.Context
 import android.content.res.ColorStateList
 import android.content.res.Configuration
 import android.graphics.Paint
@@ -60,6 +61,9 @@ class AddTransactionFragment : Fragment(), CardAdapter.OnCardClickListener, Cash
         inflater: LayoutInflater, container: ViewGroup?,
         savedInstanceState: Bundle?
     ): View? {
+        val sharedPreferences = context?.getSharedPreferences("logged_user_data", Context.MODE_PRIVATE)
+        val email = sharedPreferences?.getString("email", "")
+
         binding = FragmentAddTransactionBinding.inflate(layoutInflater, container, false)
 
         viewModel = ViewModelProvider(requireActivity()).get(TransactionViewModel::class.java)
@@ -102,7 +106,7 @@ class AddTransactionFragment : Fragment(), CardAdapter.OnCardClickListener, Cash
         }
 
         binding.btnAcs.setOnClickListener(){
-            addTransaction()
+            addTransaction(email)
         }
 
 
@@ -212,7 +216,7 @@ class AddTransactionFragment : Fragment(), CardAdapter.OnCardClickListener, Cash
         }
     }
 
-    private fun addTransaction(){
+    private fun addTransaction(email: String?){
         val currentDate = Calendar.getInstance().time
         val dateFormat = SimpleDateFormat("dd MMMM yyyy", Locale.getDefault())
         val dateString = dateFormat.format(currentDate)
@@ -229,7 +233,7 @@ class AddTransactionFragment : Fragment(), CardAdapter.OnCardClickListener, Cash
         )
         val apiService = RetrofitClient.retrofit.create(ApiService::class.java)
         val call = apiService.addTransaction(
-            email = "test@mail.ru",
+            email = email,
             isIncome = transaction.isIncome,
             isCreditCard = transaction.isCreditCard,
             name = transaction.transactionName,
@@ -253,13 +257,13 @@ class AddTransactionFragment : Fragment(), CardAdapter.OnCardClickListener, Cash
                 Toast.makeText(context, "Ошибка при выполнении запроса", Toast.LENGTH_SHORT).show()
             }
         })
+
         if (transaction.isCreditCard){
             viewModel.addCardTransaction(transaction, cardViewModel = cardViewModel, selectedCardNumber = selectedCardNumber)
         } else {
             viewModel.addCashTransaction(transaction, cashViewModel = cashViewModel, selectedCashName = selectedCashName)
         }
         Toast.makeText(context, "Ваша транзакция успешно добавлена", Toast.LENGTH_SHORT).show()
-
     }
 
     override fun onCardClick(card: Card) {
