@@ -1,0 +1,50 @@
+<?xml version="1.0" encoding="utf-8"?>
+<androidx.constraintlayout.widget.ConstraintLayout
+    xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:background="@drawable/gradient_advice"
+    android:layout_marginBottom="15dp"
+    android:layout_width="match_parent"
+    android:layout_height="180dp">
+
+    <TextView
+        android:id="@+id/adviceName"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_marginLeft="25dp"
+        android:layout_marginTop="15dp"
+        android:text="Кредиты"
+        android:textSize="14sp"
+        android:textColor="@color/adviceName"
+        android:fontFamily="@font/roboto_bold"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toTopOf="parent" />
+
+    <TextView
+        android:id="@+id/adviceDescription"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_marginLeft="25dp"
+        android:layout_marginTop="8dp"
+        android:fontFamily="@font/roboto_medium"
+        android:text="Простое описанеи чего-то"
+        android:textColor="@color/adviceName"
+        android:textSize="12sp"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toBottomOf="@+id/adviceName" />
+
+    <TextView
+        android:id="@+id/links"
+        android:layout_width="100dp"
+        android:layout_height="20dp"
+        android:layout_marginStart="25dp"
+        android:layout_marginBottom="5dp"
+        android:background="@drawable/border_advice_button"
+        android:text="@string/link"
+        android:textSize="12sp"
+        android:textColor="@color/black"
+        android:gravity="center"
+        app:layout_constraintBottom_toBottomOf="parent"
+        app:layout_constraintStart_toStartOf="parent" />
+</androidx.constraintlayout.widget.ConstraintLayout>

@@ -57,14 +57,6 @@
             android:textColor="@color/hintColor"
             android:fontFamily="@font/roboto_medium"
             android:layout_marginTop="36dp" />
-
-        <ImageButton
-            android:layout_width="wrap_content"
-            android:layout_height="wrap_content"
-            android:layout_marginLeft="320dp"
-            android:layout_marginTop="10dp"
-            android:backgroundTint="@color/backgroundToolbar"
-            android:src="@drawable/arrow_right" />
     </FrameLayout>
 
     <ImageView

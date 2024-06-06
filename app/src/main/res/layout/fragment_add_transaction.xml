@@ -139,25 +139,15 @@
 
                 <Button
                     android:id="@+id/btnCar"
-                    android:layout_width="100dp"
+                    android:layout_width="20dp"
                     android:layout_height="match_parent"
                     android:layout_weight="1"
                     android:backgroundTint="@color/buttonColor"
                     android:text="@string/car" />
 
                 <Button
-                    android:id="@+id/btnCript"
-                    android:layout_width="100dp"
-                    android:layout_height="match_parent"
-                    android:layout_marginStart="10dp"
-                    android:layout_weight="1"
-                    android:backgroundTint="@color/white"
-                    android:text="@string/cript"
-                    android:textColor="@color/cript" />
-
-                <Button
                     android:id="@+id/btnNal"
-                    android:layout_width="100dp"
+                    android:layout_width="20dp"
                     android:layout_height="match_parent"
                     android:layout_marginStart="10dp"
                     android:layout_weight="1"

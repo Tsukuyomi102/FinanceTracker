@@ -37,15 +37,6 @@ class BudgetFragment : Fragment() {
         cashViewModel = ViewModelProvider(requireActivity())[CashViewModel::class.java]
         transactionViewModel = ViewModelProvider(requireActivity())[TransactionViewModel::class.java]
 
-
-        binding.operations.setOnClickListener() {
-            changeColor(binding.operations, binding.aims)
-        }
-        binding.aims.setOnClickListener() {
-            changeColor(binding.aims, binding.operations)
-        }
-
-
         changeCardBalance(cardViewModel)
         changeCashBalance(cashViewModel)
         changeGeneralBalance()
@@ -53,16 +44,6 @@ class BudgetFragment : Fragment() {
         cardViewModel = ViewModelProvider(requireActivity()).get(CardViewModel::class.java)
 
         return binding.root
-    }
-
-    private fun changeColor(firstButton: TextView, secondButton: TextView) {
-        firstButton.setBackgroundColor(ContextCompat.getColor(requireContext(),
-            R.color.buttonColor))
-        firstButton.setTextColor(ContextCompat.getColor(requireContext(),
-            R.color.white))
-        secondButton.setBackgroundResource(R.drawable.rounded_border)
-        secondButton.setTextColor(ContextCompat.getColor(requireContext(),
-            R.color.buttonColor))
     }
 
     private fun changeCardBalance(cardViewModel: CardViewModel){

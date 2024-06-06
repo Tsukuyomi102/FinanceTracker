@@ -32,7 +32,7 @@ class AddCashFragment : Fragment() {
         val email = sharedPreferences?.getString("email", "").toString()
 
         binding.imageBack.setOnClickListener {
-            findNavController().navigate(R.id.action_addCardFragment_to_billFragment)
+            findNavController().navigate(R.id.action_addCashFragment_to_billFragment)
         }
 
         viewModel = ViewModelProvider(requireActivity()).get(CashViewModel::class.java)

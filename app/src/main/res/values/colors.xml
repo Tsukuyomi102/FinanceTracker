@@ -24,4 +24,7 @@
     <color name="outcome">#FF0000</color>
     <color name="cardBackground">#8ED6B2</color>
     <color name="backgroundDark">#575757</color>
+    <color name="startColorAdvice">#F3F0D066</color>
+    <color name="endColorAdvice">#F9FBF8</color>
+    <color name="adviceName">#AA5D04</color>
 </resources>

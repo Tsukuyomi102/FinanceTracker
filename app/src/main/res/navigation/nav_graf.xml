@@ -75,6 +75,9 @@
         <action
             android:id="@+id/action_profileFragment_to_settingsFragment"
             app:destination="@id/settingsFragment" />
+        <action
+            android:id="@+id/action_profileFragment_to_helpFragment"
+            app:destination="@id/helpFragment" />
     </fragment>
 
     <fragment
@@ -178,6 +181,14 @@
         <action
             android:id="@+id/action_settingsFragment_to_singInFragment"
             app:destination="@id/singInFragment" />
+    </fragment>
+    <fragment
+        android:id="@+id/helpFragment"
+        android:name="com.example.financetracker.ui.fragments.HelpFragment"
+        android:label="HelpFragment" >
+        <action
+            android:id="@+id/action_helpFragment_to_profileFragment"
+            app:destination="@id/profileFragment" />
     </fragment>
 
 </navigation>

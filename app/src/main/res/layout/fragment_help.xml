@@ -7,16 +7,15 @@
     xmlns:app="http://schemas.android.com/apk/res-auto"
     style="@style/mainBackground"
     tools:context=".ui.fragments.SettingsFragment">
-
     <Toolbar
         android:id="@+id/toolbar"
         android:layout_width="match_parent"
         android:layout_height="100dp"
         android:background="@color/top"
-
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toTopOf="parent" />
+
     <ImageButton
         android:id="@+id/imageBack"
         android:layout_width="25dp"
@@ -27,10 +26,11 @@
         android:backgroundTint="@color/top"
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toTopOf="parent" />
+
     <TextView
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
-        android:text="@string/settings"
+        android:text="Поддержка"
         android:textSize="20sp"
         android:fontFamily="@font/roboto_medium"
         android:textColor="@color/black"
@@ -38,51 +38,18 @@
         android:layout_marginLeft="32dp"
         app:layout_constraintStart_toEndOf="@+id/imageBack"
         app:layout_constraintTop_toTopOf="parent" />
-    <ImageView
-        android:id="@+id/imageLogout"
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
-        android:src="@drawable/icomoon_free_exit"
-        android:layout_marginTop="50dp"
-        android:layout_marginLeft="55dp"
-        app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toBottomOf="@+id/toolbar" />
 
     <TextView
-        android:id="@+id/textLogout"
+        style="@style/blackText"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
+        android:layout_marginTop="30dp"
         android:fontFamily="@font/roboto_medium"
-        android:text="@string/logout"
-        android:textSize="18dp"
-        style="@style/hintColor"
-        android:layout_marginTop="53dp"
-        android:layout_marginLeft="5dp"
-        app:layout_constraintStart_toEndOf="@+id/imageLogout"
-        app:layout_constraintTop_toBottomOf="@+id/toolbar" />
-
-
-    <TextView
-        android:id="@+id/textChangeTheme"
-        style="@style/hintColor"
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
-        android:layout_marginTop="55dp"
-        android:layout_marginLeft="55dp"
-        android:fontFamily="@font/roboto_medium"
-        android:text="@string/changeTheme"
-        android:textSize="18dp"
+        android:text="@string/supporting"
+        android:textSize="20sp"
+        android:layout_marginLeft="20dp"
+        android:layout_marginRight="20dp"
+        app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toBottomOf="@+id/textLogout" />
-
-    <com.google.android.material.switchmaterial.SwitchMaterial
-        android:id="@+id/themeSwitcher"
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
-        android:layout_marginTop="45dp"
-        android:layout_marginLeft="5dp"
-        app:layout_constraintStart_toEndOf="@+id/textChangeTheme"
-        app:layout_constraintTop_toBottomOf="@+id/textLogout" />
-
-
+        app:layout_constraintTop_toBottomOf="@+id/toolbar" />
 </androidx.constraintlayout.widget.ConstraintLayout>

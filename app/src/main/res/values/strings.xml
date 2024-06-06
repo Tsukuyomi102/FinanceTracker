@@ -82,4 +82,7 @@
     <string name="cardError">Ваша карта не добавлена, пожалуйста, перепроверьте всю информацию, которую вы ввели</string>
     <string name="allInformation">Пожалуйста, введите всю информацию</string>
     <string name="cashAdded">Ваш наличный счет успешно добавлен!</string>
+    <string name="financeAdvices">Финансовые советы</string>
+    <string name="link">Ссылка</string>
+    <string name="supporting">Данное приложение разработано на языке Kotlin Разрабатывали данное приложение: Студент Свирин Егор Алексеевич Студент Семенихин Константин Вячеславович Если возникли какие-то проблемы с работой сервиса, просьба, обратится по следующей почте: egorsvirinhh@gmail.com</string>
 </resources>

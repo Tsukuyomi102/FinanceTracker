@@ -31,6 +31,7 @@
         android:background="@color/white"
         android:ems="10"
         android:inputType="text"
+        android:textSize="16sp"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintHorizontal_bias="0.5"
         app:layout_constraintStart_toStartOf="parent"
@@ -44,6 +45,7 @@
         android:background="@color/white"
         android:ems="10"
         android:inputType="textPassword"
+        android:textSize="16sp"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintHorizontal_bias="0.5"
         app:layout_constraintStart_toStartOf="parent"
@@ -97,16 +99,7 @@
         app:layout_constraintStart_toStartOf="@+id/editPassword"
         app:layout_constraintTop_toBottomOf="@+id/editPassword" />
 
-    <TextView
-        android:id="@+id/textViewReset"
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
-        android:text="@string/forgotPassword"
-        android:textColor="@color/hintColor"
-        android:fontFamily="@font/roboto_medium"
-        android:textSize="12dp"
-        app:layout_constraintEnd_toEndOf="@+id/editPassword"
-        app:layout_constraintTop_toBottomOf="@+id/editPassword" />
+
 
     <androidx.constraintlayout.widget.ConstraintLayout
         android:id="@+id/constraintLayout"
@@ -117,77 +110,6 @@
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toBottomOf="@+id/btnLogin">
 
-        <TextView
-            android:id="@+id/textVoow"
-            android:layout_width="wrap_content"
-            android:layout_height="wrap_content"
-            android:text="@string/orRegistr"
-            android:textColor="@color/hintColor2"
-            android:fontFamily="@font/roboto_medium"
-            android:textSize="14dp"
-            app:layout_constraintEnd_toEndOf="parent"
-            app:layout_constraintHorizontal_bias="0.5"
-            app:layout_constraintStart_toStartOf="parent"
-            app:layout_constraintTop_toTopOf="parent" />
-
-        <Button
-            android:id="@+id/btnGoogle"
-            android:layout_width="70dp"
-            android:layout_height="74dp"
-            android:shape="oval"
-            android:backgroundTint="@color/white"
-            app:layout_constraintBottom_toBottomOf="parent"
-            app:layout_constraintStart_toStartOf="parent" />
-
-        <Button
-            android:id="@+id/btnFacebook"
-            android:layout_width="70dp"
-            android:layout_height="74dp"
-            android:shape="oval"
-            android:backgroundTint="@color/white"
-            android:gravity="center"
-            app:layout_constraintBottom_toBottomOf="parent"
-            app:layout_constraintEnd_toStartOf="@+id/btnVK"
-            app:layout_constraintStart_toEndOf="@+id/btnGoogle" />
-
-        <Button
-            android:id="@+id/btnVK"
-            android:layout_width="70dp"
-            android:layout_height="74dp"
-            android:shape="oval"
-            android:backgroundTint="@color/white"
-            app:layout_constraintBottom_toBottomOf="parent"
-            app:layout_constraintEnd_toEndOf="parent" />
-
-        <ImageView
-            android:id="@+id/imageViewGoogle"
-            android:layout_width="wrap_content"
-            android:layout_height="wrap_content"
-            android:src="@drawable/icon_google"
-            app:layout_constraintBottom_toBottomOf="@+id/btnGoogle"
-            app:layout_constraintEnd_toEndOf="@+id/btnGoogle"
-            app:layout_constraintStart_toStartOf="@+id/btnGoogle"
-            app:layout_constraintTop_toTopOf="@+id/btnGoogle" />
-
-        <ImageView
-            android:id="@+id/imageViewFacebook"
-            android:layout_width="wrap_content"
-            android:layout_height="wrap_content"
-            android:src="@drawable/icon_facebook"
-            app:layout_constraintBottom_toBottomOf="@+id/btnFacebook"
-            app:layout_constraintEnd_toEndOf="@+id/btnFacebook"
-            app:layout_constraintStart_toStartOf="@+id/btnFacebook"
-            app:layout_constraintTop_toTopOf="@+id/btnFacebook" />
-
-        <ImageView
-            android:id="@+id/imageViewVK"
-            android:layout_width="wrap_content"
-            android:layout_height="wrap_content"
-            android:src="@drawable/icon_vk"
-            app:layout_constraintBottom_toBottomOf="@+id/btnVK"
-            app:layout_constraintEnd_toEndOf="@+id/btnVK"
-            app:layout_constraintStart_toStartOf="@+id/btnVK"
-            app:layout_constraintTop_toTopOf="@+id/btnVK" />
     </androidx.constraintlayout.widget.ConstraintLayout>
 
     <TextView

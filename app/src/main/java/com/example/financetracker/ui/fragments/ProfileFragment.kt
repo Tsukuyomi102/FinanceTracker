@@ -35,9 +35,14 @@ class ProfileFragment : Fragment() {
             findNavController().navigate(R.id.action_profileFragment_to_billFragment)
         }
 
+        binding.textHelp.setOnClickListener(){
+            findNavController().navigate(R.id.action_profileFragment_to_helpFragment)
+        }
+
         binding.textSettings.setOnClickListener(){
             findNavController().navigate(R.id.action_profileFragment_to_settingsFragment)
         }
+
 
         displayLoggedUser()
         userViewModel.userLiveData.observe(viewLifecycleOwner) { user ->
